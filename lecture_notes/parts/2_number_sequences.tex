@@ -9,6 +9,32 @@
     Числовая последовательность - это счётно бесконечный проиндексированный набор чисел
 }
 
+\mcclarf{}{
+    Формально, числовая последовательность (далее обозначается ч.п.) - это функция натурального аргумента
+
+    $ f: \mathbb{N} \to \mathbb{R}$
+
+    Способы задания:
+\begin{tabular}{rl}
+    & $\bullet$ Формула. Например, $ a_n = \left(1 + \frac{1}{n}\right)^n $ \\
+    & $\bullet$ Рекуррентно. Например, $ F_n = F_{n - 1} + F_{n - 2} $ \\
+\end{tabular}
+}
+
+\subsection{Определения монотонных числовых последовательностей}
+
+\mcdfn{Монотонность ч.п.}
+{
+    Ч.п. $ \NumSeq{a_n} $ называется строго возрастающей, если $ \forall n \in \mathbb{N}: a_{n + 1} > a_{n} $
+
+    Ч.п. $ \NumSeq{a_n} $ называется строго убывающей, если $ \forall n \in \mathbb{N}: a_{n + 1} < a_{n} $
+
+    Ч.п. $ \{ a_n \} $ называется неубывающей, если $ \forall n \in \mathbb{N}: a_{n + 1} \ge a_{n} $
+
+    Ч.п. $ \{ a_n \} $ называется невозрастающей, если $ \forall n \in \mathbb{N}: a_{n + 1} \le a_{n} $
+}
+
+
 \subsection{Ограниченная ч.п.}
 
 \mcdfn{Ограниченная сверху числовая последовательность}
@@ -32,6 +58,12 @@
     $ \exists C > 0 \, \forall n \in \mathbb{N}: \, | a_n | < C $
 }
 
+\mcex{}{
+    Пример: $ a_n = 5 + \frac{1}{n} $
+
+    $ \exists C = 7 > 0 \, \forall n \in \mathbb{N}: \, | a_n | = \left| 5 + \frac{1}{n} \right| < 7 = C $
+}
+
 \nt
 {
     Числовая последовательность ограничена $ \iff $ она ограничена сверху и ограничена снизу
@@ -46,6 +78,12 @@
     $ \forall C > 0 \, \exists n \in \mathbb{N}: \, | a_n | \ge C $
 }
 
+\mcex{}{
+    Пример: $ a_n = n $
+
+    $ \forall C > 0 \, \exists n = \left\lceil C \right\rceil \in \mathbb{N}: \, | a_n | \ge C $
+}
+
 \subsection{Отделимая от нуля ч.п.}
 
 \mcdfn{Отделимая от нуля числовая последовательность}
@@ -53,6 +91,49 @@
     Числовая последовательность $ \NumSeq{a_n} $ называется отделимой от нуля, если
 
     $ \exists \veps > 0 \, \forall n \in \mathbb{N}: \, | a_n | > \veps $
+}
+
+\mcex{}{
+    Пример: $ a_n = 2 - \frac{1}{n} $
+
+    $ \exists \veps = 0.5 > 0 \, \forall n \in \mathbb{N}: \, \left| a_n \right| = \left| 2 - \frac{1}{n} \right| > 0.5 = \veps $
+}
+
+\subsection{Сходящаяся ч.п.}
+
+\mcdfn{Сходящаяся числовая последовательность}
+{
+    Числовая последовательность называется сходящейся, если она имеет конечный предел при $ n \to +\infty $, т.е.
+    ч.п. $ \NumSeq{a_n} $ называется сходящейся, если:
+
+    \[ \exists A \in \mathbb{R} \, \forall \veps > 0 \, \exists N = N(\veps) \in \mathbb{N} \, \forall n > N: | a_n - A | < \veps \]
+
+    Обозначение:
+    \[ \lim_{n \to +\infty} a_n = A, A \in \mathbb{R} \]
+}
+
+\mcex{}{
+\begin{equation*}
+\begin{split}
+    & \text{Пример: } a_n = \frac{4 n^3 + 2 n^2 + 1}{2 n^3 + 1} \\
+    & \text{Докажем, что  } \lim_{n \to +\infty} a_n = 2 = A \\
+    & \text{Пусть $\veps > 0$, тогда:} \\
+    & | a_n - 2 | < \veps 
+        \impliedby \left| \frac{4 n^3 + 2 n^2 + 1}{2 n^3 + 1} - 2 \right| < \veps 
+        \impliedby \left| \frac{2 n^2 - 1}{2 n^3 + 1} \right| < \veps \impliedby \\
+    & \impliedby \frac{2 n^2 - 1}{2 n^3 + 1} < \veps 
+        \impliedby \frac{2 n^2}{2 n^3 + 1} < \veps
+        \impliedby \frac{2 n^2}{2 n^3} < \veps
+        \impliedby \frac{1}{n} < \veps
+        \impliedby \frac{1}{\veps} < n \\
+    & \text{Тогда:} \\
+    & \forall \veps > 0 \, \exists N = N(\veps) = \left\lceil \frac{1}{\veps} \right\rceil \, \forall n > N \ge \frac{1}{\veps}: | a_n - 2 | < \veps \\
+\end{split}
+\end{equation*}
+}
+
+\nt{
+    Сходящаяся ч.п. является ограниченной
 }
 
 \subsection{Эпсилон окрестность}
@@ -83,19 +164,6 @@
     $ \dot{U}_1(e) = (e - 1; e + 1) \setminus \{ e \} = (e - 1; e) \cup (e; e + 1) $
 }
 
-\subsection{Сходящаяся ч.п.}
-
-\mcdfn{Сходящаяся числовая последовательность}
-{
-    Числовая последовательность называется сходящейся, если она имеет конечный предел при $ n \to +\infty $, т.е.
-    ч.п. $ \NumSeq{a_n} $ называется сходящейся, если $ \exists \lim_{n \to +\infty} a_n = A \in \mathbb{R} $, то есть по определению
-    \[ \exists A \in \mathbb{R} \, \forall \veps > 0 \, \exists N = N(\veps) \forall n > N: | a_n - A | < \veps \]
-}
-
-\nt{
-    Сходящаяся ч.п. является ограниченной
-}
-
 \nt{
     Неравенство $ | a_n - A | < \veps $ равносильно тому, что $ a_n \in U_\veps(A) $
 }
@@ -119,6 +187,14 @@
 \end{tabular}
 }
 
+\mcex{}{
+    Пример б.б. ч.п., стремящейся к $ +\infty $: $ a_n = n $
+
+    Пример б.б. ч.п., стремящейся к $ -\infty $: $ a_n = -n $
+
+    Пример б.б. ч.п., стремящейся к $ \infty $: $ a_n = (-1)^n \cdot n $
+}
+
 \subsection{Бесконечно малая ч.п.}
 
 \mcdfn{Бесконечно малая числовая последовательность}
@@ -128,7 +204,7 @@
     $ \forall \veps > 0 \exists N = N(\veps) \forall n > N: | a_n | < \veps $
 }
 
-\subsection{Связи числовых последовательностей}
+\section{Связи числовых последовательностей}
 
 \nt{
 \begin{tabular}{rl}
@@ -172,6 +248,25 @@
     б.б + б.б = (отделимая от нуля ч.п.)
 }
 
+% TODO: check
+\pagebreak
+\section{Арифметика предела ч.п.}
+
+\mcclm{}{}{
+    Если $ a_n \underset{n \to +\infty}{\to} a, b_n \underset{n \to +\infty}{\to} b $, то
+
+\begin{tabular}{rl}
+    \\
+    & $\bullet$ $ a_n \pm b_n \underset{n \to +\infty}{\to} a \pm b $ \\
+    \\
+    & $\bullet$ $ a_n \cdot b_n \underset{n \to +\infty}{\to} a \cdot b $ \\
+    \\
+    & $\bullet$ $ b \ne 0 \wedge \forall n \in \mathbb{N} \implies b_n \ne 0: \frac{a_n}{b_n} \underset{n \to +\infty}{\to} \frac{a}{b}  $ \\
+    \\
+    & $\bullet$ $ \forall n \in \mathbb{N}: a_n \ge 0 \implies \sqrt[]{a_n} \underset{n \to +\infty}{\to} \sqrt[]{a} $ \\
+\end{tabular}
+}
+
 \section{Теоремы}
 
 \subsection{Теорема о предельном переходе в неравенствах}
@@ -179,6 +274,11 @@
 \mcthm{Теорема: свойство предельного перехода в неравенствах}
 {
     \[ (\exists N \in \mathbb{N} \, \forall n \ge N: c_n > A) \wedge (\lim_{n\to\infty} c_n = C) \implies C \ge A \]
+
+    То есть если начиная с некоторого номера все члены последовательности $ > A $, 
+    и сама последовательность сходится к $ C \in \mathbb{R} $ при $ n \to +\infty $, 
+    то $ C \ge A $
+
 \mcprf{
 \begin{split}
     & \text{1. Распишем, что дано, по определению:} \\
@@ -254,17 +354,4 @@ $$
     & \text{Доказали по определению, что } \lim_{n\to\infty} a_n = a \\
 \end{split}
 }
-}
-
-\section{Определение монотонности числовой последовательности}
-
-\mcdfn{Монотонность ч.п.}
-{
-    Ч.п. $ \NumSeq{a_n} $ называется строго возрастающей, если $ \forall n \in \mathbb{N}: a_{n + 1} > a_{n} $
-
-    Ч.п. $ \NumSeq{a_n} $ называется строго убывающей, если $ \forall n \in \mathbb{N}: a_{n + 1} < a_{n} $
-
-    Ч.п. $ \{ a_n \} $ называется неубывающей, если $ \forall n \in \mathbb{N}: a_{n + 1} \ge a_{n} $
-
-    Ч.п. $ \{ a_n \} $ называется невозрастающей, если $ \forall n \in \mathbb{N}: a_{n + 1} \le a_{n} $
 }

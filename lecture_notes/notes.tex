@@ -1,5 +1,5 @@
 \documentclass{report}
-% \includeonly{parts/1_basic_concepts}
+% \includeonly{parts/0_notation, parts/1_basic_concepts, parts/2_number_sequences}
 % \documentclass[11pt,a4paper]{article}
 
 \input{preamble}
@@ -21,7 +21,7 @@
 \author{Lecturer: Ivan Erlikh\\File edited by: vova kormilitsyn}
 \date{
     \begin{flushright}
-        ver. 1.3.1
+        ver. 1.3.2
     \end{flushright}
 }
 
@@ -34,9 +34,7 @@
 
 \tableofcontents
 
-% 0 \notin \mathbb{N} %
-% \overline{\mathbb{R}} = \mathbb{R} \cup { +\infty; -\infty }
-
+\include{parts/0_notation}
 \include{parts/1_basic_concepts}
 \include{parts/2_number_sequences}
 \include{parts/3_set_theory_basics}
@@ -49,41 +47,5 @@
 \include{parts/10_integration_of_functions}
 
 При нахождении опечаток просьба написать \url{https://t.me/i8088_t}, на момент компиляции ник в тг: vova kormilitsyn
-
-% \qs{}{Is the set ${x-}$axis${\setminus\{\text{Origin}\}}$ a closed set}
-% \sol We have to take its complement and check whether that set is a open set i.e. if it is a union of open balls
-% \nt{We will do topology in Normed Linear Space  (Mainly $\bbR^n$ and occasionally $\bbC^n$)using the language of Metric Space}
-% \clm{Topology}{}{Topology is cool}
-% \ex{Open Set and Close Set}{
-% 	\begin{tabular}{rl}
-% 		Open Set:   & $\bullet$ $\phi$                                              \\
-% 		            & $\bullet$ $\bigcup\limits_{x\in X}B_r(x)$ (Any $r>0$ will do) \\[3mm]
-% 		            & $\bullet$ $B_r(x)$ is open                                    \\
-% 		Closed Set: & $\bullet$ $X,\ \phi$                                          \\
-% 		            & $\bullet$ $\overline{B_r(x)}$                                 \\
-% 		            & $x-$axis $\cup$ $y-$axis
-% 	\end{tabular}}
-% \thm{}{If $x\in$ open set $V$ then $\exists$ $\delta>0$ such that $B_{\delta}(x)\subset V$}
-% \begin{mcproof}By openness of $V$, $x\in B_r(u)\subset V$
-% 	\begin{center}
-% 		\begin{tikzpicture}
-% 			\draw[red] (0,0) circle [x radius=3.5cm, y radius=2cm] ;
-% 			\draw (3,1.6) node[red]{$V$};
-% 			\draw [blue] (1,0) circle (1.45cm) ;
-% 			\filldraw[blue] (1,0) circle (1pt) node[anchor=north]{$u$};
-% 			\draw (2.9,0.4) node[blue]{$B_r(u)$};
-% 			\draw [green!40!black] (1.7,0) circle (0.5cm) node [yshift=0.7cm]{$B_{\delta}(x)$} ;
-% 			\filldraw[green!40!black] (1.7,0) circle (1pt) node[anchor=west]{$x$};
-% 		\end{tikzpicture}
-% 	\end{center}
-
-% 	Given $x\in B_r(u)\subset V$, we want $\delta>0$ such that $x\in B_{\delta} (x)\subset B_r(u)\subset V$. Let $d=d(u,x)$. Choose $\delta $ such that $d+\delta<r$ (e.g. $\delta<\frac{r-d}{2}$)
-
-% 	If $y\in B_{\delta}(x)$ we will be done by showing that $d(u,y)<r$ but $$d(u,y)\leq d(u,x)+d(x,y)<d+\delta<r$$
-% \end{mcproof}
-
-% \cor{}{By the result of the proof, we can then show...}
-% \mlenma{}{Suppose $\vec{v_1}, \dots, \vec{v_n} \in \RR[n]$ is subspace of $\RR^n$.}
-% \mprop{}{$1 + 1 = 2$.}
 
 \end{document}

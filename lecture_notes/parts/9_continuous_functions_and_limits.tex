@@ -131,22 +131,22 @@
 
 \mcprf{
 \begin{split}
-& \text{1. Построим последовательность вложенных отрезков:} \\
-& \text{/* Если Вам так будет удобнее, то докажем существование $x_0$ бинпоиском по ответу */} \\
-& [a_1; b_1] := [x_1; x_2] \\
-& x_3 := \frac{a_1 + b_1}{2} \text{, рассмотрим $f(x_3)$} \\
-& 1) f(x_3) = c \implies q.e.d. \\
-& 2) f(x_3) < c \implies [a_2; b_2] := [x_3; b_1] \\
-& 3) f(x_3) > c \implies [a_2; b_2] := [a_1; x_3] \\
-& \text{Применяя это правило, продолжим строить последовательность отрезков} \\
-& \text{Если ни на какой итерации не произойдёт случай $1)$, то получим счётно бесконечную} \\
-& \text{последовательность отрезков} \NumSeq{[a_n; b_n]}_{n \in \mathbb{N}} \\
-& \text{По построению ч.п. } \NumSeq{a_n} \text{ неубывает и ограничена сверху } b \implies \exists \lim_{n \to +\infty} a_n \le b \\
-& \text{По построению ч.п. } \NumSeq{b_n} \text{ невозрастает и ограничена снизу } a \implies \exists \lim_{n \to +\infty} b_n \ge a \\
-& b_n - a_n = \frac{b - a}{2^{n - 1}} \to_{n \to +\infty} 0 \implies \lim_{n \to +\infty} a_n = \lim_{n \to +\infty} b_n = x_0 \\
-& x_0 \in [a; b] \implies f(x) \text{ непрерывна в } x_0 \implies \lim_{x \to x_0} f(x) = f(x_0) \implies \\
-& \implies \text{по определению по Гейне } \lim_{n \to +\infty} f(a_n) = \lim_{n \to +\infty} f(b_n) = f(x_0) \\
-& \text{По построению } f(a_n) < c \wedge f(b_n) > c \implies c \le f(x_0) \le c \implies f(x_0) = c \\
+    & \text{1. Построим последовательность вложенных отрезков:} \\
+    & \text{/* Если Вам так будет удобнее, то докажем существование $x_0$ бинпоиском по ответу */} \\
+    & [a_1; b_1] := [x_1; x_2] \\
+    & x_3 := \frac{a_1 + b_1}{2} \text{, рассмотрим $f(x_3)$} \\
+    & 1) f(x_3) = c \implies q.e.d. \\
+    & 2) f(x_3) < c \implies [a_2; b_2] := [x_3; b_1] \\
+    & 3) f(x_3) > c \implies [a_2; b_2] := [a_1; x_3] \\
+    & \text{Применяя это правило, продолжим строить последовательность отрезков} \\
+    & \text{Если ни на какой итерации не произойдёт случай $1)$, то получим счётно бесконечную} \\
+    & \text{последовательность отрезков} \NumSeq{[a_n; b_n]}_{n \in \mathbb{N}} \\
+    & \text{По построению ч.п. } \NumSeq{a_n} \text{ неубывает и ограничена сверху } b \implies \exists \lim_{n \to +\infty} a_n \le b \\
+    & \text{По построению ч.п. } \NumSeq{b_n} \text{ невозрастает и ограничена снизу } a \implies \exists \lim_{n \to +\infty} b_n \ge a \\
+    & b_n - a_n = \frac{b - a}{2^{n - 1}} \to_{n \to +\infty} 0 \implies \lim_{n \to +\infty} a_n = \lim_{n \to +\infty} b_n = x_0 \\
+    & x_0 \in [a; b] \implies f(x) \text{ непрерывна в } x_0 \implies \lim_{x \to x_0} f(x) = f(x_0) \implies \\
+    & \implies \text{по определению по Гейне } \lim_{n \to +\infty} f(a_n) = \lim_{n \to +\infty} f(b_n) = f(x_0) \\
+    & \text{По построению } f(a_n) < c \wedge f(b_n) > c \implies c \le f(x_0) \le c \implies f(x_0) = c \\
 \end{split}
 }
 }
