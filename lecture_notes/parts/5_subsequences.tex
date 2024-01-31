@@ -1,0 +1,180 @@
+\chapter{Определения и свойства подпоследовательности и частичного предела}
+
+\section{Определение подпоследовательности}
+
+\mcdfn{Подпоследовательность}
+{
+    Пусть дана ч.п. $\NumSeq{a_n}$, тогда подпоследовательностью называется ч.п.,
+    полученная $\textit{последовательным}$ выбором некоторых членов исходной ч.п. и обозначается $\NumSeq{a_{n_k}}$
+}
+
+\nt{
+    Если $\NumSeq{a_{n_k}}$ - подпоследовательность ч.п. $\NumSeq{a_n}$, то $ \forall k \in \mathbb{N}: n_k \ge k $
+}
+
+\section{Частичные пределы и предельная точка}
+
+\subsection{Определения}
+
+\mcdfn{Частичный предел}
+{
+    Частичный предел ч.п. $ \{ a_n \} $ - число, являющееся пределом какой-либо
+    сходящейся подпоследовательности данной последовательности $ \{ a_n \} $
+}
+
+\mcdfn{Верхний предел ч.п.}
+{
+    Верхним пределом ч.п. $ \{ a_n \} $ называется предел \[ \uplim_{n \to +\infty} a_n = \lim_{k \to +\infty} \sup\{ a_n \}_{n \ge k} \]
+}
+
+\mcdfn{Нижний предел ч.п.}
+{
+    Нижним пределом ч.п. $ \{ a_n \} $ называется предел \[ \lowlim_{n \to +\infty} a_n = \lim_{k \to +\infty} \inf\{ a_n \}_{n \ge k} \]
+}
+
+\mcdfn{Предельная точка ч.п.}
+{
+    Предельной точкой ч.п. $ \{ a_n \} $ называется число $ a $, такое что
+    в любой окрестности точки $ a $ находится бесконечно много членов ч.п. $ \{ a_n \} $
+}
+
+\subsection{Теорема об эквивалентности определений}
+
+\mcthm{Определение предельной точки ч.п. эквивалентно определению частичного предела ч.п.}
+{
+    \begin{mcproof}
+    \begin{equation*}
+    \begin{split}
+        & \text{1. $ a $ - частичный предел $ \implies a $ - предельная точка } \NumSeq{a_n} \\
+        & \forall \veps > 0 \exists N = N(k) \forall k > N: | a_{n_k} - a | < \veps \\
+        & \iff \\
+        & \forall \veps > 0 \exists N = N(k) \forall k > N: a_{n_k} \in U_{\veps}(a) \\
+        & \text{Следовательно, $ \forall \veps $ в $ U_{\veps}(a) $ попадает бесконечно много членов $ \NumSeq{a_n} $} \\
+        & \text{2. $ a $ - предельная точка} \NumSeq{a_n} \implies a \text{ - ч.п. } \NumSeq{a_n} \\
+        & \text{По определению предельной точки $ \forall \veps $ в $ U_{\veps}(a) $ попадает бесконечно много членов $ \NumSeq{a_n} $} \\
+        & \text{Предъявим ч.п. $ \NumSeq{a_{n_k}} \subseteq \NumSeq{a_n} $,
+            такую что $ \exists \lim_{k \to \infty} a_{n_k} = a $ } \\
+        & \text{Обозначим } \veps_k = \frac{1}{k} \\
+        & \text{Рассмотрим $\veps_1 $, в $ U_{\veps_1}(a) $ попадает бесконечно
+            много членов $ \NumSeq{a_n} $, выберем какой-то член $ a_{n_1} $ } \\
+        & \text{Рассмотрим $\veps_2 $, в $ U_{\veps_2}(a) $ попадает бесконечно
+            много членов $ \NumSeq{a_n} $, поэтому $ \exists n_2 > n_1 : a_{n_2} \in U_{\veps_2}(a) $ } \\
+        & \text{Рассмотрим $\veps_k $, в $ U_{\veps_k}(a) $ попадает бесконечно
+            много членов $ \NumSeq{a_n} $, поэтому $ \exists n_k > n_{k - 1} : a_{n_k} \in U_{\veps_k}(a) $ } \\
+        & \text{Таким образом, построена ч.п. $ \NumSeq{a_{n_k}} $, такая что $
+            \forall k \in \mathbb{N}: a - \frac{1}{k} < a_{n_k} < a + \frac{1}{k} \implies $ } \\
+        & \text{$ \implies $ по теореме о зажатой последовательности $ \lim_{k \to \infty} a_{n_k} = a $ } \\
+    \end{split}
+    \end{equation*}
+    \end{mcproof}
+
+}
+
+\subsection{Свойства частичных пределов ч.п.}
+
+\nt{
+    Свойства частичных пределов ч.п.
+
+    $ \NumSeq{a_n} $ сходится $ \iff \uplim_{n \to +\infty} a_n = \lowlim_{n \to +\infty} a_n  $
+
+    $ \uplim_{n \to +\infty} a_n = \sup\{ \text{множества предельных точек } \NumSeq{a_n} \} $
+
+    $ \lowlim_{n \to +\infty} a_n = \inf\{ \text{множества предельных точек } \NumSeq{a_n} \} $
+
+    $ \uplim_{n \to +\infty} a_n $ и $ \lowlim_{n \to +\infty} a_n $ - частичные пределы
+}
+
+\section{Система вложенных отрезков}
+
+\mcdfn{Система вложенных отрезков}
+{
+    Системой вложенных отрезков называют счётно бесконечное множество отрезков, каждый из которых содержит
+    следующий отрезок как подмножество
+
+    Обозначение: $ \{ I_k \}_{k \in \mathbb{N}} $, где $ \forall k \in \mathbb{N}: I_{k+1} \subseteq I_{k} $
+}
+
+\mcex{}
+{
+    Рассмотрим $ S = \{ [1 - \frac{1}{k}; 2 + \frac{1}{k}] \}_{k \in \mathbb{N}} $, тогда
+
+    $ S = \{ [0; 3], [0.5; 2.5], [\frac{2}{3}; 2\frac{1}{3}], ... \} $
+
+    Рассмотрим $ S = \{ [\pi; \pi - \frac{1}{k^k}] \}_{k \in \mathbb{N}} $, тогда
+
+    $ S = \{ [\pi; \pi - 1], [\pi; \pi - \frac{1}{4}], [\pi; \pi - \frac{1}{27}], ... \} $
+}
+
+\section{Теорема Больцано-Вейерштрасса}
+
+\mcthm{Теорема Больцано-Вейерштрасса}
+{
+    Из любой ограниченной ч.п. можно выделить сходящуюся подпоследовательность
+
+\mcprf{
+\begin{split}
+    & \text{По определению ограниченной ч.п. } \exists C \forall n \in \mathbb{N} | a_n | < C \\
+    & \text{Построим искому подпоследовательность при помощи системы вложенных отрезков} \\
+    & I_1 = [-c; c], \forall n \in \mathbb{N} a_n \in I_1, \text{ выберем какой-то член ч.п. $ a_{n_1} \in I_1 $ }\\
+    & \text{Т.к. $ \NumSeq{a_n} $ - ч.п., то в какой-то половине точно есть бесконечно много членов $ \NumSeq{a_n} $ } \\
+    & \text{Выберем эту половину и обозначим $ I_2 $, выберем в нём какой-то член ч.п. $ a_{n_2} \in I_2 $, такой что $ n_2 > n_1 $ } \\
+    & \text{(если это нельзя сделать, т.е. $ \forall m \, (a_m \in I_2 \implies m \le n_1) $, то в $ I_2 $ лишь конечное число членов }  \\
+    & \text{ч.п. } \NumSeq{a_n} \implies \circled{$\mathbb{W}$} \implies \exists n_2 > n_1: a_{n_2} \in I_2 ) \\
+    & \text{Пусть построен $ I_k $ и $ a_{n_k} $. Делим $ I_k $ пополам и выбираем половину,} \\
+    & \text{в которой бесконечно много членов $ \NumSeq{a_n} $, обозначим эту половину как $ I_{k + 1} $} \\
+    & \text{и выберем $ a_{n_{k + 1}}: n_{k + 1} > n_k $ (если это нельзя сделать, т.е. $ \forall m \, (a_m \in I_{k + 1} \implies m \le n_k) $, } \\
+    & \text{тогда в $ I_{k + 1} $ лишь конечное число членов ч.п. }
+        \NumSeq{a_n} \implies \circled{$\mathbb{W}$} \implies \exists n_{k + 1} > n_k: a_{n_{k + 1}} \in I_{k + 1} ) \\
+    & \text{Построили последовательность $ \NumSeq{I_k}_{k \in \mathbb{N}}$, где $ I_k = [b_k; d_k] $} \\
+    & \forall k \in \mathbb{N}: I_{k+1} \subset I_k \implies \NumSeq{b_k} \text{ неубывает и ограничена сверху } C \\
+    & \implies \exists \lim_{n \to +\infty} b_k = b, b \ge b_k \\
+    & \forall k \in \mathbb{N}: I_{k+1} \subset I_k \implies \NumSeq{d_k} \text{ невозрастает и ограничена снизу } -C \\
+    & \implies \exists \lim_{n \to +\infty} d_k = d, d \le d_k \\
+    & \text{При этом } | d_k - b_k | = \frac{2 \cdot C}{2^{k - 1}} \underset{k \to+\infty}{\to} 0 \\
+    & ADDPROOF[d \ge b] (\text{ пока что см. консультацию 2 }) \\
+    & d - b \le d_k - b_k \underset{k \to+\infty}{\to} 0 \implies d \le b \implies d = b \\
+    & \text{Получили: } \lim_{n \to +\infty} b_k = b = d = \lim_{n \to +\infty} d_k \\
+    & \text{$b_k$ и $d_k$ - границы отрезка $I_k$ } \implies \forall k \in \mathbb{N}: b_k \le a_k \le d_k \implies \\
+    & \implies \text{ по теореме о пределе зажатой последовательности } \lim_{n \to +\infty} a_k = b = d \\
+\end{split}
+}
+}
+
+\section{Дополнительный материал (вне курса)}
+
+\subsection{Стягивающая система вложенных отрезков}
+
+\mcdfn{Стягивающая система вложенных отрезков}{
+    Пусть $I$ - система вложенных отрезков, тогда если
+
+    $ \forall \veps > 0 \exists n \in \mathbb{N}: ( [a_n; b_n] \in I \wedge b_n - a_n < \veps ) $, 
+    то такая система вложенных отрезков 
+
+    называется стягивающейся системой вложенных отрезков
+}
+
+\subsection{Теорема об общей точке системы вложенных отрезков}
+
+\mcthm{Теорема об общей точке системы вложенных отрезков}{
+    Для любой системы вложенных отрезков существует хотя бы одна точка, принадлежащая всем отрезкам данной системы.
+
+    Если система вложенных отрезков является стягивающейся, то такая точка единствена
+
+\mcprf{
+\begin{split}
+    & \text{1. Множество } A = \{a_n\}_{n \in \mathbb{N}} \ne \varnothing \text{ ограничено сверху, например, числом $b_1$} \implies \\
+    & \implies \exists \sup{A} = \alpha \text{по теореме о существовании точной грани множества} \\
+    & \text{аналогично } \exists \sup{B} = \beta, B = \{a_n\}_{n \in \mathbb{N}} \\
+    & (\forall n \in \mathbb{N}: a_n < b_n) \implies (\alpha \le \beta \wedge \forall n \in \mathbb{N}: [\alpha; \beta] \subseteq [a_n; b_n]) \\
+    & \text{2. Тогда положим } \gamma := \frac{\alpha + \beta}{2} \implies \forall n \in \mathbb{N}: \gamma \in [a_n; b_n] \\
+    & \text{3. Для стягивающейся системы вложенных отрезков:} \\
+    & \text{Предположим от противного, что точка не одна, т.е. } \\
+    & \exists \gamma_1 < \gamma_2: \forall n \in \mathbb{N}: (\gamma_1 \in [a_n; b_n] \wedge \gamma_2 \in [a_n; b_n]) \\
+    & a_1 \le a_2 \le ... \le a_n \le ... \le \gamma_1 < \gamma_2 \le ... \le b_n \le ... \le b_2 \le b_1 \\
+    & \text{Положим } \veps := \frac{\gamma_2 - \gamma_1}{2} \text{, тогда } \forall n \in \mathbb{N}: b_n - a_n \ge \veps \implies \circled{$\mathbb{W}$} \implies \\
+    & \implies \text{ изначальное предположение неверно } \implies \text{ точка не более, чем одна,} \\
+    & \text{а существование хотя бы одной показано в пунктах 1, 2} \\
+\end{split}
+}
+}
+

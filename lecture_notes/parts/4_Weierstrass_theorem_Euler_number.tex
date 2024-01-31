@@ -1,0 +1,98 @@
+\chapter{Теорема Вейерштрасса и число e}
+
+\section{Теорема Вейерштрасса}
+
+\mcthm{Теорема Вейерштрасса (о существовании предела ч.п.)}
+{
+$ \text{Если ч.п. } \{ a_n \} \text{ неубывает и ограничена сверху, то она сходится } $
+
+$ \text{Если ч.п. } \{ a_n \} \text{ невозрастает и ограничена снизу, то она сходится } $
+
+\begin{mcproof}
+    Докажем для неубывающей ч.п., для невозрастающей ч.п. доказательство аналогично
+
+    1. Обозначим множество значений ч.п. $ A = \{ a_n \} $
+
+    Т.к. $ a_n $ - числовая последовательность, то множество $ A $ счётно или конечно
+
+    (т.е. существует инъекция между $ A $ и $ \mathbb{N}, A \lesssim \mathbb{N} $)
+
+    Также $ A \ne \varnothing $ и множество $ A $ ограничено сверху $ \implies $ по теореме о существовании
+
+    точной верхней грани $ \exists \sup A = a $
+
+    2. Докажем, что $ \lim_{n \to +\infty} a_n = a $, т.е.
+    $ \forall \veps \, \exists N = N(\veps) \, \forall n > N(\veps): | a_n - a | < \veps $
+
+    $ a_n $ неубывает и ограничена сверху $ a \implies | a_n - a | = a - a_n $, тогда
+
+    $ | a_n - a | < \veps \iff a - a_n < \veps \iff a_n > a - \veps $
+
+    Т.к. последовательность $ a_n $ неубывает, то следующие 2 высказывания равносильны:
+
+    $ \forall \veps \, \exists N = N(\veps) \, \forall n > N(\veps): a_n > a - \veps $ (\#)
+
+    $ \forall \veps \, \exists N = N(\veps) : a_{N} > a - \veps $ (*)
+
+    3. Докажем второе высказывание (*) методом от противного.
+
+    Предположим, что $ \exists \veps_0 \forall n \in \mathbb{N}: \, a_n \le a - \veps_0 $
+
+    Тогда число $ a - \veps_0 $ - верхняя грань множества $ A $, но $ a $ само является точной
+
+    верхней гранью, но $ a - \veps_0 < a \implies \bot \implies $ неверно предположение, что
+
+    высказывание (*) неверно $ \implies $ высказывание (\#) верно
+\end{mcproof}
+}
+
+\section{Число Эйлера}
+
+\mcdfn{Число e}
+{
+Рассмотрим ч.п. $ a_n = (1 + \frac{1}{n})^n $
+
+Докажем, что у ч.п. есть конечный предел и обозначим его $ e $
+
+\begin{mcproof}
+    1. Докажем, что $ a_n $ ограничена сверху числом 3
+\begin{equation*}
+\begin{split}
+    & a_n = \sum_{k = 0}^{n} \cmb n k \left(\frac{1}{n}\right)^k = 
+        1 + \cmb n 1 \cdot \frac{1}{n} + \cmb n 2 \cdot \frac{1}{n^2} + ... + \cmb n n \frac{1}{n^n} = \\
+    & = 1
+        + \frac{n}{1!} \frac{1}{n}
+        + \frac{n(n-1)}{2!} \frac{1}{n^2}
+        + \frac{n(n-1)(n-2)}{3!} \frac{1}{n^3}
+        + ...
+        + \frac{n (n - 1) (n - 2) \cdot ... 2 \cdot 1}{1 \cdot 2 \cdot ... \cdot (n - 1) n} \frac{1}{n^n} = \\
+    & = 1 + \frac{1}{1!}
+        + \frac{1}{2!} \left(1 - \frac{1}{n}\right)
+        + \frac{1}{3!} \left(1 - \frac{1}{n}\right) \left(1 - \frac{2}{n}\right)
+        + ...
+        + \frac{1}{n!} \left(1 - \frac{1}{n}\right) \left(1 - \frac{2}{n}\right) \cdot ... \cdot \left(1 - \frac{n - 1}{n}\right) \le \\
+    & \le 1 + \frac{1}{1!} + \frac{1}{2!} + \frac{1}{3!} + ... + \frac{1}{n!}
+        \le 1 + \frac{1}{1!} + \frac{1}{1 \cdot 2} + \frac{1}{2 \cdot 3} + ... + \frac{1}{(n - 1) \cdot n} = \\
+    & = 2 + \frac{1}{1} - \frac{1}{2} + \frac{1}{2} - \frac{1}{3} + ... + \frac{1}{n - 1} - \frac{1}{n}
+        = 2 + \frac{1}{1} - \frac{1}{n} = 3 - \frac{1}{n} < 3 \\
+\end{split}
+\end{equation*}
+    2. Докажем, что $ a_n $ - возрастающая ч.п. \\
+    Рассмотрим $ a_{n + 1} $
+\begin{equation*}
+\begin{split}
+    & a_{n + 1} =
+        1 + \frac{1}{1!}
+        + \frac{1}{2!} \left(1 - \frac{1}{n + 1}\right)
+        + \frac{1}{3!} \left(1 - \frac{1}{n + 1}\right) \left(1 - \frac{2}{n + 1}\right)
+        + ... \\
+    & + \frac{1}{n!} \left(1 - \frac{1}{n + 1}\right) \left(1 - \frac{2}{n + 1}\right) \cdot ... \cdot \left(1 - \frac{n - 1}{n + 1}\right) + \\
+    & + \frac{1}{(n + 1)!} \left(1 - \frac{1}{n + 1}\right) \left(1 - \frac{2}{n + 1}\right) \cdot ... \cdot \left(1 - \frac{n - 1}{n + 1}\right) \cdot \left(1 - \frac{n}{n + 1}\right) \\
+    & \text{Т.к. } \forall m \in \{ 1, ..., n \} \, 1 - \frac{m}{n} < 1 - \frac{m}{n + 1} \text{, то } \\
+    & a_{n + 1} \ge a_{n} + \frac{1}{(n + 1)!} \left(1 - \frac{1}{n + 1}\right) \left(1 - \frac{2}{n + 1}\right) \cdot ... \cdot \left(1 - \frac{n - 1}{n + 1}\right) \cdot \left(1 - \frac{n}{n + 1}\right) 
+        > a_n \\
+\end{split}
+\end{equation*}
+    3. $ \{ a_n \} $ ограничена сверху и возрастает $ \implies \exists \lim_{n\to\infty} a_n \in \mathbb{R} $
+\end{mcproof}
+}

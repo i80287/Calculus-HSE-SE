@@ -1,0 +1,289 @@
+\chapter{Определение и свойства функции}
+
+\section{Определения}
+
+\mcdfn{Определение функции}{
+    Множество пар $\{ (x, y) \in \mathbb{R}^2 | x \in D_f \wedge y \in E_f \} $ называется 
+    функцией $f$ с областью определения $D_f$ и областью значения $E_f$, если 
+    $ \forall x \in D_f \, \exists! y \in E_f: (x, y) \in f $ (для удобства  $ (x, y) \in f $ обозначают как $ f(x) = y $)
+
+    Обозначение функции: $ f: X \to Y $
+
+    В данном обозначении подразумевают, что $ D_f = X, E_f \subseteq Y $
+}
+
+\mcex{}{
+    $ f: \mathbb{N} \cup \{ 0 \} \to \mathbb{R} $
+
+    $ \forall n \in \mathbb{N} \cup \{ 0 \}: f(n) = (-1)^{n + 1} \cdot \left\lceil \frac{n}{2} \right\rceil $, 
+    в данном случае $ D_f = \mathbb{N} \cup \{ 0 \}, E_f = \mathbb{Z} \subset \mathbb{R} $
+
+    Т.к. несложно установить, что $E_f = \mathbb{Z}$, то можно написать $ f: \mathbb{N} \cup \{ 0 \} \to \mathbb{Z} $
+}
+
+\mcdfn{Определение инъективной функции}{
+    Функция $f$ называется инъективной, если $ \forall y \in E_f \, \exists! x \in D_f: f(x) = y $
+
+    Это эквивалентно тому, что $ \forall x_1, x_2 \in D_f: (x_1 \ne x_2 \implies f(x_1) \ne f(x_2)) $
+
+    (говорят, что $f$ - инъекция)
+}
+
+\mcex{} {
+    $ \forall n \in \mathbb{N} $ функция $f(x) = x^{2 n - 1}$ является инъективной
+
+    $ \forall n \in \mathbb{N} $ функция $f(x) = x^{2 n}$ не является инъективной
+}
+
+\mcdfn{Определение сюръективной функции}{
+    Функция $f: X \to Y$ называется сюръективной для множества $Y$, если $ E_f = Y $
+
+    (говорят, что $f$ - сюръекция)
+    
+    Когда говорят, что $f$ сюръективна, не уточняя множество, то подразумевают, что $f$ сюръективна для $Y$
+
+}
+
+\mcex{}{
+    Функция $\sin: \mathbb{R} \to \mathbb{R} $ не сюръективна для $\mathbb{R}$, но сюръективна для $[-1; 1]$
+}
+
+\mcdfn{Определение биективной функции}{
+    Функция $f: X \to Y$ называется биективной, если она инъективна и сюръективна
+
+    (говорят, что $f$ - биекция)
+}
+
+\mcex{}{
+    Функция $ f: \mathbb{N} \cup \{ 0 \} \to \mathbb{Z} $, такая что \\
+    $ \forall n \in \mathbb{N} \cup \{ 0 \}: f(n) = (-1)^{n + 1} \cdot \left\lceil \frac{n}{2} \right\rceil $
+    - биекция между $\mathbb{N} \cup \{ 0 \}$ и $\mathbb{Z}$
+
+    (как следствие, показали, что $\mathbb{N} \cup \{ 0 \} \sim \mathbb{Z}$, т.е. множества равномощны)
+}
+
+\mcdfn{Определение обратной функции}{
+    Функция $y = f^{-1}(x)$ называется обратной функцией к функции $ y = f(x) $,
+    если множество пар фукнции $ f^{-1} $ является симметрией множества пар $ f $
+}
+
+\nt{
+    Функция обратима $\iff$ она инъективна
+}
+
+\section{Пределы}
+
+\mcdfn{Определение предела функции по Коши}
+{
+    \[
+    \lim_{x \to x_0} f(x) = A \iff
+    \forall \veps > 0 \,
+    \exists \delta = \delta(\veps) \,
+    \forall x \in \dot{U}_\delta(x_0):
+    f(x) \in U_\veps(A) \]
+}
+
+\nt
+{
+    При этом
+    $ \dot{U}_\delta(+\infty) = (\delta; +\infty) $,
+    $ \dot{U}_\delta(-\infty) = (-\infty; \delta) $,
+    $ \dot{U}_\delta(\infty) = (-\infty; \delta) \cup (\delta; +\infty) $
+}
+
+\mcdfn{Определение предела функции по Гейне}
+{
+    \[
+    \lim_{x \to x_0} f(x) = A \iff
+    \forall \NumSeq{x_n}:
+    (x_n \ne x_0 \wedge \lim_{n \to +\infty} x_n = x_0 \implies \lim_{n \to +\infty} f(x_n) = A)\]
+}
+
+\mcdfn{Односторонний предел функции}
+{
+    Левосторонним пределом функции называют предел функции по Коши $ f $ при $ x \to x_0 $ слева, то есть
+
+    \[
+    \lim_{x \to x_0-} f(x) = A \iff
+    \forall \veps > 0
+    \exists \delta = \delta(\veps)   
+    \forall x \in (x_0 - \delta; x_0):
+    f(x) \in U_\veps(A) \]
+
+    Правосторонним пределом функции называют предел функции по Коши $ f $ при $ x \to x_0 $ справа, то есть
+
+    \[
+    \lim_{x \to x_0+} f(x) = A \iff
+    \forall \veps > 0
+    \exists \delta = \delta(\veps)   
+    \forall x \in (x_0; x_0 + \delta):
+    f(x) \in U_\veps(A) \]
+}
+
+\mcthm{Свойство предела функции при $ x \to x_0, x_0 \in \mathbb{R} $}
+{
+    \[ \lim_{x \to x_0} f(x) = A \iff \lim_{x \to x_0+} f(x) = \lim_{x \to x_0-} f(x) = A \text{, где } A \in \overline{\mathbb{R}} \]
+
+\mcprf{
+\begin{split}
+    & "\implies" \\
+    & \text{Дано:}
+        \forall \veps > 0 \,
+            \exists \delta = \delta(\veps) > 0 \,
+            \forall x \in \dot{U}_\delta(x_0): \,
+            f(x) \in U_\veps(A) \\
+    & \text{Тогда:} \\
+    & \forall \veps > 0 \,
+        \exists \delta = \delta(\veps) > 0 \,
+        \forall x \in (x_0; x_0 + \delta): \,
+        f(x) \in U_\veps(A) \\
+    & \forall \veps > 0 \,
+        \exists \delta = \delta(\veps) > 0 \,
+        \forall x \in (x_0 - \delta; x_0): \,
+        f(x) \in U_\veps(A) \\
+    & "\impliedby" \\
+    & \text{Дано:} \\
+    & \forall \veps > 0 \,
+        \exists \delta_1 = \delta_1(\veps) > 0 \,
+        \forall x \in (x_0; x_0 + \delta_1): \,
+        f(x) \in U_\veps(A) \\
+    & \forall \veps > 0 \,
+        \exists \delta_2 = \delta_2(\veps) > 0 \,
+        \forall x \in (x_0 - \delta_2; x_0): \,
+        f(x) \in U_\veps(A) \\
+    & \text{Положим } \delta(\veps) = \min(\delta_1(\veps), \delta_2(\veps)) \text{, тогда:} \\
+    & \forall \veps > 0 \,
+        \exists \delta = \delta(\veps) > 0 \,
+            \forall x \in \dot{U}_\delta(x_0) \subseteq (x_0 - \delta_2; x_0) \cup (x_0; x_0 + \delta_1): \,
+            f(x) \in U_\veps(A) \\
+\end{split}
+}
+}
+
+\mcdfn{Бесконечные пределы}
+{
+    
+\begin{tabular}{rl}
+    & $\bullet$
+        $ \lim_{x \to x_0} f(x) = +\infty \iff
+        \forall M > 0 \, \exists \delta(M) > 0 \, \forall x \in \dot{U}_{\delta}(x_0): f(x) > M $ \\
+    & $\bullet$
+        $ \lim_{x \to x_0} f(x) = -\infty \iff
+        \forall M > 0 \, \exists \delta(M) > 0 \, \forall x \in \dot{U}_{\delta}(x_0): f(x) < -M $ \\
+    & $\bullet$
+        $ \lim_{x \to x_0} f(x) = \infty \iff
+        \forall M > 0 \, \exists \delta(M) > 0 \, \forall x \in \dot{U}_{\delta}(x_0): | f(x) | > M $ \\
+\end{tabular}
+}
+
+\mcdfn{Бесконечно малая функция}
+{
+    Функция называется б.м. при $x \to x_0$, если $\lim_{x \to x_0} f(x) = 0$, при этом $ x_0 \in \mathbb{R} $
+
+    Функция называется б.м. при $x \to +\infty$, если $\lim_{x \to +\infty} f(x) = 0$
+
+    Функция называется б.м. при $x \to -\infty$, если $\lim_{x \to -\infty} f(x) = 0$
+}
+
+\mcdfn{Бесконечно большая функция}
+{
+    Функция называется б.б. при $x \to x_0$, если $\lim_{x \to x_0} f(x) = \infty $, при этом $ x_0 \in \mathbb{R} $
+
+    Функция называется б.б. при $x \to +\infty$, если $\lim_{x \to +\infty} f(x) = \infty $
+
+    Функция называется б.б. при $x \to -\infty$, если $\lim_{x \to -\infty} f(x) = \infty $
+}
+
+\mcdfn{Ограниченная функция}
+{
+    Функция называется ограниченной при $x \to x_0$, если $\exists \delta > 0 \, \exists C > 0 \, \forall x \in \dot{U}_\delta(x_0): | f(x) | < C $
+}
+
+\mcdfn{Отделимая от нуля функция}
+{
+    Функция называется отделимой от нуля при $x \to x_0$, если 
+    $\exists \delta > 0 \, \exists \veps_0 > 0 \, \forall x \in \dot{U}_\delta(x_0): | f(x) | > \veps_0 $ 
+}
+
+
+\nt{
+    Связь функций при $ x \to x_0 $, где $ x $ - аргумент обоих функций, 
+    $ x_0 $ - число, к которому стремится аргумент обоих функций:
+
+\begin{tabular}{rl}
+
+    & $\bullet$ $ \frac{1}{\text{б.б.}} = \text{б.м.} $ \\
+    & $\bullet$ $ \frac{1}{\text{б.м.}} = \text{б.б.} $ \\
+    & $\bullet$ $ \frac{1}{\text{ограниченная}} = \text{отделимая от нуля} $ \\
+    & $\bullet$ $ \frac{1}{\text{отделимая от нуля}} = \text{ограниченная} $ \\
+\end{tabular}
+}
+
+\section{Теорема о зажатой функции}
+
+\mcthm{Теорема о зажатой функции}
+{
+\begin{minipage}[t]{\textwidth}
+$$
+\left. \begin{tabular}{l}
+    $ f(x): \mathbb{R} \to \mathbb{R}, g(x): \mathbb{R} \to \mathbb{R}, h(x): \mathbb{R} \to \mathbb{R} $ \\
+    $ \lim_{x \to x_0} f(x) = A $ \\
+    $ \lim_{x \to x_0} h(x) = A $ \\
+    $ \exists \delta > 0 \, \forall x \in \dot{U}_\delta(x_0): f(x) \le g(x) \le h(x) $
+\end{tabular} \right\}
+\begin{tabular}{l}
+    $ \lim_{x \to x_0} g(x) = A $
+\end{tabular}
+$$
+\end{minipage}
+}
+
+\section{Первый и второй замечательные пределы}
+
+\mcdfn{Первый замечательный предел}
+{
+    \[ \lim_{x \to +\infty} \frac{\sin x}{x} = 1 \]
+}
+
+\mcdfn{Второй замечательный предел}
+{
+    \[ \lim_{x \to +\infty} \left(1 + \frac{1}{x}\right)^x = e \]
+}
+
+\section{Теорема о пределе сложной функции}
+
+\mcthm{Теорема о пределе сложной функции}
+{
+$$
+\left. \begin{tabular}{l}
+    $ \lim_{x\to x_0} f(x) = y_0 $ \\
+    $ \lim_{y\to y_0} g(y) = g(y_0) $
+\end{tabular} \right\}
+\begin{tabular}{l}
+    $ \implies \lim_{x \to x_0} g(f(x)) = g(y_0) $
+\end{tabular}
+$$
+\begin{mcproof}
+\begin{equation*}
+\begin{split}
+& \text{Распишем, что дано, по определению:} \\
+& \forall \veps > 0 \, \exists \delta_1(\veps) \, \forall x \in \dot{U}_{\delta_1(\veps)}(x_0): | f(x) - y_0 | < \veps \, (1) \\
+& \forall \lambda > 0 \, \exists \delta_2(\lambda) \, \forall y \in \dot{U}_{\delta_2(\lambda)}(y_0): | g(y) - g(y_0) | < \lambda \, (2) \\
+& \text{Распишем, что хотим доказать:} \\
+& \forall \eta > 0 \, \exists \delta_3 = \delta(\eta) \forall x \in \dot{U}_{\delta_3(\eta)}(x_0): | g(f(x)) - g(y_0) | < \eta \\
+& \text{Положим } \delta_3(\eta) = \delta_1(\delta_2(\eta))\text{, тогда}: \\
+& x \in \dot{U}_{\delta_3(\eta)}(x_0) \iff x \in \dot{U}_{\delta_1(\delta_2(\eta))}(x_0) \implies \text{ по (1) } | f(x) - y_0 | < \delta_2(\eta) \\
+& | f(x) - y_0 | < \delta_2(\eta) \iff f(x) \in U_{\delta_2(\eta)}(y_0) \\
+& \text{По (2) знаем, что если } f(x) \in \dot{U}_{\delta_2(\eta)}(y_0) \text{, то } | g(f(x)) - g(y_0) | < \eta \\
+& \text{Если } f(x) = y_0 \text{, то } | g(f(x)) - g(y_0) | = 0 < \eta \\
+& \text{Иначе, если } f(x) \ne y_0 \iff f(x) \in \dot{U}_{\delta_2(\eta)}(y_0) \text{, то } | g(f(x)) - g(y_0) | = 0 < \eta \\
+& \text{Получили: } \forall \eta > 0 \, \exists \delta_3 = \delta_1(\delta_2(\eta)) \, \forall x \in \dot{U}_{\delta_3(\eta)}(x_0): | g(f(x)) - g(y_0) | < \eta \\
+\end{split}
+\end{equation*}
+\end{mcproof}
+}
+
+%
+% if lim != g(y_0), then lets take: f(x) === 0, g(y) = y == 0; f(x) -> 0 = y_0 when x -> 0; g(y) -> 0 = A when y -> y_0; g(f(x)) === 1 -> 1 = A when x -> x_0
+%
+

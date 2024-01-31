@@ -1,0 +1,105 @@
+\chapter{Элементы теории множеств}
+
+\section{Аксиома непрерывности}
+
+\mcclm{Аксиома непрерывности действительных чисел (принцип полноты)}{}
+{
+$$
+\left. \begin{tabular}{l}
+    $ A \subseteq \mathbb{R} $ \\
+    $ A \ne \varnothing $ \\
+    $ B \subseteq \mathbb{R} $ \\
+    $ B \ne \varnothing $ \\
+    $ \forall a \in A \, \forall b \in B: a \le b $
+\end{tabular} \right\}
+\begin{tabular}{l}
+    $ \implies \exists c \in \mathbb{R} \, \forall a \in A \, \forall b \in B: a \le c \le b $
+\end{tabular}
+$$
+}
+
+\section{Определения ограниченных множеств}
+
+\mcdfn{Ограниченное сверху множество}
+{
+    Подможество $ A \subseteq \mathbb{R} $ называется ограниченным
+    свеху, если
+    $ \exists C \in \mathbb{R} \,
+        \forall a \in A: \, a \le C $
+}
+
+\mcdfn{Ограниченное снизу множество}
+{
+    Подможество $ A \subseteq \mathbb{R} $ называется ограниченным
+    снизу, если
+    $ \exists C \in \mathbb{R} \,
+        \forall a \in A: \, a \ge C $
+}
+
+\mcdfn{Ограниченное множество}
+{
+    Подможество $ A \subseteq \mathbb{R} $ называется ограниченным, если
+    $ \exists C > 0 \,
+        \forall a \in A: \, | a | \le C $
+}
+
+\section{Определения граней множества}
+
+\mcdfn{Определение верхней грани множества}{
+    Пусть дано множество $ A \subset \mathbb{R} \wedge A \ne \varnothing $.
+    Тогда верхней гранью множества $ A $ называют число $ c \in \mathbb{R} $, такое что
+    $ \forall a \in A: a \le c $
+}
+
+\mcdfn{Определение нижней грани множества}{
+    Пусть дано множество $ A \subset \mathbb{R} \wedge A \ne \varnothing $.
+    Тогда нижней гранью множества $ A $ называют число $ c \in \mathbb{R} $, такое что
+    $ \forall a \in A: a \ge c $
+}
+
+\mcdfn{Определение точной верхней грани множества}{
+    Пусть дано множество $ A \subset \mathbb{R} \wedge A \ne \varnothing $.
+    Тогда точной верхней гранью множества $ A $ называют наименьший элемента множества
+    всех верхних граней множества $ A $ и обозначают $ \sup A $
+}
+
+\mcdfn{Определение точной нижней грани множества}{
+    Пусть дано множество $ A \subset \mathbb{R} \wedge A \ne \varnothing $.
+    Тогда точной нижней гранью множества $ A $ называют наибольший элемента множества
+    всех нижней граней множества $ A $ и обозначают $ \inf A $
+}
+
+\nt{
+    Вообще говоря, наименьшый и наибольший элементы множества не всегда существуют. \\
+    Например, у множества $(0; 1)$ нет ни наименьшего, ни наибольшего элементов, при этом \\
+    $ \sup (0; 1) = 1 \notin (0; 1) $, $ \inf (0; 1) = 0 \notin (0; 1) $
+}
+
+\section{Теорема о существовании точной грани множества}
+
+\mcthm{Теорема о существовании точной грани множества}
+{
+Если множество $ A \subset \mathbb{R}, A \ne \varnothing $ ограничено сверху, то $ \exists \sup A $
+
+Если множество $ A \subset \mathbb{R}, A \ne \varnothing $ ограничено снизу, то $ \exists \inf A $
+
+\begin{mcproof}
+    Докажем для верхней грани, для нижней грани доказательство аналогично
+    \[ A \subseteq \mathbb{R}
+        \wedge A \ne \varnothing
+        \wedge (\exists C > 0 \, \forall a \in A
+            \implies a < C)
+                \implies \exists \sup{A} \]
+\begin{equation*}
+\begin{split}
+    & \text{1. Обозначим } S_A = \{ c \in \mathbb{R} | \forall a \in A \implies a \le c \} \ne \varnothing \text{ - множество верхних граней} \\
+    & \text{Это множество не пусто, т.к. $ A $ ограничено по условию, т.е. } \exists c > 0 \, \forall a \in A \implies a \le c \\
+    & \text{2. По построению множества $ A $ и $ S_A $ удовлетворяют аксиоме непрерывности } \\
+    & \text{действительных чисел, тогда } \exists b \in \mathbb{R} \, \forall a \in A \forall c \in S_A \implies a \le b \le c \\
+    & \text{Но из $ b \le c \implies b \in S_A $, при этом } (\forall c \in S_A \implies b \le c) \text{, следовательно, $ b $ является } \\
+    & \text{наименьшим элементом множества верхних граней множества $ A $, тогда по определению } \\
+    & \text{точной верхней грани } b = \sup{A} \\
+\end{split}
+\end{equation*}    
+\end{mcproof}
+}

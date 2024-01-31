@@ -1,0 +1,99 @@
+\chapter{Фундаментальная ч.п. Критерий сходимости ч.п. по Коши}
+
+\section{Определение фундаментальной ч.п.}
+
+\mcdfn{Фундаментальная ч.п.}
+{
+    Ч.п. $\NumSeq{a_n}$ называется фундаментальной, если
+    \[\forall \veps > 0 \, \exists N(\veps) \forall n, m > N(\veps): | a_n - a_m | < \veps \]
+}
+
+\section{Критерий сходимости ч.п. по Коши}
+
+\mcthm{Критерий сходимости ч.п. по Коши}
+{
+    Ч.п. $ \NumSeq{a_n} $ сходится $ \iff \NumSeq{a_n} $ - Фундаментальная ч.п.
+\mcprf{
+\begin{split}
+& "\implies" \\
+& \text{Распишем, что дано: }
+    \exists A \in \mathbb{R} \, \forall \veps > 0 \, \exists N_1(\veps) \, \forall n > N_1: | a_n - A | < \veps \\
+& \text{Хотим доказать: }
+    \forall \veps > 0 \, \exists N_2(\veps) \, \forall n, m > N_2: | a_n - a_m | < \veps \\
+& | a_n - a_m | < \veps
+    \impliedby | a_n - a + a - a_m | < \veps
+    \impliedby | a_n - a | + | a - a_m | < \veps 
+    \impliedby | a_n - a | + | a_m - a | < \veps \\
+& \text{Положим } N_2(\veps) := N_1\left(\frac{\veps}{2}\right) \implies \\
+& \forall \veps > 0 \, \exists N_2(\veps) \, \forall n, m > N_2: | a_n - a | + | a_m - a | < \veps \implies \\
+& \forall \veps > 0 \, \exists N_2(\veps) \, \forall n, m > N_2: | a_n - a_m | < \veps \\
+& "\impliedby" \\
+& \text{Распишем, что дано: }
+    \forall \veps > 0 \, \exists N_2(\veps) \, \forall n, m > N_2(\veps): | a_n - a_m | < \veps \\
+& \text{Покажем, что $\NumSeq{a_n}$ ограничена: положим } \veps = 1 \implies \\
+& \exists N_2(1) \, \forall n, m > N_2: | a_n - a_m | < 1 \implies \\
+& \exists N_2(1) \, \forall n > N_2: | a_n - a_{N_2(1) + 1} | < 1 \implies \\
+& \exists N_2(1) \, \forall n > N_2: a_{N_2(1) + 1} - 1 < a_n < a_{N_2(1) + 1} + 1 \\
+& \text{Положим } C := \max(|a_1|, |a_2|, ..., |a_{N_2(1)}|, |a_{N_2(1) + 1}|) + 1 \implies \\
+& \forall n \in \mathbb{N}: \, | a_n | \le C \\
+& \text{Тогда по теореме Больцано-Вейерштрасса } \\
+& \exists a \in \mathbb{R} \, \exists \NumSeq{a_{n_k}}: \lim_{k \to +\infty} a_{n_k} = a \\
+& \text{Докажем, что } \lim_{n \to +\infty} a_n = a \\
+& \text{Перепишем, что дано:} \\
+& \forall \veps > 0 \, \exists N_2(\veps) \, \forall n, m > N_2(\veps): | a_n - a_m | < \veps \\
+& \forall \veps > 0 \, \exists N_3(\veps) \, \forall k > N_3(\veps): | a_{n_k} - a | < \veps \\
+& \text{Распишем, что хотим доказать:} \\
+& \forall \veps > 0 \, \exists N_1(\veps) \, \forall n > N_1(\veps): | a_n - a | < \veps \\
+& | a_n - a | < \veps \impliedby | a_n - a_{n_k} + a_{n_k} - a | < \veps \impliedby | a_n - a_{n_k} | + | a_{n_k} - a | < \veps \\
+& \text{Т.к. при выборе членов в подпоследовательности } n_k \ge k \text{, то при } k > N_3(\veps) \implies n_k > N_3(\veps) \\
+& \text{Положим } N_1(\veps) = \max\left(N_2\left(\frac{\veps}{2}\right), N_3\left(\frac{\veps}{2}\right)\right) \implies \\
+& \forall \veps > 0 \, \exists N_1(\veps) \, \forall n > N_1(\veps): | a_n - a_{n_k} | + | a_{n_k} - a | < \veps \implies \\
+& \forall \veps > 0 \, \exists N_1(\veps) \, \forall n > N_1(\veps): | a_n - a | < \veps \\
+\end{split}
+}
+}
+
+\section{Постоянная Эйлера-Маскерони}
+
+\mcdfn{Постоянная Эйлера-Маскерони}
+{
+    Рассмотрим ч.п. $ \gamma_n = 1 + \frac{1}{2} + ... + \frac{1}{n} - \ln n $
+
+    Докажем, что у ч.п. есть конечный предел и обозначим его $ \gamma $
+\begin{mcproof}
+\begin{equation*}
+\begin{split}
+& \gamma_n = 1 + \frac{1}{2} + ... + \frac{1}{n} - \ln n \\
+& \exists \lim_{n \to +\infty} \gamma_n = \gamma \\
+& \gamma_n \text{ убывает} \\
+& \gamma_{n + 1} - \gamma_n =
+    \frac{1}{n + 1} - \ln (n + 1) + \ln n
+    = \frac{1}{n + 1} - \ln(1 + \frac{1}{n})
+    = \frac{1}{n + 1} \left(1 - (n + 1)\ln(1 + \frac{1}{n})\right) = \\
+& = \frac{1}{n + 1} \left(1 - \ln\left(\left(1 + \frac{1}{n}\right)^{n + 1}\right)\right) \\
+& b_n = \left(1 + \frac{1}{n}\right)^{n + 1} \text{ сходится к $ e $ и убывает. Докажем убывание} \\
+& \frac{b_n}{b_{n + 1}}
+    = \frac{\left(1 + \frac{1}{n}\right)^{n + 1}}{\left(1 + \frac{1}{n + 1}\right)^{n + 2}}
+    = \left(\frac{\left(n + 1\right)^2}{n (n + 2)}\right)^{n + 1} \cdot \left(\frac{n + 1}{n + 2}\right)
+    = \left(1 + \frac{1}{n^2 + 2 n}\right)^{n + 1} \left(\frac{n + 1}{n + 2}\right) \\
+& \ge \left(1 + \frac{n + 1}{n^2 + 2n}\right) \left(\frac{n + 1}{n + 2}\right)
+    = \frac{(n + 1) (n^2 + 3n + 1)}{n^3 + 4n^2 + 4n}
+    = \frac{n^3 + 4n^2 + 4n + 1}{n^3 + 4n^2 + 4n} > 1 \\
+& \gamma_{n + 1} - \gamma_n = \frac{1}{n + 1} (1 - \ln b_n) \\
+& b_n \text{ убывает к } e
+    \implies b_n > e
+    \implies \ln b_n > 1
+    \implies \gamma_{n + 1} - \gamma_n < 0 \\
+& \text{Докажем ограниченность } \gamma_n \\
+& \left(1 + \frac{1}{n}\right)^n < e
+    \implies n \ln (1 + \frac{1}{n}) < 1
+    \implies \ln (1 + \frac{1}{n}) < \frac{1}{n}
+    \implies \frac{1}{n} > \ln (\frac{n + 1}{n}) \\
+& \gamma_n = 1 + \frac{1}{2} + ... + \frac{1}{n} - \ln n
+    > \ln \frac{2}{1} + \ln \frac{3}{2} + \ln \frac{4}{3} + ... + \ln \frac{n + 1}{n} - \ln n = \\
+& = \ln 2 - \ln 1 + \ln 3 - \ln 2 + \ln 4 - \ln 3 + ... + \ln(n + 1) - \ln n - \ln n = \\
+& = -\ln 1 + \ln(n + 1) - \ln n = \ln\frac{n + 1}{n} > \ln 1 = 0 \\
+\end{split}
+\end{equation*}
+\end{mcproof}
+}

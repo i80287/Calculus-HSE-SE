@@ -1,0 +1,270 @@
+\chapter{Определения и свойства числовых последовательностей}
+
+\section{Определения}
+
+\subsection{Числовая последовательность}
+
+\mcdfn{Числовая последовательность}
+{
+    Числовая последовательность - это счётно бесконечный проиндексированный набор чисел
+}
+
+\subsection{Ограниченная ч.п.}
+
+\mcdfn{Ограниченная сверху числовая последовательность}
+{
+    Числовая последовательность $ \NumSeq{a_n} $ называется ограниченной сверху, если
+
+    $ \exists C \in \mathbb{R} \, \forall n \in \mathbb{N}: \, a_n < C $
+}
+
+\mcdfn{Ограниченная снизу числовая последовательность}
+{
+    Числовая последовательность $ \NumSeq{a_n} $ называется ограниченной снизу, если
+
+    $ \exists C \in \mathbb{R} \, \forall n \in \mathbb{N}: \, a_n > -C $
+}
+
+\mcdfn{Ограниченная числовая последовательность}
+{
+    Числовая последовательность $ \NumSeq{a_n} $ называется ограниченной, если
+
+    $ \exists C > 0 \, \forall n \in \mathbb{N}: \, | a_n | < C $
+}
+
+\nt
+{
+    Числовая последовательность ограничена $ \iff $ она ограничена сверху и ограничена снизу
+}
+
+\subsection{Неограниченная ч.п.}
+
+\mcdfn{Неограниченная числовая последовательность}
+{
+    Числовая последовательность $ \NumSeq{a_n} $ называется неограниченной, если она не является ограниченной, то есть
+
+    $ \forall C > 0 \, \exists n \in \mathbb{N}: \, | a_n | \ge C $
+}
+
+\subsection{Отделимая от нуля ч.п.}
+
+\mcdfn{Отделимая от нуля числовая последовательность}
+{
+    Числовая последовательность $ \NumSeq{a_n} $ называется отделимой от нуля, если
+
+    $ \exists \veps > 0 \, \forall n \in \mathbb{N}: \, | a_n | > \veps $
+}
+
+\subsection{Эпсилон окрестность}
+
+\mcdfn{Эпсилон окрестность}
+{
+    Эпсилон окрестностью вещественного числа $ x_0 $ (элемента поля вещественных чисел)
+    называется множество $ (x_0 - \veps; x_0 + \veps) $ и обозначается $ U_{\veps}(x_0) $.
+
+    Обычно говорят "Эпсилон окрестность точки $ x_0 $"
+}
+
+\mcex{}{
+    $ U_1(\pi) = (\pi - 1; \pi + 1) $
+
+    $ U_e(e) = (0; 2 e) $
+}
+
+\mcdfn{Проколотая эпсилон окрестность}
+{
+    Проколотой эпсилон окрестностью вещественного числа $ x_0 $ (элемента поля вещественных чисел)
+    называется множество $ (x_0 - \veps; x_0 + \veps) \setminus \{ x_0 \} $ и обозначается $ \dot{U}_{\veps}(x_0) $.
+
+    Обычно говорят "Проколотая эпсилон окрестность точки $ x_0 $"
+}
+
+\mcex{}{
+    $ \dot{U}_1(e) = (e - 1; e + 1) \setminus \{ e \} = (e - 1; e) \cup (e; e + 1) $
+}
+
+\subsection{Сходящаяся ч.п.}
+
+\mcdfn{Сходящаяся числовая последовательность}
+{
+    Числовая последовательность называется сходящейся, если она имеет конечный предел при $ n \to +\infty $, т.е.
+    ч.п. $ \NumSeq{a_n} $ называется сходящейся, если $ \exists \lim_{n \to +\infty} a_n = A \in \mathbb{R} $, то есть по определению
+    \[ \exists A \in \mathbb{R} \, \forall \veps > 0 \, \exists N = N(\veps) \forall n > N: | a_n - A | < \veps \]
+}
+
+\nt{
+    Сходящаяся ч.п. является ограниченной
+}
+
+\nt{
+    Неравенство $ | a_n - A | < \veps $ равносильно тому, что $ a_n \in U_\veps(A) $
+}
+
+\subsection{Бесконечно большая ч.п.}
+
+\mcdfn{Бесконечно большая числовая последовательность}
+{
+    Числовая последовательность $ \NumSeq{a_n} $ называется бесконечно большой, если она стремится к $ +\infty$, к $ -\infty $ или к $ \infty $ при $ n \to +\infty $, т.е.
+
+\begin{tabular}{rl}
+    & $\bullet$
+        $ \lim_{n \to +\infty} a_n = +\infty \iff
+        \forall M > 0 \, \exists N = N(M) \forall n > N: a_n > M $ \\
+    & $\bullet$
+        $ \lim_{n \to +\infty} a_n = -\infty \iff
+        \forall M > 0 \, \exists N = N(M) \forall n > N: a_n < -M $ \\
+    & $\bullet$
+        $ \lim_{n \to +\infty} a_n = \infty \iff
+        \forall M > 0 \, \exists N = N(M) \forall n > N: | a_n | > M $ \\
+\end{tabular}
+}
+
+\subsection{Бесконечно малая ч.п.}
+
+\mcdfn{Бесконечно малая числовая последовательность}
+{
+    Числовая последовательность $ \NumSeq{a_n} $ называется бесконечно малой, если она стремится к 0 при $ n \to +\infty $, т.е.
+
+    $ \forall \veps > 0 \exists N = N(\veps) \forall n > N: | a_n | < \veps $
+}
+
+\subsection{Связи числовых последовательностей}
+
+\nt{
+\begin{tabular}{rl}
+    Связи числовых последовательностей:
+
+    & $\bullet$ $ \frac{1}{\text{б.б.}} = \text{б.м.} $ \\
+    & $\bullet$ $ \frac{1}{\text{б.м.}} = \text{б.б.} $ \\
+    & $\bullet$ $ \frac{1}{\text{ограниченная}} = \text{отделимая от нуля} $ \\
+    & $\bullet$ $ \frac{1}{\text{отделимая от нуля}} = \text{ограниченная} $ \\
+\end{tabular}
+}
+
+\nt
+{
+    Если ч.п. сходится или является б.б., то предел единственный
+}
+
+\mcprop{Докажите по определению, что}
+{
+    (ограниченная ч.п.) + (ограниченная ч.п.) = ограниченная ч.п.
+
+    б.м + б.м. = б.м.
+
+    б.м. $\cdot$ (ограниченная ч.п.) = б.м.
+
+    $\frac{\text{отделимая от нуля ч.п.}}{\text{ограниченная ч.п.}}$ = ограничена ч.п.
+}
+
+\mcprop{Приведите пример, когда}
+{
+    (отделимая от нуля ч.п.) + (отделимая от нуля ч.п.) = отделимая от нуля ч.п.
+
+    (отделимая от нуля ч.п.) + (отделимая от нуля ч.п.) = б.м.
+
+    б.б + б.б = б.б.
+
+    б.б + б.б = б.м.
+
+    б.б + б.б = (ограниченная ч.п.)
+
+    б.б + б.б = (отделимая от нуля ч.п.)
+}
+
+\section{Теоремы}
+
+\subsection{Теорема о предельном переходе в неравенствах}
+
+\mcthm{Теорема: свойство предельного перехода в неравенствах}
+{
+    \[ (\exists N \in \mathbb{N} \, \forall n \ge N: c_n > A) \wedge (\lim_{n\to\infty} c_n = C) \implies C \ge A \]
+\mcprf{
+\begin{split}
+    & \text{1. Распишем, что дано, по определению:} \\
+    & \forall \veps > 0 \exists N_1(\veps) \forall n > N_1(\veps): | c_n - C | < \veps \\
+    & \text{Это равносильно } \forall \veps > 0 \exists N_1(\veps) \forall n > N_1(\veps): C - \veps < c_n < C + \veps \\
+    & \exists N \in \mathbb{N} \, \forall n \ge N: c_n > A \\
+    & \text{2. Для любого $ \veps $ рассмотрим } M(\veps) = \max(N_1(\veps), N) + 1 \\
+    & \text{Тогда } \forall \veps > 0 \exists M(\veps) = \max(N_1(\veps), N) + 1 \, \forall n > M: (C - \veps < c_n < C + \veps \wedge c_n > A) \\
+    & \text{Следовательно, } \forall \veps > 0 \exists M(\veps) \, \forall n > M: C + \veps > A \\
+    & \text{Выражение под кванторами не зависит от $M$ и $n$ } \implies \forall \veps > 0: C + \veps > A \\
+    & \text{3. Предположим от противного, что } C < A \\
+    & \text{Положим } \veps := \frac{A - C}{2} > 0 \implies C + \veps = C + \frac{A - C}{2} = \frac{A + C}{2} < A \\
+    & \text{Получили, что }
+        \exists \veps > 0: C + \veps < A
+        \implies \circled{$\mathbb{W}$} \implies \text{ предположение, что $ C < A $, неверно}
+        \implies C \ge A \\ 
+\end{split}
+}
+}
+
+\subsection{Теорема о зажатой последовательности}
+
+\mcthm{Теорема о зажатой последовательности (о 2 миллиционерах / 2 полицейских / гамбургерах)}
+{
+\begin{minipage}[t]{\textwidth}
+$$
+\left. \begin{tabular}{l}
+    $ a_n, b_n, c_n $ - числовые последовательности \\
+    $ \lim_{n\to\infty} a_n = X $ \\
+    $ \lim_{n\to\infty} b_n = X $ \\
+    $ \exists N \in \mathbb{N} \hspace{2pt} \forall n \ge N: a_n \le c_n \le b_n $
+\end{tabular} \right\}
+\begin{tabular}{l}
+    $ \implies \lim_{n\to\infty} c_n = X $
+\end{tabular}
+$$
+\end{minipage}
+\begin{mcproof}
+\begin{equation*}
+\begin{split}
+    & \text{Докажем для случая, когда } X \in \mathbb{R}
+        \text{. При } X \in \overline{\mathbb{R}} \setminus \mathbb{R}
+        \text{ доказательство проводится аналогично} \\
+    & \text{1. Распишем по определению пределы.} \\
+    & \forall \veps > 0 \, \exists N_1(\veps) \, \forall n > N_1(\veps): X - \veps < a_n < X + \veps \\
+    & \forall \veps > 0 \, \exists N_2(\veps) \, \forall n > N_2(\veps): X - \veps < b_n < X + \veps \\
+    & \text{Рассмотрим } N_3(\veps) = \max(N_1(\veps), N_2(\veps), N) \text{, тогда } \\
+    & \forall \veps > 0 \, \exists N_3(\veps) \, \forall n > N_3(\veps): X - \veps < a_n \le c_n \le b_n < X + \veps \\
+    & \implies \forall \veps > 0 \, \exists N_3(\veps) \, \forall n > N_3(\veps): X - \veps < c_n < X + \veps \\
+\end{split}
+\end{equation*}
+\end{mcproof}
+}
+
+\subsection{Теорема о свойстве предела б.м. ч.п.}
+
+\mcthm{Теорема о свойстве предела б.м. ч.п.}
+{
+    если $ a \in \mathbb{R} $, то \[\lim_{n\to\infty} a_n = a \iff a_n = a + \alpha_n, \text{где } \alpha_n \text{ - б.м. ч.п.} \]
+\mcprf{
+\begin{split}
+    & "\implies" \\
+    & \text{Распишем по определению, что дано:} \\
+    & \lim_{n\to\infty} a_n = a \iff \forall \veps > 0 \, \exists N(\veps) \, \forall n > N(\veps): | a_n - a | < \veps \\
+    & \text{Обозначим ч.п. } \alpha_n = a_n - a \text{, тогда } a_n = a + \alpha_n \\
+    & \text{Тогда: } \forall \veps > 0 \, \exists N(\veps) \, \forall n > N(\veps): | \alpha_n | < \veps \\
+    & \text{Доказали, что } a_n = a + \alpha_n \text{, где } \alpha_n \text{ - б.м. ч.п.} \\
+    & "\impliedby" \\
+    & \text{Распишем то, что $ \alpha_n $ - б.м., по определению:} \\
+    & \lim_{n\to\infty} a_n = a \iff \forall \veps > 0 \, \exists N(\veps) \, \forall n > N(\veps): | \alpha_n | < \veps \\
+    & \text{По условию } a_n = a + \alpha_n \text{, тогда } a_n - a = \alpha_n \text{, подставим в выражение под кванторами:} \\
+    & \forall \veps > 0 \, \exists N(\veps) \, \forall n > N(\veps): | a_n - a | < \veps \\
+    & \text{Доказали по определению, что } \lim_{n\to\infty} a_n = a \\
+\end{split}
+}
+}
+
+\section{Определение монотонности числовой последовательности}
+
+\mcdfn{Монотонность ч.п.}
+{
+    Ч.п. $ \NumSeq{a_n} $ называется строго возрастающей, если $ \forall n \in \mathbb{N}: a_{n + 1} > a_{n} $
+
+    Ч.п. $ \NumSeq{a_n} $ называется строго убывающей, если $ \forall n \in \mathbb{N}: a_{n + 1} < a_{n} $
+
+    Ч.п. $ \{ a_n \} $ называется неубывающей, если $ \forall n \in \mathbb{N}: a_{n + 1} \ge a_{n} $
+
+    Ч.п. $ \{ a_n \} $ называется невозрастающей, если $ \forall n \in \mathbb{N}: a_{n + 1} \le a_{n} $
+}

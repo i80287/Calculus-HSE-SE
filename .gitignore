@@ -25,7 +25,7 @@
 .pdf
 
 ## Tex source
-*.tex
+# *.tex
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl

@@ -1,0 +1,1213 @@
+\section{O - символика}
+
+\mcdfn{O - символика}
+{
+\begin{tabular}{rl}
+    o-малое:   & $\bullet $ $f(x) = \overline{o}(g(x)) $ при $ x \to x_0 \in \overline{\mathbb{R}} $, 
+                    если $ \frac{f(x)}{g(x)} $ - б.м. при $ x \to x_0 $ \\
+    O-большое: & $\bullet $ $f(x) = \underline{O}(g(x)) $ при $ x \to x_0 \in \overline{\mathbb{R}} $, 
+                    если $ \frac{f(x)}{g(x)} $ - ограниченная при $ x \to x_0 $ \\
+\end{tabular}
+}
+
+\section{Непрерывность функции}
+
+\subsection{Непрерывность функции в точке}
+
+\mcdfn{Непрерывность функции в точке}
+{
+    Функция называется непрерывной в точке $x_0$, если \[\lim_{x \to x_0} f(x) = f(x_0)\]
+}
+
+\mcclarf{}
+{
+    Если $x_0$ - граница области определения, то рассматривается односторонний предел
+}
+
+\subsection{Свойства непрерывных функций}
+
+\nt{
+    Свойства непрерывных функций:
+
+\begin{tabular}{rl}
+    & $\bullet$ Сумма, произведение и частное непрерывных функций - непрерывные функции \\
+    & (по арифметике пределов функции) \\
+    & $\bullet$ Композиция непрерывных функций - непрерывная функция \\
+    & (по теореме о пределе сложной функции) \\
+    & \begin{minipage}[t]{\textwidth}
+    $$
+    \left. \begin{tabular}{l}
+        $ \lim_{x \to x_0} g(x) = g(x_0) = y_0 $ \\
+        $ \lim_{y \to y_0} f(y) = f(y_0) $ \\
+    \end{tabular} \right\}
+    \begin{tabular}{l}
+        $ \implies \lim_{x \to x_0} f(g(x)) = f(g(x_0)) $
+    \end{tabular}
+    $$
+    \end{minipage} \\
+\end{tabular}
+}
+
+\subsection{Правило замены переменных в пределе сложной функции}
+
+\mcclm{Правило замены переменных в пределе}{}
+{
+    Пусть дана сложная функция $ f(g(x)) $, тогда, если для некоторой точки 
+    $ x_0:  \lim_{x \to x_0} g(x) = g(x_0) = y_0 $ и $ \lim_{y \to y_0} f(y) = A \in \mathbb{R} $, то
+    $ \lim_{x \to x_0} f(g(x)) = f(g(x_0)) $
+}
+
+\mcex{Пример использования правила замены переменной в пределе}
+{
+\[\begin{split}
+    & \text{Пусть надо найти } \lim_{x \to 0} \frac{\sin(\pi x)}{x} \\
+    & \text{Преобразуем выражение:} \frac{\sin(\pi x)}{x} = \frac{\sin(\pi x)}{\pi x} \cdot \pi \\
+    & \text{В данном случае в обозначения из утверждения выше:} \\
+    & f(y) = \frac{\sin(y)}{y} \\ 
+    & g(x) = \pi x \\
+    & g(x) \text{ непрерывна в точке } x_0 = 0, y_0 = g(x_0) = 0, \text{ и при этом } \lim_{y \to y_0} f(y) = 1 = A \\
+    & \text{Тогда по правилу замены переменной в пределе:} \\
+    & \lim_{x \to 0} \frac{\sin(\pi x)}{\pi x} \cdot \pi = \lim_{x \to 0} A \cdot \pi = \lim_{x \to 0} 1 \cdot \pi = \pi \\
+\end{split}\]
+}
+
+\subsection{Непрерывность функции на множестве}
+
+\mcdfn{Непрерывность функции на множестве}
+{
+    Функция называется непрерывной на множестве $E$, если она непрерывна в каждой точке множества $E$
+
+    /* Когда говорят, что функция непрерывна, имеют ввиду, что она непрерывна на $D_f$ */
+}
+
+\nt{
+    В частность, функция непрерывна на отрезке $[a;b]$, если она непрерывна в каждой точке отрезка $[a;b]$
+
+    При этом, в точках $a$ и $b$ рассматриваются односторонние пределы
+}
+
+\subsection{Теорема 1 о функции, непрерывной на отрезке}
+
+\mcthm{Теорема о функции, непрерывной на отрезке (иногда называют теоремой Вейерштрасса)}
+{
+    Функция, непрерывная на отрезке, ограничена на этом отрезке и достигает наибольшее и наименьшее значения на этом отрезке
+
+    Докажем, что функция ограничена сверху и достигает наибольшее значение. Для второго случая доказательство проводится аналогично
+
+\mcprf{
+\begin{split}
+    & \text{1. } E_f - \text{ мно-во значений } f(x) \text{ на } [a; b] \\
+    & \text{Обозначим } M = \sup E_f = \sup_{x \in [a; b]} f(x) \in \overline{\mathbb{R}} \\
+    & \text{Построим некоторую строго возрастающую ч.п. } a_n \underset{n \to +\infty}{\to} M  \\
+    & \text{2. Докажем, что } \forall n \in \mathbb{N} \, \exists x_n \in [a; b]: a_n < f(x_n) \\
+    & \text{Предположим от противного, то есть } \exists n_0 \, \forall x \in [a; b]: a_{n_0} \ge f(x) \\
+    & \text{Тогда } a_{n_0} \text{ - верхняя грань множества $E_f$} \\
+    & \text{Однако, т.к. $a_n$ - возрастающая ч.п. и $ \lim_{n \to +\infty} a_n = a $ , то } \forall n \in \mathbb{N}: a_n < M \\
+    & \text{В частности, } a_{n_0} < M \text{, т.е. $a_{n_0}$ - верхняя грань, которая меньше точной верхней грани } \implies \\
+    & \implies \circled{$\mathbb{W}$} \implies \forall n \in \mathbb{N} \, \exists x_n \in [a; b]: a_n < f(x_n) \\
+    & \text{3. По построению } \forall x \in [a; b]: f(x) \le M \\
+    & \text{Тогда } \forall n \in \mathbb{N} \, \exists x_n \in [a; b]: a_n < f(x_n) \le M \\
+    & \text{Следовательно, по теореме о зажатой последовательности } \lim_{n \to +\infty} f(x_n) = M \\
+    & \text{4. Докажем, что } M = f(x_0) \\
+    & \text{Т.к. $x_n$ - ограниченная ч.п., то по теореме Больцано-Вейерштрасса из неё можно выделить} \\
+    & \text{сходящуюся подпоследовательность } \NumSeq{x_{n_k}} \text{ такую, что } x_{n_k} \underset{k \to +\infty}{\to} x_0 \in [a; b] \\
+    & \text{Т.к. $f$ непрерывна в на отрезке, то она непрерывна в $x_0$, следовательно} \\
+    & \lim_{k \to +\infty} f(x_{n_k}) = f(x_0) \\
+    & \left(\lim_{n \to +\infty} f(x_n) = M\right) \wedge \left(\lim_{k \to +\infty} f(x_{n_k}) = f(x_0)\right) \implies M = f(x_0) < \infty \\
+    & \text{Таким образом, на отрезке $ [a;b] $ функция $f$ ограничена сверху числом $M = f(x_0)$} \\
+\end{split}
+}
+}
+
+\subsection{Теорема 2 о функции, непрерывной на отрезке}
+
+\mcthm{Теорема (2) о функции, непрерывной на отрезке}
+{
+    Непрерывная на отрезке $[a;b]$ принимает все промежуточные значения
+
+    Пусть $f(x)$ непрерывна на $[a;b], f(x_1) = A, f(x_2) = B, x_1 < x_2, $ БОО $ A < B $, тогда
+
+    $ \forall c \in (A; B) \, \exists x_0 \in (x_1; x_2): f(x_0) = c $
+
+\mcprf{
+\begin{split}
+& \text{1. Построим последовательность вложенных отрезков:} \\
+& \text{/* Если Вам так будет удобнее, то докажем существование $x_0$ бинпоиском по ответу */} \\
+& [a_1; b_1] := [x_1; x_2] \\
+& x_3 := \frac{a_1 + b_1}{2} \text{, рассмотрим $f(x_3)$} \\
+& 1) f(x_3) = c \implies q.e.d. \\
+& 2) f(x_3) < c \implies [a_2; b_2] := [x_3; b_1] \\
+& 3) f(x_3) > c \implies [a_2; b_2] := [a_1; x_3] \\
+& \text{Применяя это правило, продолжим строить последовательность отрезков} \\
+& \text{Если ни на какой итерации не произойдёт случай $1)$, то получим счётно бесконечную} \\
+& \text{последовательность отрезков} \NumSeq{[a_n; b_n]}_{n \in \mathbb{N}} \\
+& \text{По построению ч.п. } \NumSeq{a_n} \text{ неубывает и ограничена сверху } b \implies \exists \lim_{n \to +\infty} a_n \le b \\
+& \text{По построению ч.п. } \NumSeq{b_n} \text{ невозрастает и ограничена снизу } a \implies \exists \lim_{n \to +\infty} b_n \ge a \\
+& b_n - a_n = \frac{b - a}{2^{n - 1}} \to_{n \to +\infty} 0 \implies \lim_{n \to +\infty} a_n = \lim_{n \to +\infty} b_n = x_0 \\
+& x_0 \in [a; b] \implies f(x) \text{ непрерывна в } x_0 \implies \lim_{x \to x_0} f(x) = f(x_0) \implies \\
+& \implies \text{по определению по Гейне } \lim_{n \to +\infty} f(a_n) = \lim_{n \to +\infty} f(b_n) = f(x_0) \\
+& \text{По построению } f(a_n) < c \wedge f(b_n) > c \implies c \le f(x_0) \le c \implies f(x_0) = c \\
+\end{split}
+}
+}
+
+\subsubsection{Следствие 1}
+
+\mccorollar{Следствие}{
+    $ f(x) $ непрерывна на $ [a;b] \implies E_f = [\inf E_f; \sup E_f] $
+}
+
+\subsubsection{Следствие 2}
+
+\mccorollar{Следствие}{
+    $ f(x) = x^2 $ непрерывна на $ D_f = [0; 2] \implies (E_f = [0; 4] \wedge \exists x_0 \in \mathbb{R}: x_0^2 = 2) $
+
+    То есть доказано существование числа $\sqrt{2}$
+}
+
+\subsubsection{Следствие 3}
+
+\mccorollar{Следствие}{
+    $ f(x) \text{ непрерывна на } [a; b] \wedge f(a) < 0 \wedge f(b) > 0 \implies \exists c \in (a; b): f(c) = 0 $ 
+}
+
+\subsection{Определение монотонности функции}
+
+\mcdfn{Определение монотонности функции}{
+\begin{tabular}{rl}
+    & $\bullet$ $f(x)$ называется строго возрастающей на $E \subseteq \mathbb{R}$, если 
+        $\forall x_1, x_2 \in E: x_1 < x_2 \implies f(x_1) < f(x_2) $ \\
+    & $\bullet$ $f(x)$ называется неубывающей на $E \subseteq \mathbb{R}$, если 
+        $\forall x_1, x_2 \in E: x_1 < x_2 \implies f(x_1) \le f(x_2) $ \\
+    & $\bullet$ $f(x)$ называется строго убывающей на $E \subseteq \mathbb{R}$, если 
+        $\forall x_1, x_2 \in E: x_1 < x_2 \implies f(x_1) > f(x_2) $ \\
+    & $\bullet$ $f(x)$ называется невозрастающей на $E \subseteq \mathbb{R}$, если 
+        $\forall x_1, x_2 \in E: x_1 < x_2 \implies f(x_1) \ge f(x_2) $ \\
+\end{tabular}
+}
+
+\subsection{Достаточное условие обратимости}
+
+\mcdfn{Достаточное условие обратимости}{
+    Если функция $f(x)$ строго монотонна на $X$, то $f(x)$ обратима на $X$
+\mcprf{
+\begin{split}
+    & \text{Предположим от противного, что $f(x)$ не инъективна, то есть} \\
+    & \exists x_1, x_2 \in X: x_1 \ne x_2 \wedge f(x_1) = f(x_2) \\
+    & x_1 \ne x_2 \implies \min(x_1, x_2) < \max(x_1, x_2) \implies \circled{$\mathbb{W}$} \text{ с определением строгой монотонности} \\
+\end{split}
+}
+}
+
+\subsection{Критерий обратимости функции}
+
+\mcdfn{Критерий обратимости функции}
+{
+    Пусть функция $f(x)$ непрерывна на $[a;b]$. Тогда $f(x)$ обратима $\iff f(x)$ строго монотонна
+\mcprf{
+\begin{split}
+    & "\impliedby" \text{Смотри достаточное условие обратимости} \\
+    & "\implies" \\
+    & \text{Докажем для случая, когда $f(x)$ строго монотонно возрастает, для убывания аналогично} \\
+    & \text{Предположим от противного, тогда БОО} \\
+    & \exists x_1 < x_2 < x_3 \in [a; b]: \, f(x_1) < f(x_2) \ge f(x_3)  \\
+    & \text{Если } f(x_2) = f(x_3) \text{, то $f$ не инъективна } \implies \text{ $f$ не обратима } \implies \circled{$\mathbb{W}$} \\
+    & \text{Иначе, положим } c := \frac{\max(f(x_1), f(x_3)) + f(x_2)}{2} \implies f(x_1) < c < f(x_2) \wedge f(x_3) < c < f(x_2)  \\
+    & f \text{ непрерывна на } [a; b] \implies f \text{ непрерывна на } [x_1; x_2] \text{ и } [x_2; x_3] \\
+    & f \text{ непрерывна на } [x_1; x_2] \implies \exists x_0' \in (x_1; x_2): f(x_0') = c \\
+    & f \text{ непрерывна на } [x_2; x_3] \implies \exists x_0'' \in (x_2; x_3): f(x_0'') = c \\
+    & \text{Получили: } \exists x_0' < x_0'' \in [a; b]: f(x_0') = f(x_0'') \implies \text{ $f$ не инъективна } \implies \text{ $f$ не обратима } \implies \circled{$\mathbb{W}$} \\ \\
+\end{split}
+}
+}
+
+\subsection{Свойства обратимой функции}
+
+\mcthm{}{
+    Если функция $f(x)$ непрерывна и строго монотонна на $[a;b]$, то функция $f^{-1}(y):$
+
+\begin{tabular}{rl}
+& $\bullet$ 1) определена на $ E_f = [\min(f(a), f(b)); \max(f(a), f(b))] $ \\
+& $\bullet$ 2) мотонотонна (и имеет ту же монотонность) на $ E_f $ \\
+& $\bullet$ 3) непрерывна на $ E_f $ \\
+\end{tabular}
+
+\mcprf{
+\begin{split}
+    & \text{1. Доказано по критерию обратимости функции} \\
+    & \text{2. БОО $f$ возрастает на $[a; b]$} \\
+    & \text{Предположим от противного} \\
+    & f^{-1}(y) \text{ не возрастает на } [a; b] \implies \exists y_1 < y_2 \in [f(a); f(b)]: f^{-1}(y_1) \ge f^{-1}(y_2) \\
+    & \text{По определению обратной функции } f^{-1}(y_1), f^{-1}(y_2) \in [a; b] \text{, обозначим } x_1 = f^{-1}(y_1), x_2 = f^{-1}(y_2) \\
+    & x_1 \ge x_2 \implies f(x_1) \ge f(x_2) \text{. При этом, } f(x_1) = y_1 \wedge f(x_2) = y_2 \\
+    & x_1 \ge x_2 \implies y_1 \ge y_2 \implies \circled{$\mathbb{W}$} \\
+    & \text{3. Докажем непрерывность по определению} \\
+    & \text{Дано: } x = f^{-1}(y) \text{ - определённая монотонная на $[a; b]$ функция} \\
+    & \text{Докажем, что $f^{-1}$ непрерывна в любой точке } y_0 \in (f(a); f(b)) \\
+    & \text{Для } y_0 \in \{ f(a), f(b) \} \text{ доказательство аналогично (нужно рассмотреть односторонние пределы)} \\
+    & \text{По определению непрерывности в точке } 
+        \forall \veps > 0 \,
+        \exists \delta > 0 \,
+        \forall y \in \dot{U}_\delta(y_0): 
+        | f^{-1}(y) - f^{-1}(y_0) | < \veps \\
+    & \text{Обозначим } f^{-1}(y_0) = x_0 \\
+    & \text{БОО докажем для таких $\veps$, что } 
+        U_\veps(x_0) \subset (a; b) \text{. Для } \emph{б\'{o}льших } \veps \text{ неравество также будет выполняться} \\
+    & a < x_0 - \veps < x_0 + \veps < b \\
+    & \text{Обозначим } y_1 = f(x_0 - \veps), y_2 = f(x_0 + \veps), \text{ тогда } y_1 < y_0 < y_2 \\
+    & \text{Положим } \delta := \min(y_2 - y_0, y_0 - y_1) \text{, тогда } U_\delta(y_0) \in (y_1; y_2) \\
+    & \text{Докажем, что при выбранном $\delta$ выполняется неравенство под знаками кванторов:} \\
+    & y \in U_\delta(y_0) 
+        \implies y \in (y_1; y_2) 
+        \implies f^{-1}(y_1) < f^{-1}(y) < f^{-1}(y_2) 
+        \implies x_0 - \veps < f^{-1}(y) < x_0 + \veps \implies \\
+    &   \implies | f^{-1}(y) - x_0 | < \veps
+        \implies \text{ неравенство под кванторами верно и определение выполняется} \\
+\end{split}
+}
+}
+
+\subsubsection{Следствие 1}
+
+\mccorollar{Следствие (без доказательства)}{
+    Если функция $f(x)$ непрерывна и строго монотонна на $(a; b), \, a, b \in \overline{\mathbb{R}}$, то функция $f^{-1}(y):$
+
+\begin{tabular}{rl}
+    & $\bullet$ 1) определена на $ (m; M) $, где $ m = \min(f(a), f(b)), M = \max(f(a), f(b)) $ \\
+    & $\bullet$ 2) мотонотонна (и имеет ту же монотонность) $ [m; M] $ \\
+    & $\bullet$ 3) непрерывна на $ (m; M) $ \\
+\end{tabular}
+
+    Идея доказательства: рассмотреть $[c;d] \subset (a; b)$, для него верна теорема выше, а далее перейти к пределу при границах, стремящихся к $a$ и $b$
+}
+
+\subsubsection{Следствие 2}
+
+\mccorollar{}{
+    Т.к. $f(x) = x^n$ непрерывна и строго монотонно возрастает на $D_f = n \,\, \vdots \,\, 2 \, ? \, [0; +\infty) \, : \, \mathbb{R}$, то
+
+    $g(x) = \sqrt[n]{x} $ непрерывна и строго монотонно возрастает на $D_g = E_f = n \,\, \vdots \,\, 2 \, ? \, [0; +\infty) \, : \, \mathbb{R}$
+}
+
+\subsection{Обратные тригонометрические функции}
+
+\mcdfn{Обратные тригонометрические функции}{
+    $ y = \sin x $ непрерывна и возрастает на $ D_f = [-\frac{\pi}{2}; \frac{\pi}{2}] \implies $
+
+    $ \implies \exists \arcsin := \sin^{-1}: y = \arcsin x $ непрерывна и возрастает на $ E_f = [-\frac{\pi}{2}; \frac{\pi}{2}] $, область значений - $D_f = [-1; 1]$
+
+    Аналогично
+
+    \begin{tabular}{rl}
+        & $\bullet$ $ y = \arccos x $ непрерывна и убывает на $E_f = [0; \pi] $, область значений - $D_f = [-1; 1]$ \\
+        & $\bullet$ $ y = \arctan x $ непрерывна и возрастает на $E_f = (-\frac{\pi}{2}; \frac{\pi}{2})$, область значений - $D_f = \mathbb{R}$ \\
+        & $\bullet$ $ y = \text{arcctg} \, x $ непрерывна и убывает на $E_f = (0; \pi)$, область значений - $D_f = \mathbb{R}$ \\
+    \end{tabular}
+}
+
+\subsection{Показательная функция}
+
+\mcdfn{Показательная функция}{
+    (теорема без доказательства) функция $y = a^x, a > 0$
+
+\begin{tabular}{rl}
+    & $\bullet$ 1) определена на $ D_f = \mathbb{R}, E_f = (0; +\infty) $ \\
+    & $\bullet$ 2) возрастает при $ a > 1 $ и убывает при $ 0 < a < 1 $ \\
+    & $\bullet$ 3) непрерывна на $ \mathbb{R} $ \\
+    & $\bullet$ 4) $a^{x} \cdot a^{y} = a^{x + y} $ \\
+    & \,\,\,\, /* Следствие: $\phi(x) = a^x$ является изоморфизмом между $(\mathbb{R}, +)$ и $(\mathbb{R}_+, *)$ */ \\
+    & \,\,\,\, $(a^x)^y = a^{xy} $\\
+\end{tabular}
+}
+
+\subsection{Логарифмическая функция}
+
+\mcdfn{Логарифмическая функция}{
+    Функция, обратная к $y = a^x, a \in (0; 1) \cup (1; +\infty)$ обозначается $ y = \log_{a}x$
+
+\begin{tabular}{rl}
+    & $\bullet$ 1) определена на $ D_f = (0; +\infty), E_f = \mathbb{R} $ \\
+    & $\bullet$ 2) возрастает при $ a > 1 $ и убывает при $ 0 < a < 1 $ \\
+    & $\bullet$ 3) непрерывна на $ (0; +\infty) $ \\
+    & $\bullet$ 4) $ \log_a{x} + \log_a{y} = \log_a xy $ \\
+    & \,\,\,\, /* Следствие: $\psi(x) = \log_a{x}$ является изоморфизмом между $(\mathbb{R}_+, *)$ и $(\mathbb{R}, +)$ */ \\
+    & \,\,\,\, $ \log_a{x^\alpha} = \alpha \log_a{x} $\\
+\end{tabular}
+}
+
+\subsection{Следствия из 2 замечательного предела}
+
+\mccorollar{Следствия из 2 замечательного предела}{
+    $ \lim_{x \to 0} (1 + x)^\frac{1}{x} = e $
+
+    $ \lim_{x \to 0} \frac{\ln(x + 1)}{x} = 1 $
+
+\mcprf{
+\begin{split}
+    & \frac{\ln(x + 1)}{x} = \frac{1}{x} \ln(x + 1) = \ln(x + 1)^\frac{1}{x} \\
+    & \text{Функция $\ln x$ непрерывна, тогда по теореме о пределе сложной функции} \\
+    & \lim_{x \to 0} \frac{\ln(x + 1)}{x} = \lim_{x \to 0} \ln(x + 1)^\frac{1}{x} = 1 \\
+\end{split}
+}
+
+    $ \lim_{x \to 0} \frac{e^x - 1}{x} = 1 $
+
+\mcprf{
+\begin{split}
+    & t = e^x - 1 \implies x = \ln(t + 1) \\
+    & x \to 0 \implies t \to \infty \\
+    & \lim_{x \to 0} \frac{e^x - 1}{x} = \lim_{t \to 0} \frac{t}{\ln(t + 1)} = 1 \\
+\end{split}
+}
+}
+
+\subsection{Показательная функция с вещественным показателем}
+
+\mccorollar{Показательная функция с вещественным показателем}{
+    $ y = x^\alpha, \alpha \in \mathbb{R}, D_f = (0; +\infty) $
+
+    $ y = e^{\alpha \ln x} $
+
+    $ \ln x $ непрерывна и возрастает на $(0; +\infty)$
+
+    $ \alpha \ln x $ непрерывна и возрастает при $\alpha > 0 $ и убывает при $\alpha < 0$
+
+    $ e^{\alpha \ln x} $ непрерывна и возрастает при $\alpha > 0 $ и убывает при $\alpha < 0$
+}
+
+\subsubsection{Следствие}
+
+\mccorollar{}{
+    $ \lim_{x \to +\infty} a(x) = a \wedge 
+        \lim_{x \to +\infty} b(x) = b \implies
+        \lim_{x \to +\infty} a(x)^{b(x)} = \lim_{x \to +\infty} e^{b(x) \ln a(x)} = e^{b \ln a} = a^b $
+
+    Для ч.п. $ \NumSeq{a_n} $ и $ \NumSeq{b_n} $ построим кусочно-линейные функции $a(x)$ и $b(x)$, такие что $ \forall n \in \mathbb{N}: a(n) = a_n \wedge b(n) = b_n $
+
+    Тогда $ \lim_{n \to +\infty} a_n = a \wedge \lim_{n \to +\infty} b_n = b \implies \lim_{n \to +\infty} a_n^{b_n} = a^b $ 
+}
+
+\section{Производная функции}
+
+\subsection{Определение производной}
+
+\mcdfn{Определение производной}{
+    Производная функции $ f $ в точке $x_0$ - это предел
+
+$$
+\lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x} = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0)
+$$
+}
+
+\nt{
+    $ \forall x \in \mathbb{R}: \, (\sin x)' = \cos x $
+
+\mcprf{
+\begin{split}
+    & \lim_{x \to x_0} \frac{\sin x - \sin x_0}{x - x_0} = 
+        \lim_{x \to x_0} \frac{2 \sin (\frac{x - x_0}{2}) \cos(\frac{x + x_0}{2})}{x - x_0} =
+        \lim_{x \to x_0} \cos(\frac{x + x_0}{2}) = \cos x_0 \\
+\end{split}
+}
+}
+
+\nt{
+    $ \forall x \in \mathbb{R} \, \forall n \in \mathbb{N}: \, (x^n)' = n x^{n - 1} $
+
+\mcprf{
+\begin{split}
+    & \lim_{x \to x_0} \frac{x^n - {x_0}^n}{x - x_0} = 
+        \lim_{x \to x_0} \frac{(x - x_0) \sum_{k = 0}^{n - 1} x^{n - 1 - k} {x_0}^{k}}{x - x_0} = 
+        \lim_{x \to x_0} \sum_{k = 0}^{n - 1} x^{n - 1 - k} {x_0}^{k} = n x_0^{n - 1} \\
+\end{split}
+}
+}
+
+
+\nt{
+    $ (a^x)' = a^x \ln a $
+
+\mcprf{
+\begin{split}
+    & \lim_{x \to x_0} \frac{a^x - a^{x_0}}{x - x_0} = 
+        a^{x_0} \lim_{x \to x_0} \frac{a^{x - x_0} - 1}{x - x_0} = 
+        a^{x_0} \lim_{t \to 0} \frac{a^{t} - 1}{t} = \\
+    & = a^{x_0} \lim_{t \to 0} \frac{e^{t \ln a} - 1}{t} =
+        a^{x_0} \lim_{s \to 0} \frac{e^{s} - 1}{s} \cdot \ln a = a^{x_0} \ln a \\
+\end{split}
+}
+}
+
+\nt{$ (e^x)' = e^x $}
+
+\subsection{Правила подсчёта производных}
+
+\mcclm{Правила подсчёта производных}{}{
+    Если $ \exists f'(x), \exists g'(x), \alpha \in \mathbb{R}, \beta \in \mathbb{R} $, то
+
+	\begin{tabular}{rl}
+		& $\bullet$ $ (\alpha f(x) + \beta g(x))' = \alpha f'(x) + \beta g'(x) $ \\
+		& $\bullet$ $ (f(x) \cdot g(x))' = f'(x) \cdot g(x) + f(x) \cdot g'(x) $ \\
+        & $\bullet$ $ g(x) \ne 0 \implies \left(\frac{f(x)}{g(x)}\right)' = \frac{f'(x) g(x) - f(x) g'(x)}{g^2(x)} $ % proof at lecture 11, 1:10:30 %
+	\end{tabular}
+}
+
+\subsection{Определения дифференцируемости функции}
+
+\mcdfn{Дифференцируемость функции в точке}{
+    Функция $f(x)$ называется дифференцируемой в точке $x_0$, если
+\[ \exists A \in \mathbb{R}: \, f(x) = f(x_0) + A \cdot (x - x_0) + \SmO[x - x_0] \]
+}
+
+\mcdfn{Признак дифференцируемости функции в точке}
+
+\mcthm{}{
+    Функция $f(x)$ дифференцируема в точке $x_0 \iff \exists f'(x_0) (\in \mathbb{R}) $
+\mcprf{
+\begin{split}
+    & "\implies" \\
+    & \text{По определению дифференцируемости в точке} \\
+    & \exists A \in \mathbb{R}: \, f(x) = f(x_0) + A \cdot (x - x_0) + \SmO[x - x_0] 
+        \implies \frac{f(x) - f(x_0)}{x - x_0} = A + \SmO[1] \implies \\
+    & \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = A \in \mathbb{R} \implies
+        \exists f'(x_0) = A \in \mathbb{R} \\
+    & "\impliedby" \\
+    & \text{По определению производной:} \\
+    & \exists \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0) \in \mathbb{R}
+        \implies \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0) + \SmO[1] \implies \\
+    & \implies f(x) - f(x_0) = f'(x_0) \cdot (x - x_0) + \SmO[x - x_0] \\
+    & \implies f(x) = f(x_0) + A \cdot (x - x_0) + \SmO[x - x_0], A = f'(x_0) \in \mathbb{R} \\
+\end{split}
+}
+} 
+
+\subsection{Определение дифференциала}
+
+\mcdfn{Определение дифференциала}{
+    Дифференциал функции $f(x)$ в точке $x_0$ - это линейная функция $ d f(x) = A \cdot (x - x_0) $ такая, что
+    $ f(x) = f(x_0) + d f(x) + \SmO[x - x_0] $
+}
+
+\subsection{Теорема о непрерывности функции, дифференцируемой в точке}
+
+\mcthm{}{
+    Дифференцируемая в точке $x_0$ функция непрерывна в ней
+\mcprf{
+\begin{split}
+    & \text{По определению дифференцируемости в точке } x_0: \\
+    & f(x) = f(x_0) + f'(x_0) \cdot (x - x_0) + \SmO[x - x_0] \\
+    & \left. \begin{tabular}{l}
+        $ f'(x_0) \in \mathbb{R} \implies \lim_{x \to x_0} f'(x_0) \cdot (x - x_0) = 0 $ \\
+        $ \lim_{x \to x_0} \SmO[x - x_0] = 0 $
+    \end{tabular} \right\}
+    \begin{tabular}{l}
+        $ \implies \lim_{x \to x_0} f(x) = x_0 $
+    \end{tabular} \\
+\end{split}
+}
+}
+
+\subsection{Теорема о дифференцируемости сложной функции}
+
+\mcthm{}{
+    Если $g(x)$ дифференцируема в точке $ x_0 $ и функция $f(y)$ дифференцируема в точке $y_0 = g(x_0)$, то
+    $f(g(x))$ дифференцируема в точке $ x_0 $ и $ (f(g(x)))' \vert_{x = x_0} = f'(g(x_0)) \cdot g'(x_0) $
+\mcprf{
+\begin{split}
+    & g(x) = g(x_0) + g'(x_0) (x - x_0) + \SmO[x - x_0] \\
+    & f(y) = f(y_0) + f'(y_0) (y - y_0) + \SmO[y - y_0] \implies \\
+    & f(g(x)) = f(g(x_0)) + f'(g(x_0)) (g'(x_0) (x - x_0) + \SmO[x - x_0]) + \SmO[g'(x_0) (x - x_0) + \SmO[x - x_0]] \\
+    & f(g(x)) = f(g(x_0)) + f'(g(x_0)) g'(x_0) (x - x_0) + f'(g(x_0)) \cdot \SmO[x - x_0] + \SmO[g'(x_0) (x - x_0) + \SmO[x - x_0]] = \\
+    & = f(g(x_0)) + f'(g(x_0)) g'(x_0) (x - x_0) + \SmO[x - x_0]  + (x - x_0) \SmO[g'(x_0) + \SmO(1)] = \\
+    & = f(g(x_0)) + f'(g(x_0)) g'(x_0) (x - x_0) + \SmO[x - x_0] \implies (f(g(x)))' \vert_{x = x_0} = f'(g(x_0)) \cdot g'(x_0) \\
+\end{split}
+}
+}
+
+\subsection{Теорема о производной обратной функции}
+
+\mcthm{}{
+    Если $f(x)$ непрерывна и обратима на $[a; b]$, $x_0 \in (a; b), \exists f'(x_0) \ne 0 $, тогда
+    $ \exists (f^{-1}(y))'|_{y = f(x_0) = y_0} = \frac{1}{f'(x_0)} $
+
+\mcprf{
+\begin{split}
+    & \lim_{y \to y_0} \frac{f'(y) - f'(y_0)}{y - y_0}
+        = \vert \text{замена } y = f(x) \vert
+        = \lim_{x \to x_0} \frac{f^{-1}(f(x)) - f^{-1}(f(x_0))}{f(x) - f(x_0)}
+        = \lim_{x \to x_0} \frac{x - x_0}{f(x) - f(x_0)} = \frac{1}{f'(x_0)} \\
+\end{split}
+}
+}
+
+\subsection{Пример 1}
+
+\mcex{}{
+    Пример: $ f(x) = e^x, f'(x) = e^x, f^{-1}(y) = \ln y $
+
+    $ (f^{-1}(y))'|_{y = y_0} = \frac{1}{f'(f^{-1}(y_0))} = \frac{1}{e^{f^{-1}(y_0)}} = \frac{1}{e^{\ln y_0}} = \frac{1}{y_0}  $
+}
+
+\subsection{Пример 2}
+
+\mcex{}{
+    Пример: $y = x^\alpha, \alpha \in \mathbb{R}, D_f = (0; +\infty)$
+
+    $ y = e^{\alpha \ln x} \implies y' = e^{\alpha \ln x} (\alpha \ln x)' = e^{\alpha \ln x} \cdot \frac{\alpha}{x} = \alpha x^{\alpha - 1} $
+}
+
+\subsection{Определение локального минимума}
+
+\mcdfn{Определение локального минимума (точка минимума)}{
+    $ x_0 $ - точка локального минимума функции f(x), если 
+    $ \exists \delta_0 > 0 \, \forall x \in U_{\delta_0}(x_0): f(x_0) \le f(x) $
+
+    $ x_0 $ - точка строгого локального минимума функции f(x), если 
+    $ \exists \delta_0 > 0 \, \forall x \in \dot{U}_{\delta_0}(x_0): f(x_0) < f(x) $
+}
+
+\subsection{Определение локального максимума}
+
+\mcdfn{Определение локального максимума (точка максимума)}{
+    $ x_0 $ - точка локального максимума функции f(x), если 
+    $ \exists \delta_0 > 0 \, \forall x \in U_{\delta_0}(x_0): f(x_0) \ge f(x) $
+
+    $ x_0 $ - точка строгого локального максимума функции f(x), если 
+    $ \exists \delta_0 > 0 \, \forall x \in \dot{U}_{\delta_0}(x_0): f(x_0) > f(x) $
+}
+
+\subsection{Определение точки локального экстремума}
+
+\mcdfn{Точка локального экстремума}{
+    Точками локального экстремума называются точки минимума и точки максимума
+}
+
+\subsection{Необходимое условие локального экстремума (теорема Ферма)}
+
+\mcthm{Необходимое условие локального экстремума (теорема Ферма)}{
+    Если $x_0$ - точка локального экстремума, то $ \exists f'(x_0) \implies f'(x_0) = 0 $
+\mcprf{
+\begin{split}
+    & \text{Пусть $\exists f'(x_0)$} \\
+    & \text{Докажем для случая, когда $x_0$ - локальный минимум, для локального максимума } \\
+    & \text{доказательство аналогично.} \\
+    & \text{Предел при $ x \to x_0 $ существует $\implies$ существуют односторонние пределы и они совпадают с $f'(x_0)$ } \\
+    & \text{В некоторой $ \delta $ окрестности } f(x_0) \le f(x) \\
+    & \left. \begin{tabular}{l}
+        $ x > x_0 \implies x - x_0 > 0 \implies \lim_{x \to x_0+} \frac{f(x) - f(x_0)}{x - x_0} \ge 0 $ \\
+        $ x < x_0 \implies x - x_0 < 0 \implies \lim_{x \to x_0-} \frac{f(x) - f(x_0)}{x - x_0} \le 0 $ \\
+    \end{tabular} \right\}
+    \begin{tabular}{l}
+        $ \implies f'(x_0) = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = 0 $
+    \end{tabular} \\
+\end{split}
+}
+}
+
+\subsection{Определения касательной к графику функции}
+
+\mcdfn{Касательная к графику функции}{
+    Касательной к графику функции $f(x)$ называется прямая $ y = f'(x_0) (x - x_0) + f(x_0) $ 
+}
+
+\subsection{Теорема Ролля}
+
+\mcthm{Теорема Ролля}{
+    Если функция $ f(x) $ удовлетворяет условиям:
+
+\begin{tabular}{rl}
+    & $\bullet$ Непрерывна на $[a; b]$ \\
+    & $\bullet$ Дифференцируема на $(a; b)$\\
+    & $\bullet$ $f(a) = f(b)$\\
+\end{tabular}
+
+    То $ \exists \xi \in (a; b): f'(\xi) = 0 $
+\mcprf{
+\begin{split}
+    & \text{1. Обозначим } M := \sup_{x \in [a; b]} f(x), m := \inf_{x \in [a; b]} f(x) \text{ достигаются, т.к. функция непрерывна на отрезке} \\
+    & \text{2. Если } m = M \implies f(x) = const \implies \forall x \in (a; b): f'(x) = 0 \\
+    & \text{3. Иначе, если $m < M$, тогда хотя бы одна из этих точек достигается в $ \xi \in (a; b)$ (т.к. $f(a) = f(b)$) } \\
+    & \text{БОО } f(\xi) = M \implies \xi \text{ - точка loc max } \\
+    & \text{$f$ дифференцируема на } (a; b) \implies \exists f'(\xi) \implies f'(\xi) = 0 \text{ (по теореме Ферма)} \\
+\end{split}
+}
+}
+
+\subsection{Теорема Лагранжа}
+
+\mcthm{Теорема Лагранжа}{
+    Если функция $ f(x) $ удовлетворяет условиям:
+
+\begin{tabular}{rl}
+    & $\bullet$ Непрерывна на $[a; b]$ \\
+    & $\bullet$ Дифференцируема на $(a; b)$\\
+\end{tabular}
+
+    То $ \exists \xi \in (a; b): \frac{f(b) - f(a)}{b - a} = f'(\xi) $
+\mcprf{
+\begin{split}
+    & \text{1. Рассмотрим } F(x) = f(x) - \frac{f(b) - f(a)}{b - a} x \text{, эта функция также, как и функция $f$, } \\
+    & \text{непрерывна на $[a; b]$ и дифференцируема на $(a; b)$} \\
+    & F(a) = F(b) 
+        \implies \text{ для $F$ выполняются требования теоремы Ролля }
+        \implies \exists \xi \in (a; b): F'(\xi) = 0 \implies \\
+    & \implies \exists \xi \in (a; b): f'(\xi) - \frac{f(b) - f(a)}{b - a} = 0 
+        \implies \exists \xi \in (a; b): \frac{f(b) - f(a)}{b - a} = f'(\xi) \\
+\end{split}
+}
+}
+
+\subsection{Теорема-следствие 1}
+
+\mccorollar{Теорема-следствие 1}{
+    Если функция $ f(x) $ удовлетворяет условиям:
+
+\begin{tabular}{rl}
+    & $\bullet$ Непрерывна на $[a; b]$ \\
+    & $\bullet$ Дифференцируема на $(a; b)$\\
+    & $\bullet$ $f'(x) = 0$ на $(a; b)$\\
+\end{tabular}
+
+    То $ f(x) = const $ на $ [a; b] $
+\mcprf{
+\begin{split}
+    & \forall x_1, x_2 \in [a; b] f(x) \text{ удовлетворяет требованиям теоремы Лагранжа на } [x1_; x_2] \implies \\
+    & \implies \exists \xi \in (x_1; x_1): f(x_2) - f(x_1) = f'(\xi) (x_2 - x_1) = 0 \cdot (x_2 - x_1) \\
+    & \text{Получили: } \forall x_1, x_2 \in [a; b]: f(x_2) - f(x_1) = 0 \\
+\end{split}
+}
+}
+
+\subsection{Теорема-следствие 2}
+
+\mccorollar{Теорема-следствие 2}{
+    Если функции $ f(x) $ и $g(x)$ удовлетворяют условиям:
+
+    \begin{tabular}{rl}
+        & $\bullet$ Непрерывность на $[a; b] $\\
+        & $\bullet$ Дифференцируемость на $(a; b) $\\
+        & $\bullet$ $ \forall x \in (a; b): f'(x) = g'(x) $\\
+    \end{tabular}
+
+    То $ \forall x \in [a; b]: f(x) - g(x) = const $
+
+\mcprf{
+\begin{split}
+    & \text{Рассмотрим } h(x) = f(x) - g(x) \\
+    & h(x) \text{ удовлетворяет требованиям предыдущей теоремы-следствия 1} \implies \\
+    & \implies \forall x \in [a; b]: f(x) - g(x) = const \\
+\end{split}
+}
+}
+
+\subsection{Теорема-следствие 3}
+
+\mccorollar{Теорема-следствие 3}{
+    Если $\phi(x)$ непрерывна на $ [a; b] $ и $ \phi'(x) $ определена везде на $ (a; b) $, 
+        кроме, быть может, $x_0$, и $ \exists \lim_{x \to x_0} \phi'(x) = A \in \mathbb{R} $
+
+    То $ \exists \phi'(x_0) = A $, т.е. у производной непрерывной функции нет точек устранимого разрыва
+\mcprf{
+\begin{split}
+    & \text{По определению производной и по теореме Лагранжа:} \\
+    & \phi'(x_0) 
+        = \lim_{x \to x_0} \frac{\phi(x) - \phi(x_0)}{x - x_0} 
+        = \lim_{x \to x_0} \phi'(\xi(x)), \xi(x) \in (x_0; x)
+        \text{, т.к. на } (x_0; x) \\
+    & \phi(x) \text{ удовлетворяет требованиям т. Лагранжа} \\
+    & \lim_{x \to x_0} \xi(x) = x_0 \implies \phi'(x_0) = \lim_{x \to x_0} \phi'(\xi(x)) = A \text{ (по теореме о пределе сложной функции)} \\
+\end{split}
+}
+}
+
+\subsection{Теорема Коши}
+
+\mcthm{Теорема Коши}{
+    Если функции $f(x)$ и $g(x)$ удовлетворяют условиям:
+
+\begin{tabular}{rl}
+    & $\bullet$ Непрерывность на $[a; b]$ \\
+    & $\bullet$ Дифференцируемость на $(a; b)$\\
+\end{tabular}
+
+    А также $g'(x) \ne 0 $ на $ (a; b) $ и $g(a) \ne g(b)$
+
+    То $ \exists \xi \in (a; b): \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(\xi)}{g'(\xi)} $
+
+\mcprf{
+\begin{split}
+    & \text{1. Рассмотрим } F(x) = f(x) - \frac{f(b) - f(a)}{g(b) - g(a)} g(x) \text{, эта функция также } \\
+    & \text{непрерывна на $[a; b]$ и дифференцируема на $(a; b)$} \\
+        & F(a) = F(b) 
+        \implies \text{ для $F$ выполняются требования теоремы Ролля }
+        \implies \exists \xi \in (a; b): F'(\xi) = 0 \implies \\
+    & \implies \exists \xi \in (a; b): f'(\xi) - \frac{f(b) - f(a)}{g(b) - g(a)} g'(\xi) = 0 
+        \implies \exists \xi \in (a; b): \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(\xi)}{g'(\xi)} \\
+\end{split}
+}
+}
+
+\subsection{Теорема о монотонности непрерывно дифференцируемой функции}
+
+\mcthm{}{
+    Если функция $ f(x) $ удовлетворяет условиям:
+
+\begin{tabular}{rl}
+    & $\bullet$ Непрерывна на $[a; b]$ \\
+    & $\bullet$ Дифференцируема на $(a; b)$\\
+\end{tabular}
+
+    То:
+
+    $ \forall x \in (a; b): f'(x) \ge 0 \iff f(x) \text{ неубывает на } [a; b] $
+
+    $ \forall x \in (a; b): f'(x) > 0 \implies f(x) \text{ возрастает на } [a; b] $
+
+    (Для 2 высказывания импликация в обратную сторону не верна, например, для $f(x) = x^3$ в т. $x=0$)
+
+\mcprf{
+\begin{split}
+    & "\impliedby" \\
+    & \forall x_0 \in (a; b): \, f'(x_0) = \lim_{x \to x_0}\frac{f(x) - f(x_0)}{x - x_0} \\
+    & f(x) \text{ - неубывающая функция } \implies \forall x \ne x_0: \frac{f(x) - f(x_0)}{x - x_0} \ge 0 \\
+    & \implies \lim_{x \to x_0}\frac{f(x) - f(x_0)}{x - x_0} \ge 0 \\
+    & "\implies" \\
+    & \forall x_1 < x_2 \in [a; b]: \, f(x) \text{ удовлетворяет т. Лагранжа на } [x_1; x_2] \implies \\  
+    & \exists \xi \in (x_1; x_2): f(x_2) - f(x_1) = f'(\xi) (x_2 - x_1) \\
+    & f'(\xi) \ge 0 \implies f(x_2) \ge f(x_1) \\
+    & f'(\xi) > 0 \implies f(x_2) > f(x_1) \\
+\end{split}
+}
+}
+
+\subsection{Теорема-следствие}
+
+\mccorollar{}{
+    Если $f(x)$ непрерывна на $[a; b]$ и дифференцируема на $(a; b)$, кроме конечного числа
+
+    точек (дифференцируемость), и $f'(x) \ge 0$, то $f(x)$ неубывает на $[a; b]$
+}
+
+\subsection{Достаточное условие экстремума}
+
+\mcthm{Достаточное условие экстремума}{
+    Если $\exists \delta > 0: $ \\
+        $ (\forall x \in (x_0 - \delta; x_0): f'(x) \ge 0) \, \wedge $ \\
+        $ \wedge \, (\forall x \in (x_0; x_0 + \delta): f'(x) \le 0) \, \wedge $ \\
+        $ \wedge \, (f(x) $ непрерывна в точке $ x_0 $) \\
+    , то $x_0$ - точка loc max (нестрогого)
+}
+
+\subsection{Выпуклость и вогнутость функции}
+
+\mcdfn{Выпуклость и вогнутость функций}
+{
+    Функция называется выпуклой вверх на отрезке $[a; b]$, если
+
+    $ \forall x_1 < x_2 \in [a; b] $ верно:
+
+    график функции $y=f(x)$ лежит выше хорды, соединяющей точки $(x_1; f(x_1))$ и $(x_2; f(x_2))$, т.е.
+
+    $ l(x) = \frac{f(x_2) - f(x_1)}{x_2 - x_1} x + \frac{x_2 f(x_1) - x_1 f(x_2)}{x_2 - x_1} $ - уравнение хорды $l$
+
+    $ \forall x \in [x_1; x_2]: f(x) \ge l(x) $ - нестрогая выпуклость
+
+    $ \forall x \in (x_1; x_2): f(x) > l(x) $ - строгая выпуклость
+
+    В определении функции, выпуклой вниз, знаки неравенств $ f(x) \ge l(x) $ и $ f(x) > l(x) $ меняются на противоположные
+}
+
+\subsection{Теорема о выпуклости и вогнутости функции на интервале}
+
+\mcthm{}{
+    Если $ f(x) $ непрерывна на $[a; b]$ и на $ (a; b) \exists \, f''(x) $, то
+
+    $ \forall x \in (a; b): f''(x) \ge 0 \implies f(x) $ выпукла вниз
+
+    $ \forall x \in (a; b): f''(x) \le 0 \implies f(x) $ выпукла вверх
+\mcprf{
+\begin{split}
+    & \text{Докажем выпуклость вниз, выпуклость вверх доказывается аналогично} \\
+    & \text{Пусть } x_1 < x_2 \in [a; b] \text{, тогда для доказательства по определению необходимо} \\
+    & \text{доказать верность неравенства:} \\
+    & \forall x \in (x_1; x_2): l(x) - f(x) \ge 0 \text{, где} \\
+    & l(x) = \frac{f(x_2) - f(x_1)}{x_2 - x_1} x + \frac{x_2 f(x_1) - x_1 f(x_2)}{x_2 - x_1} \text{ - уравнение хорды } l \\
+    & l(x) - f(x)
+        = \frac{f(x_2) - f(x_1)}{x_2 - x_1} x + \frac{x_2 f(x_1) - x_1 f(x_2)}{x_2 - x_1} - f(x) \frac{x_2 - x + x - x_1}{x_2 - x_1}
+        = \\
+    & = \frac{f(x_1) (x_2 - x) + f(x_2) (x - x_1)}{x_2 - x_1} - \frac{f(x) (x_2 - x) + f(x) (x - x_1)}{x_2 - x_1} = \\
+    & = \frac{f(x_1) (x_2 - x) + f(x_2) (x - x_1) - f(x) (x_2 - x) - f(x) (x - x_1)}{x_2 - x_1} = \\
+    & = \frac{(f(x_1) - f(x)) (x_2 - x) + (f(x_2) - f(x)) (x - x_1)}{x_2 - x_1} = \\
+    & = \frac{(f(x_2) - f(x)) (x - x_1) - (f(x_1) - f(x)) (x_2 - x)}{x_2 - x_1} \circled{$=$}, \text{ т.к. для функции $f$ } \\
+    & \text{на $ (x_1; x) $ и $ (x; x_2) $ выполняется т. Лагранжа, } \xi \in (x; x_2), \eta \in (x_1; x) \\
+    & \circled{$=$} \frac{f'(\xi) (x_2 - x) (x - x_1) - f'(\eta) (x - x_1) (x_2 - x)}{x_2 - x_1} = \\
+    & = \frac{(x - x_1) (x_2 - x) (f'(\xi) - f'(\eta))}{x_2 - x_1} \circled{$\circled{$=$}$},   
+        \text{ т.к. для функции $f'$ на $ (\eta; \xi) $ выполняется т. Лагранжа } \\
+    & \circled{$\circled{$=$}$} \frac{(x - x_1) (x_2 - x) f''(\zeta) (\xi - \eta)}{x_2 - x_1} \ge 0, \zeta \in (\eta; \xi) \subset (a; b) \\
+\end{split}
+}
+}
+
+\subsection{Правило Лопиталя}
+
+\mcthm{Правило Лопиталя (неопределённость вида $\frac{0}{0}$)}{
+    Докажем теорему для случая, когда рассматривается левосторонний предел при $ a \in \mathbb{R} $, т.е. предел
+
+    \[ \lim_{x \to a-} \frac{f(x)}{g(x)} \] для $a \in \mathbb{R}$ и функций $f(x)$ и $g(x)$, таких что:
+
+\begin{tabular}{rl}
+    & $\bullet$ $ \exists \delta_1 > 0: f \text{ и } g \text{ дифференцируемы на } (a - \delta_1; a) $\\
+    & $\bullet$ $ \exists \lim_{x \to a-} f(x) = \lim_{x \to a-} g(x) = 0 $ \\
+    & $\bullet$ $ \forall x \in (a - \delta_1; a): g'(x) \ne 0 $ \\
+    & $\bullet$ $ \exists \lim_{x \to a-} \frac{f'(x)}{g'(x)} = A \in \overline{\mathbb{R}} $ \\
+\end{tabular}
+
+    Тогда: $ \exists \lim_{x \to a-} \frac{f(x)}{g(x)} = A \in \overline{\mathbb{R}} $
+
+\mcprf{
+\begin{split}
+    & \text{1. БОО рассмотрим случай, когда } A \in \mathbb{R} \text{. Иначе рассмотрим предел частного } \frac{f(x)}{g(x)} \\
+    & \text{2. Доопределим $f(x)$ и $g(x)$ в точке $a$: } f(a) = g(a) = 0 \text{, чтобы функции были непрерывны в точке } a. \\
+    & \text{Это не влияет на искомый предел по определению предела функции при $ x \to a $ } \\
+    & \text{Тогда } \forall x \in (a - \delta_1; a) \text{ на $[x; a]$ выполнено условие т. Коши} \\
+    & \text{Тогда по т. Коши } \exists \xi \in (x; a): \frac{f(x) - f(a)}{g(x) - g(a)} = \frac{f'(\xi)}{g'(\xi)} \\
+    & \xi \text{ зависит от $x$ по построению } \implies \xi(x) \underset{x \to a-}{\to}  a \\
+    & \text{Тогда } \frac{f'(\xi)}{g'(\xi)} = F(\xi(x)) \underset{x \to a-}{\to} A \text{ по теореме о пределе сложной функции $ F(\xi(x)) $} \\
+\end{split}
+}
+    Для случая $ x \to a, \, a \in \mathbb{R} $ и $ x \to a+, \, a \in \mathbb{R} $ доказательство аналогично
+
+    Докажем теорему для случая, когда рассматривается предел при $ a \in +\infty $, т.е. предел
+
+    \[ \lim_{x \to +\infty} \frac{f(x)}{g(x)} \]
+\mcprf{
+\begin{split}
+    & \text{1. БОО рассмотрим случай, когда } A \in \mathbb{R} \text{. Иначе рассмотрим предел частного } \frac{f(x)}{g(x)} \\
+    & \lim_{x \to +\infty} \frac{f'(x)}{g'(x)} 
+        = \left| x = \frac{1}{t} \right| 
+        = \lim_{t \to 0+} \frac{f'\left(\frac{1}{t}\right)}{g'\left(\frac{1}{t}\right)}
+        = A \\
+    & \text{2. Рассмотрим функции:} \\
+    & a(t) = f(\frac{1}{t}) \\
+    & b(t) = g(\frac{1}{t}) \\
+    & \text{Тогда:} \\
+    & a'(t) = f'\left(\frac{1}{t}\right) \left( \frac{-1}{t^2} \right) \\
+    & b'(t) = g'\left(\frac{1}{t}\right) \left( \frac{-1}{t^2} \right) \\
+    & \frac{f'\left(\frac{1}{t}\right)}{g'\left(\frac{1}{t}\right)} = \frac{a'(t)}{b'(t)} 
+        \implies \lim_{x \to +\infty} \frac{f'(x)}{g'(x)} = \lim_{t \to 0+} \frac{a'(t)}{b'(t)} = A \\
+    & \text{По построению $a(t)$ и $b(t)$ - композиция дифференцируемых функций, также для них } \\
+    & \text{выполнены пункты 2, 3, 4 теоремы, тогда} \\
+    & \lim_{t \to 0+} \frac{a(t)}{b(t)} = \lim_{t \to 0+} \frac{a'(t)}{b'(t)} = A \implies \lim_{x \to +\infty} \frac{f(x)}{g(x)} = A \\
+\end{split}
+}
+}
+
+\mcthm{Правило Лопиталя (неопределённость вида $\frac{\infty}{\infty0}$)}{
+    Докажем теорему для случая, когда рассматривается левосторонний предел при $ a \in \mathbb{R} $, т.е. предел
+
+    \[ \lim_{x \to a-} \frac{f(x)}{g(x)} \] для $a \in \mathbb{R}$ и функций $f(x)$ и $g(x)$, таких что:
+
+\begin{tabular}{rl}
+    & $\bullet$ $ \exists \delta_1 > 0: f \text{ и } g \text{ дифференцируемы на } (a - \delta_1; a) $\\
+    & $\bullet$ $ \exists \lim_{x \to a-} f(x) = \lim_{x \to a-} g(x) = \infty $ \\
+    & $\bullet$ $ \forall x \in (a - \delta_1; a): g'(x) \ne 0 $ \\
+    & $\bullet$ $ \exists \lim_{x \to a-} \frac{f'(x)}{g'(x)} = A \in \overline{\mathbb{R}} $ \\
+\end{tabular}
+
+    Тогда: $ \exists \lim_{x \to a-} \frac{f(x)}{g(x)} = A \in \overline{\mathbb{R}} $
+
+\mcprf{
+\begin{split}
+    & \text{1. БОО рассмотрим случай, когда } A \in \mathbb{R} \text{. Иначе рассмотрим предел частного } \frac{f(x)}{g(x)} \\
+    & \text{2. По определению предела:} \\
+    & \forall \veps_1 > 0 \, \exists \delta_2 > 0 \, \forall x \in (a - \delta_2; a): \left| \frac{f'(x)}{g'(x)} - A \right| < \veps_1 \\
+    & \text{Рассмотрим такие $\veps_1$, что $ \veps_1 < \frac{1}{2} $} \\
+    & \text{Зафиксируем } x_0 \in (a - \min \{ \delta_1; \delta_2 \}; a) \\
+    & \text{Т.к. $ f(x) \underset{x \to a-}{\to} \infty $, то } 
+        \exists \delta_3 > 0 \, 
+        \forall x \in (a - \delta_3; a): \,
+        | f(x) | \ge \frac{ |f(x_0)| }{\veps_1} \\
+    & \text{То есть }
+        \exists \delta_3 > 0 \, 
+        \forall x \in (a - \delta_3; a): \,
+        \veps_1 \ge \left| \frac{f(x_0)}{f(x)} \right| \\
+    & \text{Аналогично } \exists \delta_4: \forall x \in (a - \delta_4; a): \veps_1 \ge \left| \frac{g(x_0)}{g(x)} \right|  \\
+    & \text{Обозначим } x_0 = a - \min \{ \delta_1; \delta_2; \delta_3; \delta_4 \} \text{ и рассмотрим } x \in (x_0; a) \\
+    & \text{Тогда на } [x_0; x] \text{ выполнены условия теоремы Коши для фунций $f$ и $g$ } \implies \\
+    & \implies \left| \frac{f(x) - f(x_0)}{g(x) - g(x_0)} - A \right| 
+        = \left| \frac{f'(\xi(x))}{g'(\xi(x))} - A \right| < \veps_1 
+        \text{, т.к. } \xi(x) \in (x_0; x) \subset (a - \delta_2; a)  \\
+    & \text{3.}
+        \left| \frac{f(x)}{g(x)} - A \right| 
+        \le \left| \frac{f(x)}{g(x)} - \frac{f(x) - f(x_0)}{g(x) - g(x_0)} \right| + \left| \frac{f(x) - f(x_0)}{g(x) - g(x_0)} - A \right| < \\
+    & < \left| \frac{f(x)}{g(x)} - \frac{f(x) - f(x_0)}{g(x) - g(x_0)} \right| + \veps_1 = \\
+    & = \left| \frac{f(x) - f(x_0)}{g(x) - g(x_0)} \right| \left| \frac{1 - \frac{g(x_0)}{g(x)}}{1 - \frac{f(x_0)}{f(x)}} - 1 \right| + \veps_1 < \\
+    & < (|A| + \veps_1) \left| \frac{1 - \frac{g(x_0)}{g(x)}}{1 - \frac{f(x_0)}{f(x)}} - 1 \right| + \veps_1 = \\
+    & = (|A| + \veps_1) \left| \frac{\frac{f(x_0)}{f(x)} - \frac{g(x_0)}{g(x)}}{1 - \frac{f(x_0)}{f(x)}} \right| + \veps_1 \le \\
+    & \le (|A| + \veps_1) \frac{ \left| \frac{f(x_0)}{f(x)} \right| + \left| \frac{g(x_0)}{g(x)} \right| }{1 - \left| \frac{f(x_0)}{f(x)} \right| } + \veps_1 \le \\
+    & \le (|A| + \veps_1) \frac{2 \veps_1}{1 - \veps_1 } + \veps_1 
+        < \left(|A| + \frac{1}{2}\right) \frac{2 \veps_1}{1 - \frac{1}{2}} + \veps_1 = \veps_1 (3 + 4 |A|) \\
+    & \text{4. Тогда: } \\
+    & \forall \veps > 0 \, \text{ построим } \veps_1 = \min \{ \frac{\veps}{3 + 4 |A| }, \frac{1}{2} \} \text{, по $\veps_1$ построим $ \delta_1, \delta_2, \delta_3, \delta_4 $} \\
+    & \text{Положим }
+        \delta := \min \{ \delta_1; \delta_2; \delta_3; \delta_4 \}
+            \text{, тогда }
+                \left| \frac{f(x)}{g(x)} - A \right| < \veps_1 (3 + 4 |A| ) = \veps \\
+\end{split}
+}
+}
+
+\mcex{Пример использования правила Лопиталя}
+{
+\begin{equation}
+\begin{split}
+& \text{1.Пусть } \alpha > 0, \beta > 0 \\
+& \lim_{x \to +\infty} \frac{\ln x}{x^{\alpha}}
+    = \lim_{x \to +\infty} \frac{\frac{1}{x}}{\alpha x^{\alpha - 1}}
+    = \lim_{x \to +\infty} \frac{1}{\alpha x^\alpha} = 0 \implies \\
+& \implies 
+    \lim_{x \to +\infty} \frac{\ln^\alpha x}{x^\beta} 
+    = \lim_{x \to +\infty} \left( \frac{\ln x}{x^\frac{\beta}{\alpha}} \right)^\alpha
+    = 0 \text{, т.к. $x^\alpha$ непрерывна на всей области определения} \\
+& \text{2. Пусть } \alpha > 0, a > 1 \\
+& \lim_{x \to +\infty} \frac{x}{a^x} 
+    = \lim_{x \to +\infty} \frac{1}{a^x \ln a} 
+    = 0 \implies \\
+& \implies
+    \lim_{x \to +\infty} \frac{x^\alpha}{a^x} 
+    = \lim_{x \to +\infty} \left(\frac{x}{(\sqrt[\alpha]{a})^x}\right)^\alpha 
+    = 0 \\
+\end{split}
+\end{equation}
+}
+
+\section{Формула Тейлора}
+
+\subsection{Многочлен Тейлора}
+
+\mcdfnc{Многочлен Тейлора}{
+    Пусть дана функция $f$, дифференцируемая $n$ раз в точке $x_0$, тогда в точке $x_0$ многочленом Тейлора называется многочлен:
+
+    $ T_n(x) = \sum_{k = 0}^{n} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k $
+}
+
+\nt{
+    При $x_0 = 0$ $T_n(x)$ называется рядом Маклорена
+}
+
+\mcclm{Свойство многочлена Тейлора}{}{
+    $ \forall k \in \mathbb{N}: (0 \le k \le n \implies T^{(k)}_n(x_0) = f^{(k)}(x_0) ) $
+
+\mcprf{
+\begin{split}
+    & T_n^{(m)}(x) 
+        = \left( \sum_{k = 0}^{n} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} = \\
+    & = \left( \sum_{k = 0}^{m - 1} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} 
+        + \left( \frac{f^{(m)}(x_0)}{m!} (x - x_0)^m \right)^{(m)} 
+        + \left( \sum_{k = m + 1}^{n - 1} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} \\
+    & = \left( \sum_{k = 0}^{m - 1} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} 
+        + \left( \frac{f^{(m)}(x_0)}{m!} m! (x - x_0)^0 \right) 
+        + \left( \sum_{k = m + 1}^{n - 1} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} \\
+    & = \left( \sum_{k = 0}^{m - 1} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} 
+        + \left( f^{(m)}(x_0) \right) 
+        + \left( \sum_{k = m + 1}^{n - 1} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} \implies \\
+    & T_n^{(m)}(x_0) = \left( \sum_{k = 0}^{m - 1} \frac{f^{(k)}(x_0)}{k!} 0 \right) 
+        + \left( f^{(m)}(x_0) \right) 
+        + \left( \sum_{k = m + 1}^{n - 1} \frac{f^{(k)}(x_0)}{k!} 0 \right) = f^{(m)}(x_0)  \\
+\end{split}
+}
+}
+
+\subsection{Формула Тейлора с остаточным членом в форме Пеано}
+
+\mcthm{Формула Тейлора с остаточным членом в форме Пеано}{
+    Если $ \exists f^{(n)}(x_0) $, т.е. существует $n$-ая производная в точке $x_0$ \\
+    (следовательно, функция $n - 1$ раз дифференцируема в некоторой окрестности точки $x_0$), то
+
+    $ R_n(x) = f(x) - T_n(x) = \overline{o}((x - x_0)^n) $
+
+\mcprf{
+\begin{split}
+    & \text{1. По правилу Лопиталя:} \\
+    &   \lim_{x \to x_0} \frac{R_n(x)}{(x - x_0)^n} =
+        \lim_{x \to x_0} \frac{f(x) - T_n(x)}{(x - x_0)^n} = 
+        \lim_{x \to x_0} \frac{f'(x) - T_n'(x)}{n (x - x_0)^{n - 1}} = \\
+    & = \lim_{x \to x_0} \frac{f''(x) - T_n''(x)}{n (n - 1) (x - x_0)^{n - 2}} 
+        = ... 
+        = \lim_{x \to x_0} \frac{f^{(n - 1)}(x) - T_n^{(n - 1)}(x)}{n! (x - x_0)} \\
+    & \text{Для полученного выражения нельзя применить правило Лопиталя, т.к. $f^{(n - 1)}$ } \\
+    & \text{может быть не дифференцируема в некоторой окрестности точки $x_0$} \\
+    & \text{(из условия следует, только то, что $f^{(n - 1)}$ дифференцируема в точке $x_0$)} \\
+    & \text{2. Для $f^{(n - 1)} - T_n^{(n - 1)}$ существует производная в точке $x_0$} \implies \\
+    & f^{(n - 1)}(x) = f^{(n - 1)}(x_0) + f^{(n)}(x_0) (x - x_0) + \overline{o}(x - x_0) \\
+    & T_n^{(n - 1)}(x) = T_n^{(n - 1)}(x_0) + T_n^{(n)}(x_0) (x - x_0) + \overline{o}(x - x_0) \\
+    & f^{(n - 1)}(x_0) = T_n^{(n - 1)}(x_0)
+        \wedge f^{(n)} = T_n^{(n)}(x_0) \implies \\
+    & \implies f^{(n - 1)}(x) - T_n^{(n - 1)}(x) 
+            = \overline{o}(x - x_0) - \overline{o}(x - x_0) 
+            = \overline{o}(x - x_0) \implies \\
+    & \implies 
+        \lim_{x \to x_0} \frac{f(x) - T_n(x)}{(x - x_0)^n} 
+        = \lim_{x \to x_0} \frac{\overline{o}(x - x_0)}{n! (x - x_0)} 
+        = 0 \\
+\end{split}
+}
+}
+
+\subsection{Формула Тейлора для синуса}
+\mcex{Формула Тейлора для синуса}{
+    $ f(x) = \sin x, x_0 = 0 $, тогда $ f^{(k)}(x) = \sin(x + \frac{\pi k}{2}) $
+
+\begin{tabular}{l}
+    $ f^{(k)}(0) = \left\{
+    \begin{tabular}{l}
+        $ 0, k \equiv 0 \mod 2 $ \\
+        $ (-1)^{\frac{k + 1}{2}} $, otherwise
+    \end{tabular} \right. $
+\end{tabular}
+
+    \[ \sin(x) = \sum_{k = 0}^{n} \frac{(-1)^k}{(2k + 1)!} x^{2k + 1} + \overline{o}(x^{2n + 1}) \]
+}
+
+\subsection{Формула Тейлора для экспоненциальной функции}
+\mcex{Формула Тейлора для косинуса}{
+    $ f(x) = \cos x, x_0 = 0 $, тогда $ f^{(k)}(x) = \cos(x + \frac{\pi k}{2}) $
+
+\begin{tabular}{l}
+    $ f^{(k)}(0) = \left\{
+    \begin{tabular}{l}
+        $ 0, k \equiv 1 \mod 2 $ \\
+        $ (-1)^{\frac{k}{2}} $, otherwise
+    \end{tabular} \right. $
+\end{tabular}
+
+    \[ \cos(x) = \sum_{k = 0}^{n} \frac{(-1)^k}{(2k)!} x^{2k} + \overline{o}(x^{2n}) \]
+}
+
+\subsection{Формула Тейлора для экспоненциальной функции}
+\mcex{Формула Тейлора для экспоненциальной функции}{
+    $ f(x) = e^x, x_0 = 0 $, тогда $ f^{(k)}(0) = 1 $
+
+    \[ e^x = \sum_{k = 0}^{n} \frac{x^{k}}{k!} + \overline{o}(x^{n}) \]
+}
+
+\mcex{Пример использования формулы Тейлора для подсчёта предела}{
+\begin{equation}
+\begin{split}
+    & \lim_{x \to 0} \frac{x - \sin x}{e^x - 1 - x - \frac{x^2}{2}} 
+        = \lim_{x \to 0} 
+            \frac
+                {x - (x - \frac{x^3}{6} + \overline{o}(x^3))}
+                {1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \overline{o}(x^3) - 1 - x - \frac{x^2}{2}} 
+        = \lim_{x \to 0} \frac{\frac{x^3}{6} + \overline{o}(x^3)}{\frac{x^3}{6} + \overline{o}(x^3)} 
+        = 1 \\                
+\end{split}
+\end{equation}
+}
+
+\subsection{Теорема Тейлора с остаточным членом в формуле Лагранжа}
+\mcthm{Теорема Тейлора с остаточным членом в формуле Лагранжа}{
+    Если функция $f(x)$ дифференцируема $n + 1$ раз на интервале 
+    $(a; b), a \in \overline{\mathbb{R}}, b \in \overline{\mathbb{R}}$ 
+    и $ a < x_0, x < b$, то
+
+    $ \exists c = c(x) \in (\min(x_0; x); \max(x_0; x)): $
+
+    $ R_n(x) = f(x) - T_n(x) = \frac{f^{(n + 1)}(c)}{(n + 1)!} (x - x_0)^{n + 1} $
+
+\mcprf{
+\begin{split}
+    & \text{1. Рассмотрим функцию } 
+        \gamma(t) = f(x) - T_n(t; x) - \frac{(x - t)^{n + 1} R_n(x)}{(x - x_0)^{n + 1}} 
+        \text{, где } T_n(t; x) = \sum_{k = 0}^{n} \frac{f^{(k)}(t)}{k!} (x - t)^k \\
+    & \gamma(t) \text{ дифференцируема по $t$ на $(\min(x_0; x); \max(x_0, x))$, также } \\
+    & \gamma(x_0) = f(x) - T_n(x_0; x) - R_n(x) = f(x) - f(x) = 0 \\
+    & \gamma(x) = f(x) - T_n(x; x) = f(x) - f(x) = 0 \\
+    & \text{Тогда по т. Ролля } \exists c \in (\min(x_0; x); \max(x_0, x)): \gamma'(c) = 0 \\
+    & \gamma'(t) = 
+        - f'(t) - \sum_{k = 1}^{n} \left(
+            \frac{f^{(k + 1)}(t)}{k!} (x - t)^k 
+            - \frac{f^{(k)}(t)}{(k - 1)!} (x - t)^{k - 1} \right) 
+        + \frac{(n + 1) (x - t)^n R_n(x)}{(x - x_0)^{n + 1}} = \\
+    & = - f'(t) - \frac{f^{(n + 1)}(t)}{n!} (x - t)^n + f'(t) + \frac{(n + 1) (x - t)^n R_n(x)}{(x - x_0)^{n + 1}} 
+        = \frac{(n + 1) (x - t)^n R_n(x)}{(x - x_0)^{n + 1}} - \frac{f^{(n + 1)}(t)}{n!} (x - t)^n \\
+    & \text{2. } \gamma'(c) = 0 \implies \\
+    & \implies \frac{(n + 1) (x - c)^n R_n(x)}{(x - x_0)^{n + 1}} - \frac{f^{(n + 1)}(c)}{n!} (x - c)^n = 0 \implies \\
+    & \implies R_n(x) = \frac{f^{(n + 1)}(c)}{(n + 1)!} (x - x_0)^{n + 1} \\
+\end{split}
+}
+}
+
+\mcex{Пример для функции синус}{
+    $ \forall x \in \mathbb{R}: \, 
+        \left| \sin x - \sum_{k = 0}^{n} \frac{(-1)^k}{(2k + 1)!} x^{2k + 1} \right| 
+            \le \frac{1}{(2n + 2)!} x^{2n + 2} \underset{n \to +\infty}{\to} 0 $
+}
+
+\mcex{Пример для экспоненты}{
+    \[ f(x) = e^x, T_n(x) = \sum_{k = 0}^{n} \frac{x^k}{k!} \]
+
+    $ \forall x \in \mathbb{R}: \, 
+        \left| T_n(x) - e^x \right| 
+        = \left| R_n(x) \right| 
+        = \frac{e^c}{(n + 1)!} \left| x \right|^{n + 1}
+        \le \frac{e^{\left|x\right|}}{(n + 1)!} \left| x \right|^{n + 1} \underset{n \to +\infty}{\to} 0 $, т.к. $ c = c(x; x_0) \in (x_0; x) = (0; x) $
+}
+
+\subsection{Определение точки возрастания}
+
+\mcdfn{Точка возрастания}{
+    $ x_0 $ - точка возрастания, если:
+
+    $ \exists \delta > 0 \, \forall x \in U_\delta(x_0): $
+
+    $ (x_0 < x  \implies f(x_0) < f(x)) \wedge (x < x_0 \implies f(x) < f(x_0)) $
+}
+
+\subsection{Определение точки убывания}
+
+\mcdfn{Точка убывания}{
+    $ x_0 $ - точка убывания, если:
+
+    $ \exists \delta > 0 \, \forall x \in U_\delta(x_0): $
+
+    $ (x_0 < x \implies f(x_0) > f(x)) \wedge (x < x_0 \implies f(x) > f(x_0)) $
+}
+
+\subsection{Теорема о функции, имеющей ровно n - 1 ненулевых производных}
+
+\mcthm{}{
+    Если функция $f(x)$ $n$ раз дифференцируема в точке $x_0$ и выполнено:
+
+    $ \forall i \in \{1, 2, ..., n - 1 \}: f^{(i)}(x_0) = 0 $
+
+    $ f^{(n)}(x_0) \ne 0 $, то
+
+\begin{tabular}{rl}
+    $\bullet n = 2k:
+          \hspace*{16pt} $ & Если $f^{(2k)}(x_0) > 0$, то $ x_0 $ - точка min \\
+                           & Если $f^{(2k)}(x_0) < 0$, то $ x_0 $ - точка max \\
+    $\bullet n = 2k + 1: $ & Если $f^{(2k + 1)}(x_0) > 0$, то $ x_0 $ - точка возрастания \\
+                           & Если $f^{(2k + 1)}(x_0) < 0$, то $ x_0 $ - точка убывания \\
+\end{tabular}
+
+\mcprf{
+\begin{split}
+    & \text{1. По формуле Тейлора с остаточным членом в форме Пеано: } \\
+    & f(x) = f(x_0) + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n + \overline{o}((x - x_0)^n) \\
+    & f(x) - f(x_0) = \left(\frac{f^{(n)}(x_0)}{n!} + \overline{o}(1)\right) (x - x_0)^n \\
+    & \text{2. Для случая, когда $ n = 2k $, докажем при $ f^{(n)}(x_0) > 0 $, для второго случая аналогично:} \\
+    & \text{Т.к. $ \overline{o}(1) $ - б.м. при $ x \to x_0 $, то } \\
+    & \exists \delta > 0 \, \forall x \in U_\delta(x_0): \left( \frac{f^{(n)}(x_0)}{n!} + \overline{o}(1) \right) > 0 \\
+    & \text{Тогда } \forall x \in \dot{U}_\delta(x_0): \, 
+        f(x) - f(x_0) 
+        = \left(\frac{f^{(n)}(x_0)}{n!} + \overline{o}(1)\right) (x - x_0)^{2k} > 0 \\
+    & \text{3. Для случая, когда $ n = 2k + 1 $, докажем при $ f^{(n)}(x_0) > 0 $, для второго случая аналогично:} \\
+    & \text{Аналогично пункту 2 } \exists \delta > 0 \, \forall x \in U_\delta(x_0): \left( \frac{f^{(n)}(x_0)}{n!} + \overline{o}(1) \right) > 0 \\
+    & \text{При } x \in (x_0; x_0 + \delta): \, (x - x_0)^{2k + 1} > 0 \\
+    & \text{При } x \in (x_0 - \delta; x_0): \, (x - x_0)^{2k + 1} < 0 \\
+    & \text{Тогда при } x \in (x_0; x_0 + \delta): f(x) - f(x_0) > 0 \\
+    & \text{Тогда при } x \in (x_0 - \delta; x_0): f(x) - f(x_0) < 0 \\
+\end{split}
+}
+}

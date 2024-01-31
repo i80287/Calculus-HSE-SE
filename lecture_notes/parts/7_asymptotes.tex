@@ -1,0 +1,55 @@
+\chapter{Асимптоты}
+
+\section{Определения асимптот}
+
+\mcdfn{Асимптоты}
+{
+\begin{tabular}{rl}
+    Вертикальная асимптота:   & $\bullet$ Прямая $ x = a $ называется вертикальной асимптотой \\
+                              & для графика функции $y=f(x)$, если \\
+                              & $ \lim_{x \to a-} f(x) = \pm \infty \vee \lim_{x \to a+} f(x) = \pm \infty $ \\
+    Горизонтальная асимптота: & $\bullet$ Прямая $y=b$ называется горизонтальной асимптотой для \\
+                              & графика функции $y=f(x)$ на $\pm\infty$, если \\
+                              & $ \lim_{x \to \pm\infty} f(x) = b $ \\
+                              & Вообще говоря, горизонтальные асимптоты на $+\infty$ и $-\infty$ \\
+                              & могут быть разными \\
+    Наклонная асимптота:      & $\bullet$ Прямая $y=kx + b$ называется наклонной асимптотой для \\
+                              & графика функции $y=f(x)$ при $x \to \pm\infty$, если \\
+                              & $ \lim_{x \to \pm\infty} f(x) - (kx + b) = 0 $ \\
+                              & Вообще говоря, наклонные асимптоты на $+\infty$ и $-\infty$ \\
+                              & могут быть разными \\
+\end{tabular}
+}
+
+\section{Признак наклонной асимптоты}
+
+\mcthm{Признак наклонной асимптоты}
+{
+    Прямая $y=kx + b$ - наклонная асимптота графика функции $y=f(x)$ при $x \to +\infty \iff  $
+$$
+\left\{ \begin{tabular}{l}
+    $ \lim_{x\to +\infty} \frac{f(x)}{x} = k $ \\
+    $ \lim_{x\to +\infty} f(x) - kx = b $
+\end{tabular} \right.
+$$
+
+\mcprf{
+\begin{split}
+    & "\implies" \\
+    & \text{1. Распишем определение наклонной асимптоты: } \lim_{x \to +\infty} (f(x) - (kx + b)) = 0 \\
+    & \text{Вынесем $b$ из предела: } \lim_{x \to +\infty} f(x) - kx = b \\
+    & f(x) - kx - b \text{ - б.м. при } x \to +\infty \\
+    & \text{Т.к. } x \to +\infty \text{, то можно поделить на } x: \\
+    & \frac{f(x)}{x} - k = \frac{b}{x} + \frac{\text{б.м.}}{x} \\
+    & \left. \begin{tabular}{l}
+        $ \frac{b}{x} \underset{x \to+\infty}{\to} 0 $ \\
+        $ \frac{\text{б.м.}}{x} \underset{x \to+\infty}{\to} 0 $
+    \end{tabular} \right\}
+    \begin{tabular}{l}
+        $ \implies \frac{f(x)}{x} - k \underset{x \to+\infty}{\to} 0 $
+    \end{tabular} \\
+    & "\impliedby" \\
+    & \text{Т.к. } \lim_{x\to +\infty} f(x) - kx = b \text{, то } \lim_{x\to +\infty} (f(x) - (kx + b)) = 0 \\
+\end{split}
+}
+}
