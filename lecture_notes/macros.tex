@@ -41,11 +41,11 @@
 \DeclareMathOperator{\Mor}{Mor}      % morphisms
 \DeclareMathOperator{\End}{End}      % endomorphism
 
-\DeclareMathOperator{\lowlim}{\underline{lim}} % low limit
+\DeclareMathOperator{\lowlim}{\underline{lim}} % lower limit
 \DeclareMathOperator{\uplim}{\overline{lim}}   % upper limit
 
 % combinations
-\def \cmb#1#2{ C^{#2}_{#1} }
+\newcommand{\Cmb}[2]{ C^{#2}_{#1} }
 \newcommand{\NumSeq}[1]{\{ #1 \}}
 \newcommand{\SmO}[1][x]{\overline{o}(#1)}
 
@@ -76,6 +76,9 @@
 
 \DeclareMathOperator*{\argmin}{arg min}
 \DeclareMathOperator*{\argmax}{arg max}
+
+% Contradiction symbol (like \bot)
+\newcommand{\Contradiction}{\ensuremath{\circled{$\mathbb{W}$}}}
 
 \newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
 \newcommand{\symsum}{\sum_{\mathrm{sym}}}

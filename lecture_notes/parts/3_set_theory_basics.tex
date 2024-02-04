@@ -6,14 +6,14 @@
 {
 $$
 \left. \begin{tabular}{l}
-    $ A \subseteq \mathbb{R} $ \\
+    $ A \subseteq \Rset $ \\
     $ A \ne \varnothing $ \\
-    $ B \subseteq \mathbb{R} $ \\
+    $ B \subseteq \Rset $ \\
     $ B \ne \varnothing $ \\
     $ \forall a \in A \, \forall b \in B: a \le b $
 \end{tabular} \right\}
 \begin{tabular}{l}
-    $ \implies \exists c \in \mathbb{R} \, \forall a \in A \, \forall b \in B: a \le c \le b $
+    $ \implies \exists c \in \Rset \, \forall a \in A \, \forall b \in B: a \le c \le b $
 \end{tabular}
 $$
 }
@@ -22,23 +22,23 @@ $$
 
 \mcdfn{Ограниченное сверху множество}
 {
-    Подможество $ A \subseteq \mathbb{R} $ называется ограниченным
+    Подможество $ A \subseteq \Rset $ называется ограниченным
     свеху, если
-    $ \exists C \in \mathbb{R} \,
+    $ \exists C \in \Rset \,
         \forall a \in A: \, a \le C $
 }
 
 \mcdfn{Ограниченное снизу множество}
 {
-    Подможество $ A \subseteq \mathbb{R} $ называется ограниченным
+    Подможество $ A \subseteq \Rset $ называется ограниченным
     снизу, если
-    $ \exists C \in \mathbb{R} \,
+    $ \exists C \in \Rset \,
         \forall a \in A: \, a \ge C $
 }
 
 \mcdfn{Ограниченное множество}
 {
-    Подможество $ A \subseteq \mathbb{R} $ называется ограниченным, если
+    Подможество $ A \subseteq \Rset $ называется ограниченным, если
     $ \exists C > 0 \,
         \forall a \in A: \, | a | \le C $
 }
@@ -46,25 +46,25 @@ $$
 \section{Определения граней множества}
 
 \mcdfn{Определение верхней грани множества}{
-    Пусть дано множество $ A \subset \mathbb{R} \wedge A \ne \varnothing $.
-    Тогда верхней гранью множества $ A $ называют число $ c \in \mathbb{R} $, такое что
+    Пусть дано множество $ A \subset \Rset \wedge A \ne \varnothing $.
+    Тогда верхней гранью множества $ A $ называют число $ c \in \Rset $, такое что
     $ \forall a \in A: a \le c $
 }
 
 \mcdfn{Определение нижней грани множества}{
-    Пусть дано множество $ A \subset \mathbb{R} \wedge A \ne \varnothing $.
-    Тогда нижней гранью множества $ A $ называют число $ c \in \mathbb{R} $, такое что
+    Пусть дано множество $ A \subset \Rset \wedge A \ne \varnothing $.
+    Тогда нижней гранью множества $ A $ называют число $ c \in \Rset $, такое что
     $ \forall a \in A: a \ge c $
 }
 
 \mcdfn{Определение точной верхней грани множества}{
-    Пусть дано множество $ A \subset \mathbb{R} \wedge A \ne \varnothing $.
+    Пусть дано множество $ A \subset \Rset \wedge A \ne \varnothing $.
     Тогда точной верхней гранью множества $ A $ называют наименьший элемента множества
     всех верхних граней множества $ A $ и обозначают $ \sup A $
 }
 
 \mcdfn{Определение точной нижней грани множества}{
-    Пусть дано множество $ A \subset \mathbb{R} \wedge A \ne \varnothing $.
+    Пусть дано множество $ A \subset \Rset \wedge A \ne \varnothing $.
     Тогда точной нижней гранью множества $ A $ называют наибольший элемента множества
     всех нижней граней множества $ A $ и обозначают $ \inf A $
 }
@@ -79,23 +79,23 @@ $$
 
 \mcthm{Теорема о существовании точной грани множества}
 {
-Если множество $ A \subset \mathbb{R}, A \ne \varnothing $ ограничено сверху, то $ \exists \sup A $
+Если множество $ A \subset \Rset, A \ne \varnothing $ ограничено сверху, то $ \exists \sup A $
 
-Если множество $ A \subset \mathbb{R}, A \ne \varnothing $ ограничено снизу, то $ \exists \inf A $
+Если множество $ A \subset \Rset, A \ne \varnothing $ ограничено снизу, то $ \exists \inf A $
 
 \begin{mcproof}
     Докажем для верхней грани, для нижней грани доказательство аналогично
-    \[ A \subseteq \mathbb{R}
+    \[ A \subseteq \Rset
         \wedge A \ne \varnothing
         \wedge (\exists C > 0 \, \forall a \in A
             \implies a < C)
                 \implies \exists \sup{A} \]
 \begin{equation*}
 \begin{split}
-    & \text{1. Обозначим } S_A = \{ c \in \mathbb{R} | \forall a \in A \implies a \le c \} \ne \varnothing \text{ - множество верхних граней} \\
+    & \text{1. Обозначим } S_A = \{ c \in \Rset | \forall a \in A \implies a \le c \} \ne \varnothing \text{ - множество верхних граней} \\
     & \text{Это множество не пусто, т.к. $ A $ ограничено по условию, т.е. } \exists c > 0 \, \forall a \in A \implies a \le c \\
     & \text{2. По построению множества $ A $ и $ S_A $ удовлетворяют аксиоме непрерывности } \\
-    & \text{действительных чисел, тогда } \exists b \in \mathbb{R} \, \forall a \in A \forall c \in S_A \implies a \le b \le c \\
+    & \text{действительных чисел, тогда } \exists b \in \Rset \, \forall a \in A \forall c \in S_A \implies a \le b \le c \\
     & \text{Но из $ b \le c \implies b \in S_A $, при этом } (\forall c \in S_A \implies b \le c) \text{, следовательно, $ b $ является } \\
     & \text{наименьшим элементом множества верхних граней множества $ A $, тогда по определению } \\
     & \text{точной верхней грани } b = \sup{A} \\

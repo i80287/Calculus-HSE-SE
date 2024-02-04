@@ -3,7 +3,7 @@
 \section{Определения}
 
 \mcdfn{Определение функции}{
-    Множество пар $\{ (x, y) \in \mathbb{R}^2 | x \in D_f \wedge y \in E_f \} $ называется 
+    Множество пар $\{ (x, y) \in \Rset[2] | x \in D_f \wedge y \in E_f \} $ называется 
     функцией $f$ с областью определения $D_f$ и областью значения $E_f$, если 
     $ \forall x \in D_f \, \exists! y \in E_f: (x, y) \in f $ (для удобства  $ (x, y) \in f $ обозначают как $ f(x) = y $)
 
@@ -13,10 +13,10 @@
 }
 
 \mcex{}{
-    $ f: \mathbb{N} \cup \{ 0 \} \to \mathbb{R} $
+    $ f: \mathbb{N} \cup \{ 0 \} \to \Rset $
 
     $ \forall n \in \mathbb{N} \cup \{ 0 \}: f(n) = (-1)^{n + 1} \cdot \left\lceil \frac{n}{2} \right\rceil $, 
-    в данном случае $ D_f = \mathbb{N} \cup \{ 0 \}, E_f = \mathbb{Z} \subset \mathbb{R} $
+    в данном случае $ D_f = \mathbb{N} \cup \{ 0 \}, E_f = \mathbb{Z} \subset \Rset $
 
     Т.к. несложно установить, что $E_f = \mathbb{Z}$, то можно написать $ f: \mathbb{N} \cup \{ 0 \} \to \mathbb{Z} $
 }
@@ -45,7 +45,7 @@
 }
 
 \mcex{}{
-    Функция $\sin: \mathbb{R} \to \mathbb{R} $ не сюръективна для $\mathbb{R}$, но сюръективна для $[-1; 1]$
+    Функция $\sin: \Rset \to \Rset $ не сюръективна для $\Rset$, но сюръективна для $[-1; 1]$
 }
 
 \mcdfn{Определение биективной функции}{
@@ -120,9 +120,9 @@
     f(x) \in U_\veps(A) \]
 }
 
-\mcthm{Свойство предела функции при $ x \to x_0, x_0 \in \mathbb{R} $}
+\mcthm{Свойство предела функции при $ x \to x_0, x_0 \in \Rset $}
 {
-    \[ \lim_{x \to x_0} f(x) = A \iff \lim_{x \to x_0+} f(x) = \lim_{x \to x_0-} f(x) = A \text{, где } A \in \overline{\mathbb{R}} \]
+    \[ \lim_{x \to x_0} f(x) = A \iff \lim_{x \to x_0+} f(x) = \lim_{x \to x_0-} f(x) = A \text{, где } A \in \ExtRset \]
 
 \mcprf{
 \begin{split}
@@ -178,7 +178,7 @@
 
 \mcdfn{Бесконечно малая функция}
 {
-    Функция называется б.м. при $x \to x_0$, если $\lim_{x \to x_0} f(x) = 0$, при этом $ x_0 \in \mathbb{R} $
+    Функция называется б.м. при $x \to x_0$, если $\lim_{x \to x_0} f(x) = 0$, при этом $ x_0 \in \Rset $
 
     Функция называется б.м. при $x \to +\infty$, если $\lim_{x \to +\infty} f(x) = 0$
 
@@ -187,7 +187,7 @@
 
 \mcdfn{Бесконечно большая функция}
 {
-    Функция называется б.б. при $x \to x_0$, если $\lim_{x \to x_0} f(x) = \infty $, при этом $ x_0 \in \mathbb{R} $
+    Функция называется б.б. при $x \to x_0$, если $\lim_{x \to x_0} f(x) = \infty $, при этом $ x_0 \in \Rset $
 
     Функция называется б.б. при $x \to +\infty$, если $\lim_{x \to +\infty} f(x) = \infty $
 
@@ -226,7 +226,7 @@
 \begin{minipage}[t]{\textwidth}
 $$
 \left. \begin{tabular}{l}
-    $ f(x): \mathbb{R} \to \mathbb{R}, g(x): \mathbb{R} \to \mathbb{R}, h(x): \mathbb{R} \to \mathbb{R} $ \\
+    $ f(x): \Rset \to \Rset, g(x): \Rset \to \Rset, h(x): \Rset \to \Rset $ \\
     $ \lim_{x \to x_0} f(x) = A $ \\
     $ \lim_{x \to x_0} h(x) = A $ \\
     $ \exists \delta > 0 \, \forall x \in \dot{U}_\delta(x_0): f(x) \le g(x) \le h(x) $

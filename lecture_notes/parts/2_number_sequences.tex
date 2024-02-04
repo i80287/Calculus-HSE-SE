@@ -12,7 +12,7 @@
 \mcclarf{}{
     Формально, числовая последовательность (далее обозначается ч.п.) - это функция натурального аргумента
 
-    $ f: \mathbb{N} \to \mathbb{R}$
+    $ f: \mathbb{N} \to \Rset$
 
     Способы задания:
 \begin{tabular}{rl}
@@ -41,14 +41,14 @@
 {
     Числовая последовательность $ \NumSeq{a_n} $ называется ограниченной сверху, если
 
-    $ \exists C \in \mathbb{R} \, \forall n \in \mathbb{N}: \, a_n < C $
+    $ \exists C \in \Rset \, \forall n \in \mathbb{N}: \, a_n < C $
 }
 
 \mcdfn{Ограниченная снизу числовая последовательность}
 {
     Числовая последовательность $ \NumSeq{a_n} $ называется ограниченной снизу, если
 
-    $ \exists C \in \mathbb{R} \, \forall n \in \mathbb{N}: \, a_n > -C $
+    $ \exists C \in \Rset \, \forall n \in \mathbb{N}: \, a_n > -C $
 }
 
 \mcdfn{Ограниченная числовая последовательность}
@@ -106,10 +106,10 @@
     Числовая последовательность называется сходящейся, если она имеет конечный предел при $ n \to +\infty $, т.е.
     ч.п. $ \NumSeq{a_n} $ называется сходящейся, если:
 
-    \[ \exists A \in \mathbb{R} \, \forall \veps > 0 \, \exists N = N(\veps) \in \mathbb{N} \, \forall n > N: | a_n - A | < \veps \]
+    \[ \exists A \in \Rset \, \forall \veps > 0 \, \exists N = N(\veps) \in \mathbb{N} \, \forall n > N: | a_n - A | < \veps \]
 
     Обозначение:
-    \[ \lim_{n \to +\infty} a_n = A, A \in \mathbb{R} \]
+    \[ \lim_{n \to +\infty} a_n = A, A \in \Rset \]
 }
 
 \mcex{}{
@@ -276,7 +276,7 @@
     \[ (\exists N \in \mathbb{N} \, \forall n \ge N: c_n > A) \wedge (\lim_{n\to\infty} c_n = C) \implies C \ge A \]
 
     То есть если начиная с некоторого номера все члены последовательности $ > A $, 
-    и сама последовательность сходится к $ C \in \mathbb{R} $ при $ n \to +\infty $, 
+    и сама последовательность сходится к $ C \in \Rset $ при $ n \to +\infty $, 
     то $ C \ge A $
 
 \mcprf{
@@ -319,8 +319,8 @@ $$
 \begin{mcproof}
 \begin{equation*}
 \begin{split}
-    & \text{Докажем для случая, когда } X \in \mathbb{R}
-        \text{. При } X \in \overline{\mathbb{R}} \setminus \mathbb{R}
+    & \text{Докажем для случая, когда } X \in \Rset
+        \text{. При } X \in \ExtRset \setminus \Rset
         \text{ доказательство проводится аналогично} \\
     & \text{1. Распишем по определению пределы.} \\
     & \forall \veps > 0 \, \exists N_1(\veps) \, \forall n > N_1(\veps): X - \veps < a_n < X + \veps \\
@@ -333,11 +333,11 @@ $$
 \end{mcproof}
 }
 
-\subsection{Теорема о свойстве предела б.м. ч.п.}
+\subsection{Свойство предела б.м. ч.п.}
 
-\mcthm{Теорема о свойстве предела б.м. ч.п.}
+\mcthm{Свойство предела б.м. ч.п.}
 {
-    если $ a \in \mathbb{R} $, то \[\lim_{n\to\infty} a_n = a \iff a_n = a + \alpha_n, \text{где } \alpha_n \text{ - б.м. ч.п.} \]
+    если $ a \in \Rset $, то \[\lim_{n\to\infty} a_n = a \iff a_n = a + \alpha_n, \text{где } \alpha_n \text{ - б.м. ч.п.} \]
 \mcprf{
 \begin{split}
     & "\implies" \\

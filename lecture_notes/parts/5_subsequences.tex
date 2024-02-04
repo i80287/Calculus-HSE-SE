@@ -9,7 +9,7 @@
 }
 
 \nt{
-    Если $\NumSeq{a_{n_k}}$ - подпоследовательность ч.п. $\NumSeq{a_n}$, то $ \forall k \in \mathbb{N}: n_k \ge k $
+    Если $\NumSeq{a_{n_k}}$ - подпоследовательность ч.п. $\NumSeq{a_n}$, то $ \forall k \in \Nset: n_k \ge k $
 }
 
 \section{Частичные пределы и предельная точка}
@@ -62,7 +62,7 @@
         & \text{Рассмотрим $\veps_k $, в $ U_{\veps_k}(a) $ попадает бесконечно
             много членов $ \NumSeq{a_n} $, поэтому $ \exists n_k > n_{k - 1} : a_{n_k} \in U_{\veps_k}(a) $ } \\
         & \text{Таким образом, построена ч.п. $ \NumSeq{a_{n_k}} $, такая что $
-            \forall k \in \mathbb{N}: a - \frac{1}{k} < a_{n_k} < a + \frac{1}{k} \implies $ } \\
+            \forall k \in \Nset: a - \frac{1}{k} < a_{n_k} < a + \frac{1}{k} \implies $ } \\
         & \text{$ \implies $ по теореме о зажатой последовательности $ \lim_{k \to \infty} a_{n_k} = a $ } \\
     \end{split}
     \end{equation*}
@@ -91,16 +91,16 @@
     Системой вложенных отрезков называют счётно бесконечное множество отрезков, каждый из которых содержит
     следующий отрезок как подмножество
 
-    Обозначение: $ \{ I_k \}_{k \in \mathbb{N}} $, где $ \forall k \in \mathbb{N}: I_{k+1} = [a_{k + 1}; b_{k + 1}] \subseteq I_{k} = [a_k; b_k] $
+    Обозначение: $ \{ I_k \}_{k \in \Nset} $, где $ \forall k \in \Nset: I_{k+1} = [a_{k + 1}; b_{k + 1}] \subseteq I_{k} = [a_k; b_k] $
 }
 
 \mcex{}
 {
-    Рассмотрим $ S = \{ [1 - \frac{1}{k}; 2 + \frac{1}{k}] \}_{k \in \mathbb{N}} $, тогда
+    Рассмотрим $ S = \{ [1 - \frac{1}{k}; 2 + \frac{1}{k}] \}_{k \in \Nset} $, тогда
 
     $ S = \{ [0; 3], [0.5; 2.5], [\frac{2}{3}; 2\frac{1}{3}], ... \} $
 
-    Рассмотрим $ S = \{ [\pi; \pi - \frac{1}{k^k}] \}_{k \in \mathbb{N}} $, тогда
+    Рассмотрим $ S = \{ [\pi; \pi - \frac{1}{k^k}] \}_{k \in \Nset} $, тогда
 
     $ S = \{ [\pi; \pi - 1], [\pi; \pi - \frac{1}{4}], [\pi; \pi - \frac{1}{27}], ... \} $
 }
@@ -113,28 +113,28 @@
 
 \mcprf{
 \begin{split}
-    & \text{По определению ограниченной ч.п. } \exists C \forall n \in \mathbb{N} | a_n | < C \\
+    & \text{По определению ограниченной ч.п. } \exists C > 0 \, \forall n \in \Nset: | a_n | < C \\
     & \text{Построим искому подпоследовательность при помощи системы вложенных отрезков} \\
-    & I_1 = [-c; c], \forall n \in \mathbb{N} a_n \in I_1, \text{ выберем какой-то член ч.п. $ a_{n_1} \in I_1 $ }\\
+    & I_1 = [-c; c], \forall n \in \Nset: \, a_n \in I_1, \text{ выберем какой-то член ч.п. $ a_{n_1} \in I_1 $ }\\
     & \text{Т.к. $ \NumSeq{a_n} $ - ч.п., то в какой-то половине точно есть бесконечно много членов $ \NumSeq{a_n} $ } \\
     & \text{Выберем эту половину и обозначим $ I_2 $, выберем в нём какой-то член ч.п. $ a_{n_2} \in I_2 $, такой что $ n_2 > n_1 $ } \\
     & \text{(если это нельзя сделать, т.е. $ \forall m \, (a_m \in I_2 \implies m \le n_1) $, то в $ I_2 $ лишь конечное число членов }  \\
-    & \text{ч.п. } \NumSeq{a_n} \implies \circled{$\mathbb{W}$} \implies \exists n_2 > n_1: a_{n_2} \in I_2 ) \\
+    & \text{ч.п. } \NumSeq{a_n} \implies \Contradiction \implies \exists n_2 > n_1: a_{n_2} \in I_2 ) \\
     & \text{Пусть построен $ I_k $ и $ a_{n_k} $. Делим $ I_k $ пополам и выбираем половину,} \\
     & \text{в которой бесконечно много членов $ \NumSeq{a_n} $, обозначим эту половину как $ I_{k + 1} $} \\
     & \text{и выберем $ a_{n_{k + 1}}: n_{k + 1} > n_k $ (если это нельзя сделать, т.е. $ \forall m \, (a_m \in I_{k + 1} \implies m \le n_k) $, } \\
     & \text{тогда в $ I_{k + 1} $ лишь конечное число членов ч.п. }
-        \NumSeq{a_n} \implies \circled{$\mathbb{W}$} \implies \exists n_{k + 1} > n_k: a_{n_{k + 1}} \in I_{k + 1} ) \\
-    & \text{Построили последовательность $ \NumSeq{I_k}_{k \in \mathbb{N}}$, где $ I_k = [b_k; d_k] $} \\
-    & \forall k \in \mathbb{N}: I_{k+1} \subset I_k \implies \NumSeq{b_k} \text{ неубывает и ограничена сверху } C \\
+        \NumSeq{a_n} \implies \Contradiction \implies \exists n_{k + 1} > n_k: a_{n_{k + 1}} \in I_{k + 1} ) \\
+    & \text{Построили последовательность $ \NumSeq{I_k}_{k \in \Nset}$, где $ I_k = [b_k; d_k] $} \\
+    & \forall k \in \Nset: I_{k+1} \subset I_k \implies \NumSeq{b_k} \text{ неубывает и ограничена сверху } C \\
     & \implies \exists \lim_{n \to +\infty} b_k = b, b \ge b_k \\
-    & \forall k \in \mathbb{N}: I_{k+1} \subset I_k \implies \NumSeq{d_k} \text{ невозрастает и ограничена снизу } -C \\
+    & \forall k \in \Nset: I_{k+1} \subset I_k \implies \NumSeq{d_k} \text{ невозрастает и ограничена снизу } -C \\
     & \implies \exists \lim_{n \to +\infty} d_k = d, d \le d_k \\
     & \text{При этом } | d_k - b_k | = \frac{2 \cdot C}{2^{k - 1}} \underset{k \to+\infty}{\to} 0 \\
-    & ADDPROOF[d \ge b] (\text{ пока что см. консультацию 2 }) \\
+    & \forall k \in \Nset: b_k \le d_k \implies \text{ по теореме о предельном переходе в неравенствах: } b \le d \\
     & d - b \le d_k - b_k \underset{k \to+\infty}{\to} 0 \implies d \le b \implies d = b \\
     & \text{Получили: } \lim_{n \to +\infty} b_k = b = d = \lim_{n \to +\infty} d_k \\
-    & \text{$b_k$ и $d_k$ - границы отрезка $I_k$ } \implies \forall k \in \mathbb{N}: b_k \le a_k \le d_k \implies \\
+    & \text{$b_k$ и $d_k$ - границы отрезка $I_k$ } \implies \forall k \in \Nset: b_k \le a_k \le d_k \implies \\
     & \implies \text{ по теореме о пределе зажатой последовательности } \lim_{n \to +\infty} a_k = b = d \\
 \end{split}
 }
@@ -155,7 +155,7 @@
 \mcdfn{Стягивающая система вложенных отрезков}{
     Пусть $I$ - система вложенных отрезков, тогда если
 
-    $ \forall \veps > 0 \exists n \in \mathbb{N}: ( [a_n; b_n] \in I \wedge b_n - a_n < \veps ) $, 
+    $ \forall \veps > 0 \exists n \in \Nset: ( [a_n; b_n] \in I \wedge b_n - a_n < \veps ) $, 
     то такая система вложенных отрезков 
 
     называется стягивающейся системой вложенных отрезков
@@ -166,22 +166,22 @@
 \mcthm{Принцип вложенных отрезков Коши-Кантора}{
     Для любой системы вложенных отрезков существует хотя бы одна точка, принадлежащая всем отрезкам данной системы.
 
-    Т.е. $ \exists c \in \mathbb{R} \, \forall k \in \mathbb{N}: c \in I_k = [a_k; b_k] $ 
+    Т.е. $ \exists c \in \Rset \, \forall k \in \Nset: c \in I_k = [a_k; b_k] $ 
 
     Если система вложенных отрезков является стягивающейся, то такая точка единствена
 
 \mcprf{
 \begin{split}
-    & \text{1. Множество } A = \{a_n\}_{n \in \mathbb{N}} \ne \varnothing \text{ ограничено сверху, например, числом $b_1$} \implies \\
+    & \text{1. Множество } A = \{a_n\}_{n \in \Nset} \ne \varnothing \text{ ограничено сверху, например, числом $b_1$} \implies \\
     & \implies \exists \sup{A} = \alpha \text{ по теореме о существовании точной грани множества} \\
-    & \text{Aналогично } \exists \sup{B} = \beta, B = \{a_n\}_{n \in \mathbb{N}} \\
-    & (\forall n \in \mathbb{N}: a_n < b_n) \implies (\alpha \le \beta \wedge \forall n \in \mathbb{N}: [\alpha; \beta] \subseteq [a_n; b_n]) \\
-    & \text{2. Тогда положим } \gamma := \frac{\alpha + \beta}{2} \implies \forall n \in \mathbb{N}: \gamma \in [a_n; b_n] \\
+    & \text{Aналогично } \exists \sup{B} = \beta, B = \{a_n\}_{n \in \Nset} \\
+    & (\forall n \in \Nset: a_n < b_n) \implies (\alpha \le \beta \wedge \forall n \in \Nset: [\alpha; \beta] \subseteq [a_n; b_n]) \\
+    & \text{2. Тогда положим } \gamma := \frac{\alpha + \beta}{2} \implies \forall n \in \Nset: \gamma \in [a_n; b_n] \\
     & \text{3. Для стягивающейся системы вложенных отрезков:} \\
     & \text{Предположим от противного, что точка не одна, т.е. } \\
-    & \exists \gamma_1 < \gamma_2: \forall n \in \mathbb{N}: (\gamma_1 \in [a_n; b_n] \wedge \gamma_2 \in [a_n; b_n]) \\
+    & \exists \gamma_1 < \gamma_2: \forall n \in \Nset: (\gamma_1 \in [a_n; b_n] \wedge \gamma_2 \in [a_n; b_n]) \\
     & a_1 \le a_2 \le ... \le a_n \le ... \le \gamma_1 < \gamma_2 \le ... \le b_n \le ... \le b_2 \le b_1 \\
-    & \text{Положим } \veps := \frac{\gamma_2 - \gamma_1}{2} \text{, тогда } \forall n \in \mathbb{N}: b_n - a_n \ge \veps \implies \circled{$\mathbb{W}$} \implies \\
+    & \text{Положим } \veps := \frac{\gamma_2 - \gamma_1}{2} \text{, тогда } \forall n \in \Nset: b_n - a_n \ge \veps \implies \circled{$\mathbb{W}$} \implies \\
     & \implies \text{ изначальное предположение неверно } \implies \text{ точка не более, чем одна,} \\
     & \text{а существование хотя бы одной показано в пунктах 1, 2} \\
 \end{split}
@@ -191,7 +191,7 @@
 \nt{
     Вообще говоря, утверждение неверно для интервалов, например для системы вложенных интервалов:
 
-    \[ \{ I_k \}_{k \in \mathbb{N}} = \left\{ \left(0; \frac{1}{k}\right) \right\}_{k \in \mathbb{N}}: \underset{k \in \mathbb{N}}{\cap} I_k = \varnothing  \]
+    \[ \{ I_k \}_{k \in \Nset} = \left\{ \left(0; \frac{1}{k}\right) \right\}_{k \in \Nset}: \underset{k \in \Nset}{\cap} I_k = \varnothing  \]
 }
 
 % \subsection{Лемма Гейне-Бореля}

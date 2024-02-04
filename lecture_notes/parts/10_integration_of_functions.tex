@@ -1,1 +1,381 @@
 \chapter{Интегрирование функций}
+
+\section{Определение первообразной}
+
+\mcdfn{}{
+    Пусть $ f(x) $ определена на $(a; b), a, b \in \ExtRset $
+
+    Первообразной к функции $f(x)$ называется такая функция $F(x)$, определённая на $(a; b)$, что $ F'(x) = f(x) $
+}
+
+\mcex{}{
+    Первообразной к $ \frac{1}{1 + x^2} $ будет $ \arctan(x) $
+
+    Первообразной к $ \frac{1}{1 + x^2} $ будет $ \arctan(x) + 1 $
+
+    Первообразной к $ \frac{1}{1 + x^2} $ будет $ \arctan(x) + \pi $
+}
+
+\section{Свойство первообразных}
+
+\mcthm{Свойство первообразных}{
+    Пусть $ f(x) $ определена на $(a; b), a, b \in \ExtRset $
+
+    Если $ F_1(x) $ и $ F_2(x) $ - первообразные к $f(x)$ на $(a; b)$, то
+
+    $ F_1(x) - F_2(x) = const $
+
+\mcprf{
+\begin{split}
+    & F_1(x) \text{ и } F_2(x) 
+        \text{ дифференцируемы на } (a; b)
+        \text{ и непрерывны на } [a; b] \\
+    & \text{Тогда по теореме } \ref{theorem_corollary_2:1}: F_1(x) - F_2(x) = const \text{ на } [a; b] \\
+\end{split}
+}
+}
+
+\mcex{}{
+    $ \int \frac{1}{x} dx = \ln | x | + C, C \in \Rset $, т.к.
+
+    При $ x > 0: \ln'(x) = \frac{1}{x} $
+
+    При $ x < 0: \ln'(-x) = \frac{1}{-x} \cdot (-1) = \frac{1}{x} $
+
+    При этом, т.к. $ D_{\ln} = (-\infty; 0) \cup (0; +\infty) $, 
+    то можно привести пример, когда предыдущая теорема не выполняется на $ D_{\ln} $:
+
+    $ F_1(x) = \ln | x | $
+
+    $ F_2(x) = \left\{ \begin{tabular}{l}
+        $ \ln x, x > 0 $ \\
+        $ \ln(-x) + 2, x < 0 $ \\
+    \end{tabular} \right. $
+}
+
+\section{Неопределённый интеграл}
+
+\subsection{Определение неопределённого интеграла}
+
+\mcdfn{Неопределённый интеграл}{
+    Неопределённым интегралом для $f(x)$ на $(a; b)$ называется множество первообразных $f(x)$
+
+    Обозначение: $ \int f(x) dx = \{ F(x) + C \}_{C \in \Rset} $
+
+    На практике пишут $ \int f(x) dx = F(x) + C $ и используют интеграл как функцию
+}
+
+\subsection{Свойства неопределённого интеграла}
+
+\nt{
+    Свойства неопределённого интеграла
+
+\begin{tabular}{rl}
+    $\bullet$ & $ \int 1 \cdot d F(x) = \int d F(x) = F(x) + C, C \in \Rset $ \\
+    $\bullet$ & $ \left(\int f(x) dx\right)' = f(x) $ \\
+              & $ d \left(\int f(x) dx\right) = f(x) dx $ \\
+    $\bullet$ & $ \int f(x) + g(x) dx = \int f(x) dx + \int g(x) dx $ \\
+\end{tabular}
+}
+
+\subsection{Теорема об интеграле сложной функции}
+
+\mcthm{Теорема об интеграле сложной функции}{
+    Если $F(x)$ - первообразная к $f(x)$ на $(a; b)$ и $ \phi(t) $ дифференцируема 
+    на $(c; d) $, причём $ \phi((c; d)) \subseteq (a; b) $, то
+
+    \[ \int f(\phi(t)) \phi'(t) dt = F(\phi(t)) + C, C \in \Rset \]
+
+\mcprf{
+\begin{split}
+    & (F(\phi(t)))' = F'(\phi(t)) \phi'(t) = f(\phi(t)) \phi'(t) \\
+\end{split}
+}
+}
+
+\subsection{Формула подстановки}
+
+\mcclm{Формула подстановки}{}{
+    \[ \int f(\phi(t)) \phi'(t) dt = \int f(x) dx \vert_{x = \phi(t)} \]
+
+    Проведём занесение функции под знак дифференциала:
+
+    \[ \int f(\phi(t)) \phi'(t) dt = \int f(\phi(t)) d \phi(t) = \int f(x) dx \vert_{x = \phi(t)} \]
+}
+
+\mcex{}{
+    \[ \int \sin x^2 dx^2 = -cos x^2 + C, C \Rset \]
+}
+
+\mcex{}{
+    \[ \int x e^{\frac{-x^2}{2}} dx = 
+        -\int e^{\frac{-x^2}{2}} d\left(\frac{-x^2}{2}\right) 
+        = -e^{\frac{-x^2}{2}} + C, C \in \Rset \]
+}
+
+\subsection{Формула замены переменных}
+
+\mcclm{Формула замены переменных}{}{
+    \[ \int f(x) dx = \int f(\phi(t)) \phi'(t) dt \vert_{t = \phi^{-1}(x)} \text{, если $ \phi $ обратима} \]
+}
+
+\mcex{}{
+    $ x \in (-1; 1) $:
+
+    $ \int \sqrt[]{1 - x^2} dx
+        = \left\vert x = \sin t, t \in (-\frac{\pi}{2}; \frac{\pi}{2}) \right\vert
+        = \int \cos t d \sin t
+        = \int \cos^2 t dt
+        = \int \frac{\cos 2t + 1}{2} dt
+        = \frac{1}{2} \left( \int \cos 2t dt + \int 1 dt \right)
+        = \frac{1}{2} \left( \frac{1}{2} \sin 2t + t + C \right) 
+        = \frac{1}{4} \sin 2t + \frac{1}{2} t + C
+        = \frac{1}{4} \sin(2 \arcsin x) + \frac{1}{2} \arcsin x + C $
+}
+
+\subsection{Интегрирование по частям}
+
+\mcthm{Формула интегрирования по частям}{
+    $ f(x) $ и $ g(x) $ - дифференцируемы на $ (a; b) $
+
+    $ \int f(x) d g(x) = f(x) g(x) - \int g(x) d f(x) $
+
+\mcprf{
+\begin{split}
+    & d (f(x) g(x))
+        = (f'(x) g(x) + f(x) g(x)) dx
+        = g(x) d f(x) + f(x) d g(x) \\
+    & \int d (f(x) g(x)) = \int g(x) d f(x) + f(x) d g(x) \\
+    & f(x) g(x) = \int (g(x) d f(x) + f(x) d g(x)) \\
+    & f(x) g(x) - \int g(x) d f(x) = \int f(x) d g(x) \\
+\end{split}
+}
+}
+
+\mcex{}{
+    $ \int x e^x dx = \int x d e^x = x e^x - \int e^x dx = x e^x - e^x + C, c \in \Rset $
+}
+
+\mcex{}{
+    \[ \int \ln x dx = x \ln x - \int x d\ln x = x \ln x - \int 1 dx = x \ln x - x + C, C \in \Rset \]
+}
+
+\section{Определённый интеграл}
+
+\subsection{Разбиение, диаметр разбиения, разметка разбиения}
+
+\mcdfn{Разбиение отрезка}{
+    Разбиением отрезка $[a; b]$ называется множество
+
+    $ \tau = \{ [x_{i - 1}; x_i] \}_{i = 1}^{n} $,
+
+    $ a = x_0 < x_1 < ... < x_n = b $
+}
+
+\mcdfn{Измельчение разбиения}{
+    Пусть даны 2 разбиения:
+
+    $ \tau = \{ [x_{i - 1}; x_i] \}_{i = 1}^{n} $
+
+    $ \tau' = \{ [x'_{j - 1}; x'_j] \}_{j = 1}^{k} $
+
+    $ \tau' $ является измельчением $ \tau $, если
+    $ \forall i \, \exists j: x_i = x'_j $
+
+    Обозначение: $ \tau' \succ \tau $ 
+}
+
+\mcdfn{Диаметр разбиения}{
+    Диаметр разбиения - это $ d(\tau) 
+        = \underset{1 \le i \le n}{\max} (x_i - x_{i - 1}) 
+        = \underset{1 \le i \le n}{\max} \Delta x_i $
+}
+
+\mcdfn{Разметка разбиения}{
+    Разметка разбиения - это множество $ \{ \xi_i | \xi_i \in [x_{i - 1}; x_i] \}_{i = 1}^{n} $
+
+    Разбиение, у которого есть разметка, называется размеченным разбиением
+}
+
+\subsection{Интегральная сумма Римана}
+
+\mcdfn{Интегральная сумма Римана}{
+    Интегральная сумма (Римана) - это \[ \sigma_{\tau}(f) = \sum_{i = 1}^{n} f(\xi_i) \Delta x_i \]
+}
+
+\subsection{Определение определённого интеграла по Коши}
+
+\mcdfn{Определение определённого интеграла по Коши}{
+    Число $I$ называется определённым интегралом $f(x)$ на $[a; b]$, если
+
+    $ \forall \veps > 0 \,
+        \exists \delta > 0 \,
+        \forall \tau: d(\tau) < \delta \,
+        \forall \text{ разметки } \{ \xi_i \}_{i = 1}^{n}: \,
+        | \sigma_\tau(f) - I | < \veps $
+}
+
+\mcdfn{Определение определённого интеграла по Гейне}{
+    Число $I$ называется определённым интегралом $f(x)$ на $[a; b]$, если
+
+    $ \forall \text{ послед. } \tau_k: d(\tau_k) \underset{k \to +\infty}{\to} 0 \,
+        \forall \{ \xi_{i}^{k} \}_{i = 1}^{n}: \,
+        \sigma_{\tau_k}(f) \underset{k \to +\infty}{\to} I $
+}
+
+\mcex{}{
+    Пример функции, не интегрируемой по Риману:
+
+    На отрезке $[0; 1]$ рассмотрим функция Дирихле: 
+    $ D(x) = \left\{ \begin{tabular}{l}
+        $ 1, x \in \Qset $ \\
+        $ 0, x \notin \Qset $ \\
+    \end{tabular} \right. $
+
+    Выберем первую разметку такую, что $ \forall i \in \{ 1, ..., n \}: \xi_i \in \Qset $
+
+    Тогда $ \sigma_{\tau}(D) 
+        = \sum_{i = 1}^{n} D(\xi_i) \Delta x_i 
+        = \sum_{i = 1}^{n} \Delta x_i = b - a = 1 - 0 = 1 $
+
+    Выберем вторую разметку такую, что $ \forall i \in \{ 1, ..., n \}: \xi_i \in \Rset \setminus \Qset $
+
+    Тогда $ \sigma_{\tau}(D) 
+        = \sum_{i = 1}^{n} D(\xi_i) \Delta x_i 
+        = \sum_{i = 1}^{n} 0 \cdot \Delta x_i = 0 $
+}
+
+\subsection{Теорема об ограниченности функции, интегрируемой на отрезке}
+
+\mcthm{Теорема об ограниченности функции, интегрируемой на отрезке}{
+    Функция, $f(x)$ интегрируемая на $ [a; b] $, ограничена на $ [a; b] $
+
+\mcprf{
+\begin{split}
+    & \text{1. Предположим от противного, т.е. функция не ограничена на отрезке} \\
+    & \text{По определению интегрируемости для } \veps = 1: \\
+    & \exists \delta > 0 \, 
+        \forall \tau: d(\tau) < \delta \, 
+        \forall \{ \xi_i \}_{i = 1}^{n}: \,
+        | \sigma_\tau(f) - I | < 1\\
+    & \text{Зафиксируем $\tau$. Хотя бы на 1 элементе $ \tau $ $f(x)$ не ограничена. БОО это первый отрезок $[x_0; x_1]$} \\
+    & \text{Зафиксируем разметку везде кроме 1-ого отрезка: } \xi_2, \xi_2, ... \xi_n \\
+    & | \sigma_\tau(f) | - | I | \le | \sigma_\tau(f) - I | \implies | \sigma_\tau(f) | < | I | + 1 \\
+    & | f(\xi_1) | \Delta x_1 - \sum_{i = 2}^{n} | f(\xi_i) | \Delta x_i \le | \sigma_\tau(f) | 
+        \implies | f(\xi_1) | \Delta x_1 < | I | + 1 + \sum_{i = 2}^{n} | f(\xi_i) | \Delta x_i \\
+    & | f(\xi_1) | < \frac{| I | + 1 + \sum_{i = 2}^{n} | f(\xi_i) | \Delta x_i}{\Delta x_1} \\
+    & \text{Обозначим } C = \frac{| I | + 1 + \sum_{i = 2}^{n} | f(\xi_i) | \Delta x_i}{\Delta x_1} > 0 \\
+    & \text{Получили: } \forall \xi_1 \in [x_0; x_1]: | f(\xi_1) | < C \\
+    & \text{Но на отрезке $[x_0; x_1]$ функция не ограничена } \implies \Contradiction \\
+\end{split}
+}
+}
+
+\section{Суммы Дарбу}
+
+\subsection{Нижняя сумма Дарбу}
+
+\mcdfn{Нижняя сумма Дарбу}{
+    Пусть $ f(x) $ ограничена на $ [a; b] $, дано разбиение $ \tau $, 
+    тогда нижней суммой Дарбу называется
+
+    $ s_\tau = \sum_{i = 1}^{n} m_i \Delta x_i $, 
+    где $ \forall i: m_i = \underset{x \in [x_{i - 1}; x_i]}{\inf} f(x) $
+}
+
+\mcdfn{Верхняя сумма Дарбу}{
+    Пусть $ f(x) $ ограничена на $ [a; b] $, дано разбиение $ \tau $, 
+    тогда верхней суммой Дарбу называется
+
+    $ S_\tau = \sum_{i = 1}^{n} M_i \Delta x_i $, 
+    где $ \forall i: M_i = \underset{x \in [x_{i - 1}; x_i]}{\sup} f(x) $
+}
+
+\subsection{Свойства сумм Дарбу}
+
+\mcclm{Свойства сумм Дарбу}{}{
+\begin{tabular}{rl}
+    $\bullet$ & $ s_\tau, S_\tau $ определены, если $ f(x) $ ограничена \\
+    $\bullet$ & Если $ \tau' \succ \tau $, то: \\
+              & $ S_{\tau'} \le S_\tau $ \\
+              & $ s_{\tau'} \ge s_\tau $ \\
+    $\bullet$ & $ \forall \tau_1, \tau_2: s_{\tau_1} \le S_{\tau_2} $ \\
+    $\bullet$ & $ s_\tau = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf} \sigma_\tau(f) $ - инфинум по всем разметкам \\
+              & $ S_\tau = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\sup} \sigma_\tau(f) $ - супремум по всем разметкам \\
+\end{tabular}
+
+    Докажем 2-е свойство для нижних сумм Дарбу:
+\mcprf{
+\begin{split}
+    & s_\tau = \sum_{i = 1}^{n} m_i \Delta x_i \\
+    & s_{\tau'} = \sum_{j = 1}^{k} m'_j \Delta x'_j \\
+    & \forall i \, \exists n_{i - 1} < n_i: 
+        \sum_{j = n_{i - 1} + 1}^{n_i} \Delta x'_j = \Delta x_i 
+        \text{ и } \forall j \in \{ n_{i - 1} + 1, ..., n_i \}: [x_{j - 1}; x_j] \subseteq [x_{i - 1}; x_i]  \\
+    & \text{Т.к. $m_i$ - $\inf f(x)$ на всём отрезке $[x_{i-1}; x_i]$, то } \forall j \in \{ n_{i - 1} + 1, ..., n_i \}: m'_j \ge m_i \\
+    & m'_j \Delta x'_j \ge m_i \Delta x'_j \\
+    & s_\tau' = \sum_{j = n_{i - 1} + 1}^{n_i} m'_j \Delta x'_j 
+        \ge \sum_{j = n_{i - 1} + 1}^{n_i} m_i \Delta x'_j 
+        = m_i \Delta x_i = s_\tau \\
+\end{split}
+}
+
+    Докажем 3-е свойство:
+\mcprf{
+\begin{split}
+    & \text{Рассмотрим $ \tau $, состоящую из точек $ \tau_1 $ и $ \tau_2 $, тогда }
+        \tau \succ \tau_1, \tau_2 \\
+    & s_{\tau_1} \le s_{\tau} \le S_\tau \le S_{\tau_2} \\
+\end{split}
+}
+
+    Докажем 4-е свойство:
+\mcprf{
+\begin{split}
+    & s_\tau
+        = \sum_{i = 1}^{n} \underset{\xi_i \in [x_{i - 1}; x_i]}{\inf} f(\xi_i) \Delta x_i 
+        = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf} \sum_{i = 1}^{n} f(\xi_i) \Delta x_i 
+        = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf} \sigma_\tau(f) \\
+\end{split}
+}
+}
+
+\subsection{Интегралы Дарбу}
+
+\mcdfn{Верхний интеграл Дарбу}{
+    Верхним интегралом Дарбу называется $ I^* = \underset{\tau}{\inf} S_\tau $ 
+}
+
+\mcdfn{Нижний интеграл Дарбу}{
+    Нижним интегралом Дарбу называется $ I_* = \underset{\tau}{\sup} s_\tau $ 
+}
+
+\mcclarf{}{
+    $ s_\tau \le S_\tau \implies I_* \le I^* $
+}
+
+\subsection{Теорема об интегрируемости ограниченной функции}
+
+\mcthm{Теорема об интегрируемости ограниченной функции}{
+    Ограниченная функция $ f(x) $ интегрируема на $ [a; b] \iff I^* = I_* $
+
+\mcprf{
+\begin{split}
+    & "\implies" \\
+    & \text{Предположим от противного, т.е. функция интегрируема и } I_* \ne I^* \implies I_* < I^* \\
+    & \text{По определению интегрируемости:} \\
+    & \forall \veps > 0 \, 
+        \exists \delta > 0 \, 
+        \forall \tau: d(\tau) < \delta 
+        \forall \{ \xi_i \}_{i = 1}^{n}: \,
+        | \sigma_\tau(f) - I | < \veps \\ 
+    & | \sigma_\tau(f) - I | < \veps 
+        \implies I - \veps < \sigma_\tau(f) < I + \veps 
+        \implies I - \veps \le s_\tau \le S_\tau \le I + \veps \text{ по сво-ву 4} \\
+    & s_\tau \le I_* < I^* \le S_\tau \implies S_\tau - s_\tau \ge I^* - I_* > 0
+        \text{, но при этом } \forall \veps > 0: S_\tau - s_\tau \le 2 \veps 
+        \implies \Contradiction \\
+    & "\impliedby" \\
+\end{split}
+}
+}

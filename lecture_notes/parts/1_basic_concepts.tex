@@ -56,8 +56,8 @@
 \mcex{}
 {
 \begin{tabular}{rl}
-    Всеобщность:    & $\bullet$ $ \forall x \in \mathbb{R}: \, \phi(x) $ означает \\
-                    & "Для любого x из $\mathbb{R} $ выполняется предикат $ \phi(x) $" \\
+    Всеобщность:    & $\bullet$ $ \forall x \in \Rset: \, \phi(x) $ означает \\
+                    & "Для любого x из $\Rset $ выполняется предикат $ \phi(x) $" \\
     Существование:  & $\bullet$ $ \exists x \, (x \in \mathbb{Q} \implies \psi(x)) $ означает \\
                     & "Существует x, такой что если x из $\mathbb{Q} $, то выполняется предикат $ \psi(x) $" \\
     Единственность: & $\bullet$ $ \forall n \in \mathbb{N} \, \exists! k \in \mathbb{N} \cup \{ 0 \}: 2^k \le n < 2^{k + 1} $ означает \\
@@ -209,32 +209,32 @@
 
 \mcthm{Бином Ньютона}
 {
-    $ (a + b)^n = \sum_{k = 0}^{n} \cmb{n}{k} a^{k} b ^ {n-k}
+    $ (a + b)^n = \sum_{k = 0}^{n} \Cmb{n}{k} a^{k} b ^ {n-k}
     (\text{формально, перед равенством необходимо написать }
-        \forall a, b \in \mathbb{R} \forall n \in \mathbb{N}) $
+        \forall a, b \in \Rset \forall n \in \mathbb{N}) $
 \begin{mcproof}
 \begin{equation*}
 \begin{split}
 & \text{Докажем это утверждение при помощи метода математической индукции} \\
-& \text{1. База индукции: } n = 1 \implies (a + b)^n = a + b = \sum_{k=0}^{1} \cmb{n}{k} a^k b^{n-k} \\
-& \text{2. Предположение индукции: пусть для некоторого } n \ge 1: (a + b)^{n}= \sum_{k = 0}^{n} \cmb{n}{k} a^{k} b ^ {n-k} \\
+& \text{1. База индукции: } n = 1 \implies (a + b)^n = a + b = \sum_{k=0}^{1} \Cmb{n}{k} a^k b^{n-k} \\
+& \text{2. Предположение индукции: пусть для некоторого } n \ge 1: (a + b)^{n}= \sum_{k = 0}^{n} \Cmb{n}{k} a^{k} b ^ {n-k} \\
 & \text{3. Рассмотрим равенство и докажем, что оно верно при подстановке } n + 1: \\
 & (a + b)^{n + 1}
     = (a + b) (a + b)^n
-    = (a + b) \sum_{k = 0}^{n} \cmb{n}{k} a^{k} b ^ {n-k} = \\
-&   = a \sum_{k = 0}^{n} \cmb{n}{k} a^{k} b ^ {n - k}
-        + b \sum_{k = 0}^{n} \cmb{n}{k} a^{k} b ^ {n - k}
-    = \sum_{k = 0}^{n} \cmb{n}{k} a^{k + 1} b ^ {n - k}
-        + \sum_{k = 0}^{n} \cmb{n}{k} a^{k} b ^ {n + 1 - k} \\
-&   = \sum_{k = 1}^{n + 1} \cmb{n}{k - 1} a^{k} b ^ {n - (k - 1)}
-        + \sum_{k = 0}^{n} \cmb{n}{k} a^{k} b ^ {n + 1 - k}
-    = \cmb{n}{n} a^{n + 1} b^0 + \sum_{k = 1}^{n} \cmb{n}{k - 1} a^{k} b ^ {n + 1 - k}
-        + \cmb{n}{0} a^{0} b^{n + 1} \sum_{k = 1}^{n} \cmb{n}{k} a^{k} b ^ {n + 1 - k} = \\
+    = (a + b) \sum_{k = 0}^{n} \Cmb{n}{k} a^{k} b ^ {n-k} = \\
+&   = a \sum_{k = 0}^{n} \Cmb{n}{k} a^{k} b ^ {n - k}
+        + b \sum_{k = 0}^{n} \Cmb{n}{k} a^{k} b ^ {n - k}
+    = \sum_{k = 0}^{n} \Cmb{n}{k} a^{k + 1} b ^ {n - k}
+        + \sum_{k = 0}^{n} \Cmb{n}{k} a^{k} b ^ {n + 1 - k} \\
+&   = \sum_{k = 1}^{n + 1} \Cmb{n}{k - 1} a^{k} b ^ {n - (k - 1)}
+        + \sum_{k = 0}^{n} \Cmb{n}{k} a^{k} b ^ {n + 1 - k}
+    = \Cmb{n}{n} a^{n + 1} b^0 + \sum_{k = 1}^{n} \Cmb{n}{k - 1} a^{k} b ^ {n + 1 - k}
+        + \Cmb{n}{0} a^{0} b^{n + 1} \sum_{k = 1}^{n} \Cmb{n}{k} a^{k} b ^ {n + 1 - k} = \\
 &   = a^{n + 1} + b^{n + 1}
-        + \sum_{k = 1}^{n} (\cmb{n}{k - 1} + \cmb{n}{k}) a^{k} b ^ {n + 1 - k}
-    = \cmb{n + 1}{n + 1} a^{n + 1} + \cmb{n + 1}{0} b^{n + 1}
-        + \sum_{k = 1}^{n} \cmb{n + 1}{k} a^{k} b ^ {n + 1 - k} = \\
-&   = \sum_{k = 0}^{n + 1} \cmb{n + 1}{k} a^{k} b ^ {n + 1 - k} \\
+        + \sum_{k = 1}^{n} (\Cmb{n}{k - 1} + \Cmb{n}{k}) a^{k} b ^ {n + 1 - k}
+    = \Cmb{n + 1}{n + 1} a^{n + 1} + \Cmb{n + 1}{0} b^{n + 1}
+        + \sum_{k = 1}^{n} \Cmb{n + 1}{k} a^{k} b ^ {n + 1 - k} = \\
+&   = \sum_{k = 0}^{n + 1} \Cmb{n + 1}{k} a^{k} b ^ {n + 1 - k} \\
 & \text{4. Получили: } \\
 & \text{Равенство верно при $n = 1$,
     а из верности равенства для $ n $ следует верность равенства для $ n + 1 $} \\

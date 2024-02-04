@@ -17,7 +17,7 @@
 \begin{split}
 & "\implies" \\
 & \text{Распишем, что дано: }
-    \exists A \in \mathbb{R} \, \forall \veps > 0 \, \exists N_1(\veps) \, \forall n > N_1: | a_n - A | < \veps \\
+    \exists A \in \Rset \, \forall \veps > 0 \, \exists N_1(\veps) \, \forall n > N_1: | a_n - A | < \veps \\
 & \text{Хотим доказать: }
     \forall \veps > 0 \, \exists N_2(\veps) \, \forall n, m > N_2: | a_n - a_m | < \veps \\
 & | a_n - a_m | < \veps
@@ -37,7 +37,7 @@
 & \text{Положим } C := \max(|a_1|, |a_2|, ..., |a_{N_2(1)}|, |a_{N_2(1) + 1}|) + 1 \implies \\
 & \forall n \in \mathbb{N}: \, | a_n | \le C \\
 & \text{Тогда по теореме Больцано-Вейерштрасса } \\
-& \exists a \in \mathbb{R} \, \exists \NumSeq{a_{n_k}}: \lim_{k \to +\infty} a_{n_k} = a \\
+& \exists a \in \Rset \, \exists \NumSeq{a_{n_k}}: \lim_{k \to +\infty} a_{n_k} = a \\
 & \text{Докажем, что } \lim_{n \to +\infty} a_n = a \\
 & \text{Перепишем, что дано:} \\
 & \forall \veps > 0 \, \exists N_2(\veps) \, \forall n, m > N_2(\veps): | a_n - a_m | < \veps \\

@@ -3,9 +3,9 @@
 \mcdfn{O - символика}
 {
 \begin{tabular}{rl}
-    o-малое:   & $\bullet $ $f(x) = \overline{o}(g(x)) $ при $ x \to x_0 \in \overline{\mathbb{R}} $, 
+    o-малое:   & $\bullet $ $f(x) = \overline{o}(g(x)) $ при $ x \to x_0 \in \ExtRset $, 
                     если $ \frac{f(x)}{g(x)} $ - б.м. при $ x \to x_0 $ \\
-    O-большое: & $\bullet $ $f(x) = \underline{O}(g(x)) $ при $ x \to x_0 \in \overline{\mathbb{R}} $, 
+    O-большое: & $\bullet $ $f(x) = \underline{O}(g(x)) $ при $ x \to x_0 \in \ExtRset $, 
                     если $ \frac{f(x)}{g(x)} $ - ограниченная при $ x \to x_0 $ \\
 \end{tabular}
 }
@@ -53,7 +53,7 @@
 \mcclm{Правило замены переменных в пределе}{}
 {
     Пусть дана сложная функция $ f(g(x)) $, тогда, если для некоторой точки 
-    $ x_0:  \lim_{x \to x_0} g(x) = g(x_0) = y_0 $ и $ \lim_{y \to y_0} f(y) = A \in \mathbb{R} $, то
+    $ x_0:  \lim_{x \to x_0} g(x) = g(x_0) = y_0 $ и $ \lim_{y \to y_0} f(y) = A \in \Rset $, то
     $ \lim_{x \to x_0} f(g(x)) = f(g(x_0)) $
 }
 
@@ -97,7 +97,7 @@
 \mcprf{
 \begin{split}
     & \text{1. } E_f - \text{ мно-во значений } f(x) \text{ на } [a; b] \\
-    & \text{Обозначим } M = \sup E_f = \sup_{x \in [a; b]} f(x) \in \overline{\mathbb{R}} \\
+    & \text{Обозначим } M = \sup E_f = \sup_{x \in [a; b]} f(x) \in \ExtRset \\
     & \text{Построим некоторую строго возрастающую ч.п. } a_n \underset{n \to +\infty}{\to} M  \\
     & \text{2. Докажем, что } \forall n \in \mathbb{N} \, \exists x_n \in [a; b]: a_n < f(x_n) \\
     & \text{Предположим от противного, то есть } \exists n_0 \, \forall x \in [a; b]: a_{n_0} \ge f(x) \\
@@ -160,7 +160,7 @@
 \subsubsection{Следствие 2}
 
 \mccorollar{Следствие}{
-    $ f(x) = x^2 $ непрерывна на $ D_f = [0; 2] \implies (E_f = [0; 4] \wedge \exists x_0 \in \mathbb{R}: x_0^2 = 2) $
+    $ f(x) = x^2 $ непрерывна на $ D_f = [0; 2] \implies (E_f = [0; 4] \wedge \exists x_0 \in \Rset: x_0^2 = 2) $
 
     То есть доказано существование числа $\sqrt{2}$
 }
@@ -175,13 +175,13 @@
 
 \mcdfn{Определение монотонности функции}{
 \begin{tabular}{rl}
-    & $\bullet$ $f(x)$ называется строго возрастающей на $E \subseteq \mathbb{R}$, если 
+    & $\bullet$ $f(x)$ называется строго возрастающей на $E \subseteq \Rset$, если 
         $\forall x_1, x_2 \in E: x_1 < x_2 \implies f(x_1) < f(x_2) $ \\
-    & $\bullet$ $f(x)$ называется неубывающей на $E \subseteq \mathbb{R}$, если 
+    & $\bullet$ $f(x)$ называется неубывающей на $E \subseteq \Rset$, если 
         $\forall x_1, x_2 \in E: x_1 < x_2 \implies f(x_1) \le f(x_2) $ \\
-    & $\bullet$ $f(x)$ называется строго убывающей на $E \subseteq \mathbb{R}$, если 
+    & $\bullet$ $f(x)$ называется строго убывающей на $E \subseteq \Rset$, если 
         $\forall x_1, x_2 \in E: x_1 < x_2 \implies f(x_1) > f(x_2) $ \\
-    & $\bullet$ $f(x)$ называется невозрастающей на $E \subseteq \mathbb{R}$, если 
+    & $\bullet$ $f(x)$ называется невозрастающей на $E \subseteq \Rset$, если 
         $\forall x_1, x_2 \in E: x_1 < x_2 \implies f(x_1) \ge f(x_2) $ \\
 \end{tabular}
 }
@@ -270,7 +270,7 @@
 \subsubsection{Следствие 1}
 
 \mccorollar{Следствие (без доказательства)}{
-    Если функция $f(x)$ непрерывна и строго монотонна на $(a; b), \, a, b \in \overline{\mathbb{R}}$, то функция $f^{-1}(y):$
+    Если функция $f(x)$ непрерывна и строго монотонна на $(a; b), \, a, b \in \ExtRset$, то функция $f^{-1}(y):$
 
 \begin{tabular}{rl}
     & $\bullet$ 1) определена на $ (m; M) $, где $ m = \min(f(a), f(b)), M = \max(f(a), f(b)) $ \\
@@ -284,9 +284,9 @@
 \subsubsection{Следствие 2}
 
 \mccorollar{}{
-    Т.к. $f(x) = x^n$ непрерывна и строго монотонно возрастает на $D_f = n \,\, \vdots \,\, 2 \, ? \, [0; +\infty) \, : \, \mathbb{R}$, то
+    Т.к. $f(x) = x^n$ непрерывна и строго монотонно возрастает на $D_f = n \,\, \vdots \,\, 2 \, ? \, [0; +\infty) \, : \, \Rset$, то
 
-    $g(x) = \sqrt[n]{x} $ непрерывна и строго монотонно возрастает на $D_g = E_f = n \,\, \vdots \,\, 2 \, ? \, [0; +\infty) \, : \, \mathbb{R}$
+    $g(x) = \sqrt[n]{x} $ непрерывна и строго монотонно возрастает на $D_g = E_f = n \,\, \vdots \,\, 2 \, ? \, [0; +\infty) \, : \, \Rset$
 }
 
 \subsection{Обратные тригонометрические функции}
@@ -300,8 +300,8 @@
 
     \begin{tabular}{rl}
         & $\bullet$ $ y = \arccos x $ непрерывна и убывает на $E_f = [0; \pi] $, область значений - $D_f = [-1; 1]$ \\
-        & $\bullet$ $ y = \arctan x $ непрерывна и возрастает на $E_f = (-\frac{\pi}{2}; \frac{\pi}{2})$, область значений - $D_f = \mathbb{R}$ \\
-        & $\bullet$ $ y = \text{arcctg} \, x $ непрерывна и убывает на $E_f = (0; \pi)$, область значений - $D_f = \mathbb{R}$ \\
+        & $\bullet$ $ y = \arctan x $ непрерывна и возрастает на $E_f = (-\frac{\pi}{2}; \frac{\pi}{2})$, область значений - $D_f = \Rset$ \\
+        & $\bullet$ $ y = \text{arcctg} \, x $ непрерывна и убывает на $E_f = (0; \pi)$, область значений - $D_f = \Rset$ \\
     \end{tabular}
 }
 
@@ -311,11 +311,11 @@
     (теорема без доказательства) функция $y = a^x, a > 0$
 
 \begin{tabular}{rl}
-    & $\bullet$ 1) определена на $ D_f = \mathbb{R}, E_f = (0; +\infty) $ \\
+    & $\bullet$ 1) определена на $ D_f = \Rset, E_f = (0; +\infty) $ \\
     & $\bullet$ 2) возрастает при $ a > 1 $ и убывает при $ 0 < a < 1 $ \\
-    & $\bullet$ 3) непрерывна на $ \mathbb{R} $ \\
+    & $\bullet$ 3) непрерывна на $ \Rset $ \\
     & $\bullet$ 4) $a^{x} \cdot a^{y} = a^{x + y} $ \\
-    & \,\,\,\, /* Следствие: $\phi(x) = a^x$ является изоморфизмом между $(\mathbb{R}, +)$ и $(\mathbb{R}_+, *)$ */ \\
+    & \,\,\,\, /* Следствие: $\phi(x) = a^x$ является изоморфизмом между $(\Rset, +)$ и $(\Rset_+, *)$ */ \\
     & \,\,\,\, $(a^x)^y = a^{xy} $\\
 \end{tabular}
 }
@@ -326,11 +326,11 @@
     Функция, обратная к $y = a^x, a \in (0; 1) \cup (1; +\infty)$ обозначается $ y = \log_{a}x$
 
 \begin{tabular}{rl}
-    & $\bullet$ 1) определена на $ D_f = (0; +\infty), E_f = \mathbb{R} $ \\
+    & $\bullet$ 1) определена на $ D_f = (0; +\infty), E_f = \Rset $ \\
     & $\bullet$ 2) возрастает при $ a > 1 $ и убывает при $ 0 < a < 1 $ \\
     & $\bullet$ 3) непрерывна на $ (0; +\infty) $ \\
     & $\bullet$ 4) $ \log_a{x} + \log_a{y} = \log_a xy $ \\
-    & \,\,\,\, /* Следствие: $\psi(x) = \log_a{x}$ является изоморфизмом между $(\mathbb{R}_+, *)$ и $(\mathbb{R}, +)$ */ \\
+    & \,\,\,\, /* Следствие: $\psi(x) = \log_a{x}$ является изоморфизмом между $(\Rset_+, *)$ и $(\Rset, +)$ */ \\
     & \,\,\,\, $ \log_a{x^\alpha} = \alpha \log_a{x} $\\
 \end{tabular}
 }
@@ -364,7 +364,7 @@
 \subsection{Показательная функция с вещественным показателем}
 
 \mccorollar{Показательная функция с вещественным показателем}{
-    $ y = x^\alpha, \alpha \in \mathbb{R}, D_f = (0; +\infty) $
+    $ y = x^\alpha, \alpha \in \Rset, D_f = (0; +\infty) $
 
     $ y = e^{\alpha \ln x} $
 
@@ -400,7 +400,7 @@ $$
 }
 
 \nt{
-    $ \forall x \in \mathbb{R}: \, (\sin x)' = \cos x $
+    $ \forall x \in \Rset: \, (\sin x)' = \cos x $
 
 \mcprf{
 \begin{split}
@@ -412,7 +412,7 @@ $$
 }
 
 \nt{
-    $ \forall x \in \mathbb{R} \, \forall n \in \mathbb{N}: \, (x^n)' = n x^{n - 1} $
+    $ \forall x \in \Rset \, \forall n \in \mathbb{N}: \, (x^n)' = n x^{n - 1} $
 
 \mcprf{
 \begin{split}
@@ -443,7 +443,7 @@ $$
 \subsection{Правила подсчёта производных}
 
 \mcclm{Правила подсчёта производных}{}{
-    Если $ \exists f'(x), \exists g'(x), \alpha \in \mathbb{R}, \beta \in \mathbb{R} $, то
+    Если $ \exists f'(x), \exists g'(x), \alpha \in \Rset, \beta \in \Rset $, то
 
 	\begin{tabular}{rl}
 		& $\bullet$ $ (\alpha f(x) + \beta g(x))' = \alpha f'(x) + \beta g'(x) $ \\
@@ -456,36 +456,41 @@ $$
 
 \mcdfn{Дифференцируемость функции в точке}{
     Функция $f(x)$ называется дифференцируемой в точке $x_0$, если
-\[ \exists A \in \mathbb{R}: \, f(x) = f(x_0) + A \cdot (x - x_0) + \SmO[x - x_0] \]
+\[ \exists A(x_0) \in \Rset: \, f(x) = f(x_0) + A(x_0) \cdot (x - x_0) + \SmO[x - x_0] \]
+
+    Где $ A(x_0) $ - некоторая величина, не зависящая от $ x $ (т.е. для каждой точки $ x_0 $ это некоторое число)
 }
 
-\mcdfn{Признак дифференцируемости функции в точке}
-
-\mcthm{}{
-    Функция $f(x)$ дифференцируема в точке $x_0 \iff \exists f'(x_0) (\in \mathbb{R}) $
+\mcthm{Признак дифференцируемости функции в точке}{
+    Функция $f(x)$ дифференцируема в точке $x_0 \iff \exists f'(x_0) \in \Rset $
 \mcprf{
 \begin{split}
     & "\implies" \\
     & \text{По определению дифференцируемости в точке} \\
-    & \exists A \in \mathbb{R}: \, f(x) = f(x_0) + A \cdot (x - x_0) + \SmO[x - x_0] 
-        \implies \frac{f(x) - f(x_0)}{x - x_0} = A + \SmO[1] \implies \\
-    & \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = A \in \mathbb{R} \implies
-        \exists f'(x_0) = A \in \mathbb{R} \\
+    & \exists A(x_0) \in \Rset: \, f(x) = f(x_0) + A(x_0) \cdot (x - x_0) + \SmO[x - x_0] 
+        \implies \frac{f(x) - f(x_0)}{x - x_0} = A(x_0) + \SmO[1] \implies \\
+    & \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = A(x_0) \in \Rset \implies
+        \exists f'(x_0) = A(x_0) \in \Rset \\
     & "\impliedby" \\
     & \text{По определению производной:} \\
-    & \exists \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0) \in \mathbb{R}
+    & \exists \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0) \in \Rset
         \implies \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0) + \SmO[1] \implies \\
     & \implies f(x) - f(x_0) = f'(x_0) \cdot (x - x_0) + \SmO[x - x_0] \\
-    & \implies f(x) = f(x_0) + A \cdot (x - x_0) + \SmO[x - x_0], A = f'(x_0) \in \mathbb{R} \\
+    & \implies f(x) = f(x_0) + A(x_0) \cdot (x - x_0) + \SmO[x - x_0], A(x_0) = f'(x_0) \in \Rset \\
 \end{split}
 }
-} 
+}
 
 \subsection{Определение дифференциала}
 
 \mcdfn{Определение дифференциала}{
-    Дифференциал функции $f(x)$ в точке $x_0$ - это линейная функция $ d f(x) = A \cdot (x - x_0) $ такая, что
-    $ f(x) = f(x_0) + d f(x) + \SmO[x - x_0] $
+    Дифференциал функции $f(x)$ в точке $x_0$ - 
+    это линейная функция $ d f(x_0) = A(x_0) \cdot (x - x_0) $ такая, что
+    $ f(x) = f(x_0) + d f(x_0) + \SmO[x - x_0] $
+
+    Обозначив $x - x_0$ как $dx$ (фиксированное приращение), получим:
+
+    $ d f(x_0) = f'(x_0) dx $
 }
 
 \subsection{Теорема о непрерывности функции, дифференцируемой в точке}
@@ -497,7 +502,7 @@ $$
     & \text{По определению дифференцируемости в точке } x_0: \\
     & f(x) = f(x_0) + f'(x_0) \cdot (x - x_0) + \SmO[x - x_0] \\
     & \left. \begin{tabular}{l}
-        $ f'(x_0) \in \mathbb{R} \implies \lim_{x \to x_0} f'(x_0) \cdot (x - x_0) = 0 $ \\
+        $ f'(x_0) \in \Rset \implies \lim_{x \to x_0} f'(x_0) \cdot (x - x_0) = 0 $ \\
         $ \lim_{x \to x_0} \SmO[x - x_0] = 0 $
     \end{tabular} \right\}
     \begin{tabular}{l}
@@ -551,7 +556,7 @@ $$
 \subsection{Пример 2}
 
 \mcex{}{
-    Пример: $y = x^\alpha, \alpha \in \mathbb{R}, D_f = (0; +\infty)$
+    Пример: $y = x^\alpha, \alpha \in \Rset, D_f = (0; +\infty)$
 
     $ y = e^{\alpha \ln x} \implies y' = e^{\alpha \ln x} (\alpha \ln x)' = e^{\alpha \ln x} \cdot \frac{\alpha}{x} = \alpha x^{\alpha - 1} $
 }
@@ -680,6 +685,8 @@ $$
 
 \subsection{Теорема-следствие 2}
 
+\label{theorem_corollary_2:1}
+
 \mccorollar{Теорема-следствие 2}{
     Если функции $ f(x) $ и $g(x)$ удовлетворяют условиям:
 
@@ -704,7 +711,7 @@ $$
 
 \mccorollar{Теорема-следствие 3}{
     Если $\phi(x)$ непрерывна на $ [a; b] $ и $ \phi'(x) $ определена везде на $ (a; b) $, 
-        кроме, быть может, $x_0$, и $ \exists \lim_{x \to x_0} \phi'(x) = A \in \mathbb{R} $
+        кроме, быть может, $x_0$, и $ \exists \lim_{x \to x_0} \phi'(x) = A \in \Rset $
 
     То $ \exists \phi'(x_0) = A $, т.е. у производной непрерывной функции нет точек устранимого разрыва
 \mcprf{
@@ -851,22 +858,22 @@ $$
 \subsection{Правило Лопиталя}
 
 \mcthm{Правило Лопиталя (неопределённость вида $\frac{0}{0}$)}{
-    Докажем теорему для случая, когда рассматривается левосторонний предел при $ a \in \mathbb{R} $, т.е. предел
+    Докажем теорему для случая, когда рассматривается левосторонний предел при $ a \in \Rset $, т.е. предел
 
-    \[ \lim_{x \to a-} \frac{f(x)}{g(x)} \] для $a \in \mathbb{R}$ и функций $f(x)$ и $g(x)$, таких что:
+    \[ \lim_{x \to a-} \frac{f(x)}{g(x)} \] для $a \in \Rset$ и функций $f(x)$ и $g(x)$, таких что:
 
 \begin{tabular}{rl}
     & $\bullet$ $ \exists \delta_1 > 0: f \text{ и } g \text{ дифференцируемы на } (a - \delta_1; a) $\\
     & $\bullet$ $ \exists \lim_{x \to a-} f(x) = \lim_{x \to a-} g(x) = 0 $ \\
     & $\bullet$ $ \forall x \in (a - \delta_1; a): g'(x) \ne 0 $ \\
-    & $\bullet$ $ \exists \lim_{x \to a-} \frac{f'(x)}{g'(x)} = A \in \overline{\mathbb{R}} $ \\
+    & $\bullet$ $ \exists \lim_{x \to a-} \frac{f'(x)}{g'(x)} = A \in \ExtRset $ \\
 \end{tabular}
 
-    Тогда: $ \exists \lim_{x \to a-} \frac{f(x)}{g(x)} = A \in \overline{\mathbb{R}} $
+    Тогда: $ \exists \lim_{x \to a-} \frac{f(x)}{g(x)} = A \in \ExtRset $
 
 \mcprf{
 \begin{split}
-    & \text{1. БОО рассмотрим случай, когда } A \in \mathbb{R} \text{. Иначе рассмотрим предел частного } \frac{f(x)}{g(x)} \\
+    & \text{1. БОО рассмотрим случай, когда } A \in \Rset \text{. Иначе рассмотрим предел частного } \frac{f(x)}{g(x)} \\
     & \text{2. Доопределим $f(x)$ и $g(x)$ в точке $a$: } f(a) = g(a) = 0 \text{, чтобы функции были непрерывны в точке } a. \\
     & \text{Это не влияет на искомый предел по определению предела функции при $ x \to a $ } \\
     & \text{Тогда } \forall x \in (a - \delta_1; a) \text{ на $[x; a]$ выполнено условие т. Коши} \\
@@ -875,14 +882,14 @@ $$
     & \text{Тогда } \frac{f'(\xi)}{g'(\xi)} = F(\xi(x)) \underset{x \to a-}{\to} A \text{ по теореме о пределе сложной функции $ F(\xi(x)) $} \\
 \end{split}
 }
-    Для случая $ x \to a, \, a \in \mathbb{R} $ и $ x \to a+, \, a \in \mathbb{R} $ доказательство аналогично
+    Для случая $ x \to a, \, a \in \Rset $ и $ x \to a+, \, a \in \Rset $ доказательство аналогично
 
     Докажем теорему для случая, когда рассматривается предел при $ a \in +\infty $, т.е. предел
 
     \[ \lim_{x \to +\infty} \frac{f(x)}{g(x)} \]
 \mcprf{
 \begin{split}
-    & \text{1. БОО рассмотрим случай, когда } A \in \mathbb{R} \text{. Иначе рассмотрим предел частного } \frac{f(x)}{g(x)} \\
+    & \text{1. БОО рассмотрим случай, когда } A \in \Rset \text{. Иначе рассмотрим предел частного } \frac{f(x)}{g(x)} \\
     & \lim_{x \to +\infty} \frac{f'(x)}{g'(x)} 
         = \left| x = \frac{1}{t} \right| 
         = \lim_{t \to 0+} \frac{f'\left(\frac{1}{t}\right)}{g'\left(\frac{1}{t}\right)}
@@ -903,22 +910,22 @@ $$
 }
 
 \mcthm{Правило Лопиталя (неопределённость вида $\frac{\infty}{\infty0}$)}{
-    Докажем теорему для случая, когда рассматривается левосторонний предел при $ a \in \mathbb{R} $, т.е. предел
+    Докажем теорему для случая, когда рассматривается левосторонний предел при $ a \in \Rset $, т.е. предел
 
-    \[ \lim_{x \to a-} \frac{f(x)}{g(x)} \] для $a \in \mathbb{R}$ и функций $f(x)$ и $g(x)$, таких что:
+    \[ \lim_{x \to a-} \frac{f(x)}{g(x)} \] для $a \in \Rset$ и функций $f(x)$ и $g(x)$, таких что:
 
 \begin{tabular}{rl}
     & $\bullet$ $ \exists \delta_1 > 0: f \text{ и } g \text{ дифференцируемы на } (a - \delta_1; a) $\\
     & $\bullet$ $ \exists \lim_{x \to a-} f(x) = \lim_{x \to a-} g(x) = \infty $ \\
     & $\bullet$ $ \forall x \in (a - \delta_1; a): g'(x) \ne 0 $ \\
-    & $\bullet$ $ \exists \lim_{x \to a-} \frac{f'(x)}{g'(x)} = A \in \overline{\mathbb{R}} $ \\
+    & $\bullet$ $ \exists \lim_{x \to a-} \frac{f'(x)}{g'(x)} = A \in \ExtRset $ \\
 \end{tabular}
 
-    Тогда: $ \exists \lim_{x \to a-} \frac{f(x)}{g(x)} = A \in \overline{\mathbb{R}} $
+    Тогда: $ \exists \lim_{x \to a-} \frac{f(x)}{g(x)} = A \in \ExtRset $
 
 \mcprf{
 \begin{split}
-    & \text{1. БОО рассмотрим случай, когда } A \in \mathbb{R} \text{. Иначе рассмотрим предел частного } \frac{f(x)}{g(x)} \\
+    & \text{1. БОО рассмотрим случай, когда } A \in \Rset \text{. Иначе рассмотрим предел частного } \frac{f(x)}{g(x)} \\
     & \text{2. По определению предела:} \\
     & \forall \veps_1 > 0 \, \exists \delta_2 > 0 \, \forall x \in (a - \delta_2; a): \left| \frac{f'(x)}{g'(x)} - A \right| < \veps_1 \\
     & \text{Рассмотрим такие $\veps_1$, что $ \veps_1 < \frac{1}{2} $} \\
@@ -1020,7 +1027,7 @@ $$
 
 \subsection{Формула Тейлора с остаточным членом в форме Пеано}
 
-\mcthm{Формула Тейлора с остаточным членом в форме Пеано}{
+\mcthm{Формула Тейлора с остаточным членом в форме Пеано (локальная формула Тейлора)}{
     Если $ \exists f^{(n)}(x_0) $, т.е. существует $n$-ая производная в точке $x_0$ \\
     (следовательно, функция $n - 1$ раз дифференцируема в некоторой окрестности точки $x_0$), то
 
@@ -1054,8 +1061,7 @@ $$
 }
 }
 
-\subsection{Формула Тейлора для синуса}
-\mcex{Формула Тейлора для синуса}{
+\mcex{Локальная формула Тейлора для синуса}{
     $ f(x) = \sin x, x_0 = 0 $, тогда $ f^{(k)}(x) = \sin(x + \frac{\pi k}{2}) $
 
 \begin{tabular}{l}
@@ -1069,8 +1075,7 @@ $$
     \[ \sin(x) = \sum_{k = 0}^{n} \frac{(-1)^k}{(2k + 1)!} x^{2k + 1} + \overline{o}(x^{2n + 1}) \]
 }
 
-\subsection{Формула Тейлора для экспоненциальной функции}
-\mcex{Формула Тейлора для косинуса}{
+\mcex{Локальная формула Тейлора для косинуса}{
     $ f(x) = \cos x, x_0 = 0 $, тогда $ f^{(k)}(x) = \cos(x + \frac{\pi k}{2}) $
 
 \begin{tabular}{l}
@@ -1084,14 +1089,13 @@ $$
     \[ \cos(x) = \sum_{k = 0}^{n} \frac{(-1)^k}{(2k)!} x^{2k} + \overline{o}(x^{2n}) \]
 }
 
-\subsection{Формула Тейлора для экспоненциальной функции}
-\mcex{Формула Тейлора для экспоненциальной функции}{
+\mcex{Локальная формула Тейлора для экспоненциальной функции}{
     $ f(x) = e^x, x_0 = 0 $, тогда $ f^{(k)}(0) = 1 $
 
     \[ e^x = \sum_{k = 0}^{n} \frac{x^{k}}{k!} + \overline{o}(x^{n}) \]
 }
 
-\mcex{Пример использования формулы Тейлора для подсчёта предела}{
+\mcex{Пример использования локальной формулы Тейлора для подсчёта предела}{
 \begin{equation}
 \begin{split}
     & \lim_{x \to 0} \frac{x - \sin x}{e^x - 1 - x - \frac{x^2}{2}} 
@@ -1105,10 +1109,35 @@ $$
 \end{equation}
 }
 
-\subsection{Теорема Тейлора с остаточным членом в формуле Лагранжа}
-\mcthm{Теорема Тейлора с остаточным членом в формуле Лагранжа}{
-    Если функция $f(x)$ дифференцируема $n + 1$ раз на интервале 
-    $(a; b), a \in \overline{\mathbb{R}}, b \in \overline{\mathbb{R}}$ 
+\subsection{Теорема о единственности локальной формулы Тейлора}
+\mcthm{Теорема о единственности локальной формулы Тейлора}{
+    Если функция $f(x)$ $n$ раз дифференцируема в точке $x_0$ и
+    $ f(x) = P_n(x) + \SmO[(x - x_0)^n] $ при $ x \to x_0 $ \\
+    ($P_n(x) $ - многочлен от $ x, \deg P_n(x) \le n $)
+
+    то $ P_n(x) = T_n(x) $
+
+\mcprf{
+\begin{split}
+    & \text{1. Функция $f(x)$ $n$ раз дифференцируема в точке $x_0$} 
+        \implies f(x) = T_n(x) + \SmO[(x - x_0)^n] \\
+    & \text{2. } P_n(x) - T_n(x) = \SmO[(x - x_0)^n] \\
+    & \sum_{k = 0}^{n} \left( a_k - \frac{f^{(k)}(x_0)}{k!} \right) (x - x_0)^k = \SmO[(x - x_0)^n] \\
+    & \text{Перейдём к пределу: } 
+        \implies a_0 - \frac{f(x_0)}{0!} = 0 
+        \implies a_0 = \frac{f(x_0)}{0!} \\
+    & \text{Разделим на $ x - x_0 $ и снова перейдём к пределу и снова перейдём к пределу } 
+        \implies a_1 = \frac{f'(x_0)}{1!}  \\
+    & \text{Повторив это ещё $ n - 1 $ раз, получим, что } 
+        \forall k: a_k = \frac{f^{(k)}(x_0)}{k!} \\
+\end{split}
+}
+}
+
+\subsection{Формула Тейлора с остаточным членом в формуле Лагранжа}
+\mcthm{Формула Тейлора с остаточным членом в формуле Лагранжа}{
+    Если функция $f(x)$ $n + 1$ раз дифференцируема на интервале 
+    $(a; b), a \in \ExtRset, b \in \ExtRset$ 
     и $ a < x_0, x < b$, то
 
     $ \exists c = c(x) \in (\min(x_0; x); \max(x_0; x)): $
@@ -1139,7 +1168,7 @@ $$
 }
 
 \mcex{Пример для функции синус}{
-    $ \forall x \in \mathbb{R}: \, 
+    $ \forall x \in \Rset: \, 
         \left| \sin x - \sum_{k = 0}^{n} \frac{(-1)^k}{(2k + 1)!} x^{2k + 1} \right| 
             \le \frac{1}{(2n + 2)!} x^{2n + 2} \underset{n \to +\infty}{\to} 0 $
 }
@@ -1147,7 +1176,7 @@ $$
 \mcex{Пример для экспоненты}{
     \[ f(x) = e^x, T_n(x) = \sum_{k = 0}^{n} \frac{x^k}{k!} \]
 
-    $ \forall x \in \mathbb{R}: \, 
+    $ \forall x \in \Rset: \, 
         \left| T_n(x) - e^x \right| 
         = \left| R_n(x) \right| 
         = \frac{e^c}{(n + 1)!} \left| x \right|^{n + 1}

@@ -34,18 +34,21 @@
 \newcommand{\kq}{\mathfrak q}
 
 % number sets
-\newcommand{\RR}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{R}}{\mathbb{R}^{#1}}}}
-\newcommand{\NN}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{N}}{\mathbb{N}^{#1}}}}
-\newcommand{\ZZ}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{Z}}{\mathbb{Z}^{#1}}}}
-\newcommand{\QQ}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{Q}}{\mathbb{Q}^{#1}}}}
-\newcommand{\CC}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{C}}{\mathbb{C}^{#1}}}}
-\newcommand{\PP}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{P}}{\mathbb{P}^{#1}}}}
-\newcommand{\HH}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{H}}{\mathbb{H}^{#1}}}}
-\newcommand{\FF}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{F}}{\mathbb{F}^{#1}}}}
+\newcommand{\Rset}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{R}}{\mathbb{R}^{#1}}}}
+\newcommand{\ExtRset}[1][]{\ensuremath{\ifstrempty{#1}{\overline{\mathbb{R}}}{\overline{\mathbb{R}}^{#1}}}}
+\newcommand{\Nset}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{N}}{\mathbb{N}^{#1}}}}
+\newcommand{\Zset}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{Z}}{\mathbb{Z}^{#1}}}}
+\newcommand{\Qset}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{Q}}{\mathbb{Q}^{#1}}}}
+\newcommand{\Cset}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{C}}{\mathbb{C}^{#1}}}}
+\newcommand{\Pset}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{P}}{\mathbb{P}^{#1}}}}
+\newcommand{\Hset}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{H}}{\mathbb{H}^{#1}}}}
+\newcommand{\Fset}[1][]{\ensuremath{\ifstrempty{#1}{\mathbb{F}}{\mathbb{F}^{#1}}}}
+
 % expected value
-\newcommand{\EE}{\ensuremath{\mathbb{E}}}
+\newcommand{\Expected}{\ensuremath{\mathbb{E}}}
+
 \newcommand{\charin}{\text{ char }}
-\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Inn}{Inn}
 \DeclareMathOperator{\Syl}{Syl}
