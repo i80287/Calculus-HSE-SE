@@ -62,16 +62,9 @@
     (как следствие, показали, что $\mathbb{N} \cup \{ 0 \} \sim \mathbb{Z}$, т.е. множества равномощны)
 }
 
-\mcdfn{Определение обратной функции}{
-    Функция $y = f^{-1}(x)$ называется обратной функцией к функции $ y = f(x) $,
-    если множество пар фукнции $ f^{-1} $ является симметрией множества пар $ f $
-}
-
-\nt{
-    Функция обратима $\iff$ она инъективна
-}
-
 \section{Пределы}
+
+\subsection{Определение предела функции по Коши}
 
 \mcdfn{Определение предела функции по Коши}
 {
@@ -91,6 +84,8 @@
     $ \dot{U}_\delta(\infty) = (-\infty; \delta) \cup (\delta; +\infty) $
 }
 
+\subsection{Определение предела функции по Гейне}
+
 \mcdfn{Определение предела функции по Гейне}
 {
     \[
@@ -98,6 +93,48 @@
     \forall \NumSeq{x_n}:
     (x_n \ne x_0 \wedge \lim_{n \to +\infty} x_n = x_0 \implies \lim_{n \to +\infty} f(x_n) = A)\]
 }
+
+\subsection{Теорема об эквивалентности определений по Коши и по Гейне}
+
+\mcthm{Теорема об эквивалентности определений по Коши и по Гейне}{
+    Определение предела функции по Коши эквивалентно определению предела функции по Гейне
+
+\mcprf{
+\begin{split}
+    & "\implies" \\
+    & \text{Распишем определение по Коши: }
+        \forall \xi > 0 \, \exists \delta = \delta(\xi) > 0 \, \forall x \in \dot{U}_\delta(x_0): | f(x) - A | < \xi \,\,\, (1) \\
+    & \text{Пусть дана ч.п., удовлетворяющая условиям посылки импликации, т.е. } \\
+    & \NumSeq{x_n}: x_n \underset{n \to +\infty}{\to} x_0 \wedge \forall n \in \Nset: x_n \ne x_0 \\
+    & \text{По определению это означает, что } \\
+    & \forall \lambda > 0 \, \exists N(\lambda) \in \Nset[] \, \forall n > N(\lambda): 0 < | x_n - x_0 | < \lambda \,\,\, (2) \\ 
+    & \text{Хотим доказать: } \\
+    & \forall \veps > 0 \, \exists N_1(\veps) \in \Nset[] \, \forall n > N_1(\veps): | f(x_n) - A | < \veps \\
+    & \text{Пусть дано $\veps > 0$, тогда по (2):} \\ 
+    & \forall n > N(\delta(\veps)): 0 < | x_n - x_0 | < \delta(\veps) \\
+    & \text{Это равносильно тому, что } \forall n > N(\delta(\veps)): x_n \in \dot{U}_{\delta(\veps)}(x_0) \\
+    & \text{Тогда по (1) получим: } \forall n > N(\delta(\veps)): | f(x) - A | < \veps \\
+    & \text{Т.е. мы доказали искомое высказывание, положив } N_1(\veps) := N(\delta(\veps)) \\
+    & "\impliedby" \\
+    & \text{Предположим от противного, т.е. выполнено определение по Гейне, но по Коши не выполнено:} \\
+    & \forall \NumSeq{x_n}: x_n \underset{n \to +\infty}{\to} x_0 \wedge \forall n \in \Nset: x_n \ne x_0 \implies f(x_n) \underset{n \to +\infty}{\to} A \,\,\, (3) \\
+    & \exists \veps_0 > 0 \, \forall \delta > 0 \, \exists x \in \dot{U}_\delta(x_0): | f(x) - A | \ge \veps_0 \,\,\, (4) \\
+    & \text{Для любого $n \in \Nset$ рассмотрим $\delta_n = \frac{1}{n}$ и $x \in \dot{U}_{\delta_n}(x_0)$ из (4) обозначим как $x_n$}  \\
+    & \text{Тогда по (4): } \forall n \in \Nset[]: | f(x_n) - A | \ge \veps_0 \\
+    & \forall n \in \Nset[]: 
+        x_0 - \frac{1}{n} < x_n < x_0 + \frac{1}{n} 
+        \implies x_n \underset{n \to +\infty}{\to} x_0 
+        \text{ по теореме о пределе зажатой последовательности} \\
+    & \text{Получили ч.п., такую что } 
+        x_n \underset{n \to +\infty}{\to} x_0 
+        \wedge \forall n \in \Nset[]: x_n \ne x_0 \\
+    & \text{Тогда по определению сходимости по Гейне (3): } f(x_n) \underset{n \to +\infty}{\to} A \implies \\
+    & \implies \exists N(\veps_0) \, \forall n > N(\veps_0): | f(x_n) - A | < \veps_0 \implies \Contradiction \\
+\end{split}
+}
+}
+
+\subsection{Определение одностороннего предела функции}
 
 \mcdfn{Односторонний предел функции}
 {
@@ -119,6 +156,8 @@
     \forall x \in (x_0; x_0 + \delta):
     f(x) \in U_\veps(A) \]
 }
+
+\subsection{Свойство предела функции}
 
 \mcthm{Свойство предела функции при $ x \to x_0, x_0 \in \Rset $}
 {
@@ -159,6 +198,8 @@
 \end{split}
 }
 }
+
+\subsection{Бесконечные пределы}
 
 \mcdfn{Бесконечные пределы}
 {
@@ -242,7 +283,7 @@ $$
 
 \mcdfn{Первый замечательный предел}
 {
-    \[ \lim_{x \to +\infty} \frac{\sin x}{x} = 1 \]
+    \[ \lim_{x \to 0} \frac{\sin x}{x} = 1 \]
 }
 
 \mcdfn{Второй замечательный предел}
