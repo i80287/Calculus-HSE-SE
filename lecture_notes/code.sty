@@ -1,0 +1,54 @@
+% src: https://github.com/DimaTrushin/Cpp_Projects_Manual
+
+% Определим окружение для кода
+% Используется пакет listings
+
+% For code highlighting
+\usepackage{listings}
+
+\definecolor{clr-background}{RGB}{250,250,250}
+\definecolor{clr-text}{RGB}{0,0,0}
+\definecolor{clr-string}{RGB}{255,85,255}
+\definecolor{clr-preprocessor}{RGB}{0,0,153}
+\definecolor{clr-keyword}{RGB}{255,128,0}
+\definecolor{clr-variable}{RGB}{0,0,0}
+\definecolor{clr-comment}{RGB}{0,102,0}
+\definecolor{clr-type}{RGB}{51,51,255}
+
+\newcommand{\twfont}{\footnotesize\ttfamily}
+\lstdefinestyle{Cpp}{
+  numbers=left,
+  frame=tb,
+  tabsize=2,
+  showstringspaces=false,
+  backgroundcolor=\color{clr-background},
+  basicstyle=\color{clr-text}\twfont, 
+  stringstyle=\color{clr-string}\twfont,
+  identifierstyle=\color{clr-variable}\twfont, 
+  commentstyle=\color{clr-comment}\twfont,
+  directivestyle=\color{clr-preprocessor}\twfont,
+  keywordstyle=\color{clr-keyword}\twfont,
+  morekeywords={alignas,alignof,and,and_eq,asm,atomic_cancel,atomic_commit,atomic_noexcept,auto,bitand,bitor,bool,break,case,catch,char,char8_t,char16_t,char32_t,class,compl,concept,const,consteval,constexpr,constinit,const_cast,continue,co_await,co_return,co_yield,decltype,default,delete,do,double,dynamic_cast,else,enum,explicit,export,extern,false,float,for,friend,goto,if,inline,int,long,mutable,namespace,new,noexcept,not,not_eq,nullptr,operator,or,or_eq,private,protected,public,reflexpr,register,reinterpret_cast,requires,return,short,signed,sizeof,static,static_assert,static_cast,struct,switch,synchronized,template,this,thread_local,throw,true,try,typedef,typeid,typename,union,unsigned,using,virtual,void,volatile,wchar_t,while,xor,xor_eq},
+  emph={bool,char,char8_t,char16_t,char32_t,double,float,int,long,short,signed,unsigned,void,wchar_t},
+  emphstyle={\color{clr-type}\twfont},
+%  emph=[2]{try, catch},
+%  emphstyle=[2]{\color{orange}}
+}
+
+\newcounter{@cppcode}
+\setcounter{@cppcode}{1}
+\lstnewenvironment{cppcode}
+  {\lstset{
+    language=C++,
+    style=Cpp
+  }
+}
+{\setcounter{@cppcode}{\value{lstnumber}}}
+
+\newcommand{\inputcppcode}[2][]{\lstinputlisting[language=C++, style=Cpp,, #1]{#2}}
+
+% \lstset{basicstyle=\ttfamily,
+%   showstringspaces=false,
+%   commentstyle=\color{red},
+%   keywordstyle=\color{blue}
+% }

@@ -55,14 +55,6 @@
 
 \usepackage{physics}
 
-% For code highlighting
-\usepackage{listings}
-\lstset{basicstyle=\ttfamily,
-  showstringspaces=false,
-  commentstyle=\color{red},
-  keywordstyle=\color{blue}
-}
-
 % \usepackage[unicode]{hyperref}
 
 \newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
@@ -76,6 +68,11 @@
 \renewcommand\qedsymbol{$\blacksquare$}
 
 \usepackage{sectsty}
+
+% strikethrough text \sout
+\usepackage[normalem]{ulem}
+
+\usepackage{code}
 
 \chapternumberfont{\normalsize} 
 \chaptertitlefont{\Large}
@@ -659,7 +656,7 @@
 	,fonttitle = \bfseries
 	,description font = \mdseries
 	,separator sign none
-	,description delimiters parenthesis
+	,description delimiters % parenthesis
 }
 {clarif}
 
@@ -690,6 +687,8 @@
 \newcommand{\mcprf}[1]{\begin{mcproof}\[#1\]\end{mcproof}}
 \newcommand{\nt}[1]{\begin{note}#1\end{note}}
 \newcommand{\mcclarf}[2]{\begin{clarification*}{#1}{}#2\end{clarification*}}
+\newcommand{\mclm}[2]{\begin{myclaim}[#1]#2\end{myclaim}}
+\newenvironment{myclaim}[1][\claimname]{\proof[\bfseries #1: ]}{}
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
 		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
@@ -703,8 +702,6 @@
 	\proof[\bfseries #1: ]%
 }{\endproof}
 
-\newcommand{\mclm}[2]{\begin{myclaim}[#1]#2\end{myclaim}}
-\newenvironment{myclaim}[1][\claimname]{\proof[\bfseries #1: ]}{}
 
 \newcounter{mylabelcounter}
 
@@ -714,8 +711,6 @@
 	#1\def\@currentlabel{\unexpanded{#1}}\label{#2}%
 }
 \makeatother
-
-
 
 
 \tikzset{
