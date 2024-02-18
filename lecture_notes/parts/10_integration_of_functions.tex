@@ -174,6 +174,14 @@
     $ a = x_0 < x_1 < ... < x_n = b $
 }
 
+\mcex{Пример разбиения}{
+    $[a; b] = [0; 2]$
+
+    $ n = 5, \tau = \{ [0; 0.5], [0.5, 1], [1; 1.5], [1.5; 1.75], [1.75, 2] \} $
+
+    $ a = 0 = x_0 < x_1 = 0.5 < x_2 = 1 < x_3 = 1.5 < x_4 = 1.75 < x_5 = 2 = b $
+}
+
 \mcdfn{Измельчение разбиения}{
     Пусть даны 2 разбиения:
 
@@ -185,6 +193,42 @@
     $ \forall i \, \exists j: x_i = x'_j $
 
     Обозначение: $ \tau' \succ \tau $ 
+}
+
+\nt{
+    Если $ \tau' \succ \tau $, то $ k \ge n $, причём $ k = n \iff \tau' = \tau $
+}
+
+\mcex{Пример измельчения разбиения}{
+    $ [a; b] = [0; 5]$
+
+    $ n = 3, \tau = \{ [0; 1], [1; 3], [3; 5] \} $
+
+    $ x_0 = 0, x_1 = 1, x_2 = 3, x_3 = 5 $
+
+\begin{tikzpicture}
+    \draw (0,0) -- (6,0);
+    \filldraw[black] (0.5,0) circle (1pt) node[anchor=south]{0};
+    \filldraw[black] (1.5,0) circle (1pt) node[anchor=south]{1};
+    \filldraw[black] (2.5,0) circle (1pt) node[anchor=south]{2};
+    \filldraw[black] (3.5,0) circle (1pt) node[anchor=south]{3};
+    \filldraw[black] (4.5,0) circle (1pt) node[anchor=south]{4};
+    \filldraw[black] (5.5,0) circle (1pt) node[anchor=south]{5};
+    \filldraw[green!40!black] (0.5,0.6) node[]{$x_{0}$};
+    \filldraw[green!40!black] (1.5,0.6) node[]{$x_{1}$};
+    \filldraw[green!40!black] (3.5,0.6) node[]{$x_{2}$};
+    \filldraw[green!40!black] (5.5,0.6) node[]{$x_{3}$};
+    \filldraw[red!40!black] (0.5,-0.5) node[]{$x'_{0}$};
+    \filldraw[red!40!black] (1.5,-0.5) node[]{$x'_{1}$};
+    \filldraw[red!40!black] (2.5,-0.5) node[]{$x'_{2}$};
+    \filldraw[red!40!black] (3.5,-0.5) node[]{$x'_{3}$};
+    \filldraw[red!40!black] (4.5,-0.5) node[]{$x'_{4}$};
+    \filldraw[red!40!black] (5.5,-0.5) node[]{$x'_{5}$};
+\end{tikzpicture}
+
+    $ k = 5, \tau' = \{ [0; 1], [1; 2], [2; 3], [3; 4], [4; 5] \} $
+
+    $ x'_0 = 0, x'_1 = 1, x'_2 = 2, x'_3 = 3, x'_4 = 4, x'_5 = 5 $
 }
 
 \mcdfn{Диаметр разбиения}{
@@ -207,6 +251,8 @@
 
 \subsection{Определение определённого интеграла по Коши}
 
+\label{cauchy_integr_def:3}
+
 \mcdfn{Определение определённого интеграла по Коши}{
     Число $I$ называется определённым интегралом $f(x)$ на $[a; b]$, если
 
@@ -217,12 +263,27 @@
         | \sigma_\tau(f) - I | < \veps $
 }
 
+\subsection{Определение определённого интеграла по Гейне}
+
 \mcdfn{Определение определённого интеграла по Гейне}{
     Число $I$ называется определённым интегралом $f(x)$ на $[a; b]$, если
 
     $ \forall \text{ послед. } \tau_k: d(\tau_k) \underset{k \to +\infty}{\to} 0 \,
         \forall \{ \xi_{i}^{k} \}_{i = 1}^{n}: \,
         \sigma_{\tau_k}(f) \underset{k \to +\infty}{\to} I $
+}
+
+\subsection{Определение функции, интегрируемой по Риману}
+
+\mcdfn{Определение интегрируемости по Риману}{
+    Функция $f(x)$ интегрируема по Риману, если $\exists I \in \Rset[] $, т.ч.
+    выполняется определение по Коши $\ref{cauchy_integr_def:3}$
+
+    Обозначения: 
+
+    $ f(x) \in R[a; b] $, где $R[a; b]$ - множество функций, интегрируемых по Риману на отрезке $[a; b]$
+
+    $ I = \int_{a}^{b} f(x) dx $
 }
 
 \mcex{}{
@@ -282,7 +343,7 @@
     тогда нижней суммой Дарбу называется
 
     $ s_\tau = \sum_{i = 1}^{n} m_i \Delta x_i $, 
-    где $ \forall i: m_i = \underset{x \in [x_{i - 1}; x_i]}{\inf} f(x) $
+    где $ \forall i: m_i = \underset{x \in [x_{i - 1}; x_i]}{\inf f(x)} $
 }
 
 \subsection{Верхняя сумма Дарбу}
@@ -292,20 +353,23 @@
     тогда верхней суммой Дарбу называется
 
     $ S_\tau = \sum_{i = 1}^{n} M_i \Delta x_i $, 
-    где $ \forall i: M_i = \underset{x \in [x_{i - 1}; x_i]}{\sup} f(x) $
+    где $ \forall i: M_i = \underset{x \in [x_{i - 1}; x_i]}{\sup f(x)} $
 }
 
 \subsection{Свойства сумм Дарбу}
 
+\label{darboux_sums_props:4}
+
 \mcclm{Свойства сумм Дарбу}{}{
 \begin{tabular}{rl}
-    $\bullet$ & $ s_\tau, S_\tau $ определены, если $ f(x) $ ограничена \\
+    $\bullet$ & $ s_\tau, S_\tau $ определены, если $ f(x) $ ограничена, 
+                    т.е. $ s_\tau \in \Rset[] \wedge S_\tau \in \Rset[] $ \\
     $\bullet$ & Если $ \tau' \succ \tau $, то: \\
               & $ S_{\tau'} \le S_\tau $ \\
               & $ s_{\tau'} \ge s_\tau $ \\
     $\bullet$ & $ \forall \tau_1, \tau_2: s_{\tau_1} \le S_{\tau_2} $ \\
-    $\bullet$ & $ s_\tau = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf} \sigma_\tau(f) $ - инфинум по всем разметкам \\
-              & $ S_\tau = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\sup} \sigma_\tau(f) $ - супремум по всем разметкам \\
+    $\bullet$ & $ s_\tau = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf \sigma_{\tau}(f)} $ - инфинум по всем разметкам \\
+              & $ S_\tau = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\sup \sigma_{\tau}(f)} $ - супремум по всем разметкам \\
 \end{tabular}
 
     Докажем 2-е свойство для нижних сумм Дарбу:
@@ -337,9 +401,9 @@
 \mcprf{
 \begin{split}
     & s_\tau
-        = \sum_{i = 1}^{n} \underset{\xi_i \in [x_{i - 1}; x_i]}{\inf} f(\xi_i) \Delta x_i 
-        = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf} \sum_{i = 1}^{n} f(\xi_i) \Delta x_i 
-        = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf} \sigma_\tau(f) \\
+        = \sum_{i = 1}^{n} \underset{\xi_i \in [x_{i - 1}; x_i]}{\inf f(\xi_i)} \Delta x_i 
+        = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf \sum_{i = 1}^{n} f(\xi_i) \Delta x_i}
+        = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf \sigma_{\tau}(f) } \\
 \end{split}
 }
 }
@@ -347,21 +411,112 @@
 \subsection{Интегралы Дарбу}
 
 \mcdfn{Верхний интеграл Дарбу}{
-    Верхним интегралом Дарбу называется $ I^* = \underset{\tau}{\inf} S_\tau $ 
+    Верхним интегралом Дарбу называется $ I^* = \underset{\tau}{\inf S_{\tau}} $ - инфинум верхних сумм Дарбу по всем разбиениям
 }
 
 \mcdfn{Нижний интеграл Дарбу}{
-    Нижним интегралом Дарбу называется $ I_* = \underset{\tau}{\sup} s_\tau $ 
+    Нижним интегралом Дарбу называется $ I_* = \underset{\tau}{\sup s_{\tau}} $ - супремум нижних сумм Дарбу по всем разбиениям
 }
 
 \mcclarf{Уточнение}{
     $ s_\tau \le S_\tau \implies I_* \le I^* $
 }
 
-\subsection{Теорема об интегрируемости ограниченной функции}
+\subsection{Критерий Дарбу интегрируемости по Риману}
 
-\mcthm{Теорема об интегрируемости ограниченной функции}{
+\mclemma{Лемма 1}{
+    Пусть $ \tau' \succ \tau $ и у $ \tau' $ на p точек (т.е. границ отрезков) больше, чем у $\tau$
+
+    Тогда $ 0 \le S_{\tau} - S_{\tau'} \le (M - m) \cdot p \cdot \delta $, 
+        где $ \delta > d(\tau) $, 
+            $ m = \underset{x \in [a; b]}{\inf f(x)} \in \Rset[] $,
+            $ M = \underset{x \in [a; b]}{\sup f(x)} \in \Rset[] $
+\mcproofpure{
+\[
+\begin{split}
+    & \text{1. $S_{\tau} - S_{\tau'} \ge 0 $ по свойству 2 сумм Дарбу \ref{darboux_sums_props:4}} \\
+    & \text{2. Рассмотрим случай, когда $p = 1$} \\
+    & \text{ Пусть граница отрезка, которая есть в $\tau'$, но которой нет в $\tau$, имеет индекс $i$ } \\
+    & \begin{tikzpicture}
+        \draw (0,0) -- (4,0);
+        \filldraw[black] (1,0) circle (1pt);
+        \filldraw[black] (2,0) circle (1pt);
+        \filldraw[black] (3,0) circle (1pt);
+        \filldraw[green!60!black] (1,0) node[anchor=south]{$x_{i-1}$};
+        \filldraw[green!60!black] (3,0) node[anchor=south]{$x_{i}$};
+        \filldraw[red!80!black] (1,0) node[anchor=north]{$x'_{i-1}$};
+        \filldraw[red!80!black] (2,0) node[anchor=north]{$x'_{i}$};
+        \filldraw[red!80!black] (3,0) node[anchor=north]{$x'_{i+1}$};
+    \end{tikzpicture} \\
+    & S_{\tau} = \sum_{j = 1}^{n} M_j \textcolor{green!60!black}{\Delta x_j} 
+        \text{, где } M_j = \underset{x \in [\textcolor{green!60!black}{x_{j-1}}; \textcolor{green!60!black}{x_j}]}{\sup f(x)} \\
+    & S_{\tau'} = \sum_{j = 1}^{n + 1} M'_j \textcolor{red!80!black}{\Delta x'_j}
+        \text{, где } M'_j = \underset{x \in [\textcolor{red!80!black}{x'_{j-1}}; \textcolor{red!80!black}{x'_j}]}{\sup f(x)} \\
+    & \text{Причём } 
+        \forall j < i: \textcolor{green!60!black}{x_j} = \textcolor{red!80!black}{x'_j} \wedge M_j = M'_j 
+        \text{ и } 
+        \textcolor{green!60!black}{x_i} = \textcolor{red!80!black}{x'_{i+1}}
+        \text{ и } 
+        \forall j > i: \textcolor{green!60!black}{x_{j}} = \textcolor{red!80!black}{x'_{j + 1}} \wedge M_{j} = M'_{j + 1} \\
+    & \text{Тогда } S_\tau - S_{\tau'} 
+        = M_i \textcolor{green!60!black}{\Delta x_i} 
+        - (M'_i \textcolor{red!80!black}{\Delta x'_i} + M'_{i + 1} \textcolor{red!80!black}{\Delta x'_{i + 1}}) 
+        = M_i (\textcolor{red!80!black}{\Delta x'_i} + \textcolor{red!80!black}{\Delta x'_{i + 1}}) 
+        - (M'_i \textcolor{red!80!black}{\Delta x'_i} + M'_{i + 1} \textcolor{red!80!black}{\Delta x'_{i + 1}})
+        = \\
+    &   = (M_i - M'_i) \textcolor{red!80!black}{\Delta x'_i} + (M_i - M'_{i+1}) \textcolor{red!80!black}{\Delta x'_{i + 1}}
+        \le \left| \text{т.к. $M_i \le M$ и $M'_i \ge m$} \right|
+        \le (M - m) \textcolor{red!80!black}{\Delta x'_i} + (M - m) \textcolor{red!80!black}{\Delta x'_{i + 1}} = \\
+    &   = (M - m) \textcolor{green!60!black}{\Delta x_i} \le (M - m) \cdot d(\tau) < (M - m) \cdot \delta \\
+\end{split}
+\]
+
+3. Для p > 1 доказывается итерационно, сводя для каждой из $p$ точек измельчения $\tau'$ к пункту 2.
+}
+}
+
+\mclemma{Лемма Дарбу}{
+    Пусть дан отрезок $[a; b]$ и функция $f(x)$, непрерывная на отрезке $[a; b]$, тогда
+
+    \[ I^* = \lim_{d \to 0} S_{\tau} \]
+
+    Это означает, что $ \forall \veps > 0 \, \exists \delta > 0 \, \forall \tau: d(\tau) < \delta: | S_\tau - I^* | < \veps $
+\mcprf{
+\begin{split}
+    & \text{1. Если $m = M$, то функция - константа на отрезке $[a; b]$, тогда все верхние суммы равны} \\
+    & \text{$ f(a) \cdot (b - a) \implies I^* = f(a) \cdot (b - a)$, т.к. $I^*$ - это инфинум верхних сумм по всем разбиениям} \\
+    & \text{2. Иначе, если $m \ne M$, то $m < M$} \\
+    & \text{Пусть дано $\veps > 0$, тогда} \\
+    & I^* = \underset{\tau}{\inf S_\tau} \implies \exists \tau^*: \left| S_{\tau^*} - I^* \right| < \frac{\veps}{2} \\
+    & S_{\tau^*} \ge I^* \implies S_{\tau^*} - I^* < \frac{\veps}{2} \\
+    & \text{Пусть в $\tau^*$ p точек (границ отрезков внутри $(a; b)$), т.е. $\tau^*$ состоит из $p+1$ отрезка } \\
+    & \text{Положим } \delta = \frac{\veps}{2 (M - n) p} \\
+    & \text{Построено $\delta$, тогда пусть дано разбиение $\tau$ т.ч. $d(\tau) < \delta$} \\
+    & \text{Составим разбиение $\tau'$ из границ отрезков разбиений $\tau$ и $\tau^*$, тогда $ \tau' \succ \tau \wedge \tau' \succ \tau^* $,}\\
+    & \text{и при этом в $\tau'$ не более чем на $p$ больше точек (границ отрезков), чем в $\tau$, тогда по Лемме 1} \\
+    & 0 \le S_\tau - S_{\tau'} \le (M - m) \cdot p \cdot \delta = \frac{\veps}{2} \\
+    & \text{(если в $\tau'$ меньше, чем на p больше точек, чем в $\tau$, то неравенство также выполняется)} \\
+    & \text{$\tau'$ - измельчение $\tau^*$ по построению } \implies S_{\tau'} \le S_{\tau^*} \\
+    & S_{\tau'} \ge I^* \implies I^* \le S_{\tau'} \le S_{\tau^*} \\
+    & S_{\tau^*} - I^* < \frac{\veps}{2} \implies S_{\tau'} - I^* < \frac{\veps}{2} \\
+    & \left. \begin{tabular}{l}
+        $ 0 \le S_\tau - S_{\tau'} < \frac{\veps}{2} $ \\
+        $ 0 \le S_{\tau'} - I^* < \frac{\veps}{2} $ \\
+    \end{tabular} \right\} \implies 0 \le S_\tau - I^* < \veps \implies \left| S_\tau - I^* \right| < \veps \\
+\end{split}
+}
+}
+
+\nt{
+    Аналогичная лемма верна и для случая нижних сумм: \[ I_* = \lim_{d \to 0} s_{\tau} \]
+}
+
+\subsection{Критерий Дарбу интегрируемости по Риману}
+
+\mcthm{Критерий Дарбу интегрируемости по Риману}{
     Ограниченная функция $ f(x) $ интегрируема на $ [a; b] \iff I^* = I_* $
+
+    Используя введённые обозначения, $f(x) \in R[a; b] \iff I^* = I_*  $
 
 \mcprf{
 \begin{split}
@@ -380,6 +535,111 @@
         \text{, но при этом } \forall \veps > 0: S_\tau - s_\tau \le 2 \veps 
         \implies \Contradiction \\
     & "\impliedby" \\
+    & \text{Обозначим $I = I_* = I^*$ и покажем, что выполняется определение, т.е.}  \\
+    & \forall \veps > 0 \, \exists \delta > 0 \, \forall \tau: d(\tau) < \delta \, \forall \{ \xi_i \}_{i = 1}^{n}: | \sigma_\tau(f) - I | < \veps \\
+    & | \sigma_\tau(f) - I | < \veps \implies I - \veps < \sigma_\tau(f) < I + \veps \\
+    & \text{По определению сумм Дарбу } s_\tau \le \sigma_\tau(f) \le S_\tau \\
+    & \text{По лемме Дарбу $ \exists \delta_1 > d(\tau):  S_\tau < I^* + \veps $} \\
+    & \text{аналогично $ \exists \delta_2 > d(\tau): s_\tau > I_* - \veps $} \\
+    & \text{Положим $\delta = \min(\delta_1, \delta_2)$, тогда } I_* - \veps < \sigma_\tau(f) < I^* + \veps \implies I - \veps < \sigma_\tau(f) < I^* + \veps = I + \veps \\
 \end{split}
 }
+}
+
+\subsection{Определение равномерной непрерывности}
+
+\mcdfn{Определение равномерной непрерывности}
+{
+    Функция $f(x)$ называется равномерно непрерывной на $E \subseteq \Rset[] $, если
+
+    $ \forall \veps > 0 \, \exists \delta = \delta(\veps) > 0 \, \forall x_1, x_2 \in E: | x_1 - x_2 | < \delta \implies | f(x_1) - f(x_2) | < \veps $
+}
+
+\nt{
+    $f(x)$ равномерно непрерывна на $E \implies f(x)$ непрерывна на $E$, но обратное, вообще говоря, не верно
+}
+
+\mcex{Пример к замечанию}{
+    $ E = (0; 1), f(x) = \frac{1}{x} $
+
+    $f(x)$ непрерывна на $E$, покажем, что равномерной непрерывности нет:
+
+    Рассмотрим последовательность аргументов: $x_n = \frac{1}{n}$, тогда $x_{n+1} - x_n \underset{n \to +\infty}{\to} 0 $,
+
+    но при этом $f(x_{n+1}) - f(x_n) = 1$
+
+    Положим $\veps = 0.5$, тогда т.к. $x_{n+1} - x_n \underset{n \to +\infty}{\to} 0 $, то можно выбрать $x_i$ и $x_j$, т.ч. $|x_i - x_j| < \delta(0.5)$,
+    но при этом $ |f(x_1) - f(x_2)| = 1 > 0.5 = \veps $
+}
+
+\subsection{Теорема Кантора}
+
+\mcthm{Теорема Кантора (для случая функции на отрезке)}{
+    Если $f(x)$ непрерывна на $[a; b]$, то $f(x)$ равномерно непрерывна на $[a; b]$
+\mcprf{
+\begin{split}
+    & \text{Предположим от противного, тогда в отрицании определения выберем конкретные значения $\delta$:} \\
+    & \exists \veps_0 \, \forall \delta = \frac{1}{n} \, \exists x'_n, x_n'' \in [a; b]: | x'_n - x''_n | < \frac{1}{n}: \left| f\left(x'_n\right) - f\left(x''_n\right) \right| > \veps_0 \\
+    & \text{Ч.п. $\{ x'_n \}$ и $\{ x''_n \}$ ограничены $\implies$ по теореме Больцано-Вейерштрасса из них можно } \\
+    & \text{выделить сходящиеся подпоследовательности: } \exists x'_{n_k} \underset{k \to +\infty}{\to} x_0 \in [a; b] \\
+    & \text{При этом по теореме о зажатой последовательности } x''_{n_k} \underset{k \to +\infty}{\to} x_0 \\
+    & \text{$f(x)$ непрерывна в точке $x_0$, тогда по определению непрерывности в точке по Гейне:} \\
+    & f\left(x'_{n_k}\right) \underset{k \to +\infty}{\to} f(x_0) \\
+    & f\left(x''_{n_k}\right) \underset{k \to +\infty}{\to} f(x_0) \\
+    & \text{По по предположению } \left| f\left(x'_n\right) - f\left(x''_n\right) \right| > \veps_0 \implies \Contradiction \\
+\end{split}
+}
+}
+
+\subsection{Теорема об интегрируемости непрерывной функции}
+
+\mcthm{Теорема об интегрируемости непрерывной функции}{
+    Если $f(x)$ непрерывна на $[a; b]$, то $f(x) \in R[a; b]$
+
+\mcprf{
+\begin{split}
+    & 1. f(x) \text{ непрерывна на } [a; b] \implies \text{ по теореме Кантора $f(x)$ равномерно непрерывна на } \\
+    & [a; b] \text{, тогда по определению: } 
+        \forall \veps > 0 \, 
+        \exists \delta > 0 \, 
+        \forall x_1, x_2 \in [a; b]: 
+        | x_1 - x_2 | < \delta \implies | f(x_1) - f(x_2) | < \veps \\
+    & \text{2. Для любого $\veps > 0$ рассмотрим разбиение $\tau$ отрезка $[a; b]$ с диаметром $d(\tau) < \delta$, тогда} \\
+    &   0 \le I^* - I_* 
+        \le S_\tau - s_\tau 
+        = \sum_{i = 1}^{n} \left(M_i - m_i\right) \Delta x_i
+        = \sum_{i = 1}^{n} \left(f(\xi_i) - f(\eta_i)\right) \Delta x_i \text{, т.к. $f$ непрерывна на $[a; b]$} \\
+    & \forall i: | \xi_i - \eta_i | \le d(\tau) < \delta \implies |f(\xi_i) - f(\eta_i)| < \veps \implies 0 \ge f(\xi_i) - f(\eta_i) < \veps \\
+    & \text{Тогда } 
+        \sum_{i = 1}^{n} \left(f(\xi_i) - f(\eta_i)\right) \Delta x_i  \le \sum_{i = 1}^{n} \veps \Delta x_i = \veps \cdot (b - a) \\
+    & \text{$I^* - I_*$ - неотрицательное число, и при этом } \forall \veps > 0: I^* - I_* < \veps (b - a) \implies I^* - I_* = 0 \\
+\end{split}
+}
+}
+
+\subsection{Теорема об интегрируемости монотонной функции}
+
+\mcthm{Теорема об интегрируемости монотонной функции}{
+    Если $f(x)$ определена и монотонна на $[a; b]$, то $f(x) \in R[a; b]$
+\mcprf{
+\begin{split}
+    & \text{БОО докажем для неубывающей функции} \\
+    & \text{1. Для любого $\delta > 0$ рассмотрим разбиение $\tau$ отрезка $[a; b]$ с диаметром $d(\tau) < \delta$, тогда} \\
+    & 0 \le I^* - I_* 
+        \le S_\tau - s_\tau 
+        = \sum_{i = 1}^{n} \left(M_i - m_i\right) \Delta x_i
+        = \sum_{i = 1}^{n} \left(f(x_i) - f(x_{i-1})\right) \Delta x_i
+        < \sum_{i = 1}^{n} \left(f(x_i) - f(x_{i-1})\right) \delta 
+        = \\
+    &   = \delta \sum_{i = 1}^{n} \left(f(x_i) - f(x_{i-1})\right) 
+        = \delta \left(f(b) - f(a)\right) \\
+    & \text{$I^* - I_*$ - неотрицательное число, и при этом } \forall \delta > 0: I^* - I_* < \delta \left(f(b) - f(a)\right) \implies I^* - I_* = 0 \\
+\end{split}
+}
+}
+
+\subsection{Критерий Лебега интегрируемости по Риману}
+
+\mcthm{Критерий Лебега интегрируемости по Риману}{
+    Функция $f(x) \in R[a; b] \iff $ множество точек разрыва функции - множество меры ноль по Лебегу
 }

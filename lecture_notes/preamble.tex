@@ -99,8 +99,8 @@
 \definecolor{myr}{RGB}{199, 68, 64}
 \definecolor{mytheorembg}{HTML}{F2F2F9}
 \definecolor{mytheoremfr}{HTML}{00007B}
-\definecolor{mylenmabg}{HTML}{FFFAF8}
-\definecolor{mylenmafr}{HTML}{983b0f}
+\definecolor{mylemmabg}{HTML}{FFFAF8}
+\definecolor{mylemmafr}{HTML}{983b0f}
 \definecolor{mypropbg}{HTML}{f2fbfc}
 \definecolor{mypropfr}{HTML}{191971}
 \definecolor{myexamplebg}{HTML}{F2FBF8}
@@ -232,42 +232,42 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=section]{Lenma}{Lenma}
+\newtcbtheorem[number within=section]{Lemma}{Lemma}
 {%
 	enhanced,
 	breakable,
-	colback = mylenmabg,
+	colback = mylemmabg,
 	frame hidden,
 	boxrule = 0sp,
-	borderline west = {2pt}{0pt}{mylenmafr},
+	borderline west = {2pt}{0pt}{mylemmafr},
 	sharp corners,
 	detach title,
 	before upper = \tcbtitle\par\smallskip,
-	coltitle = mylenmafr,
+	coltitle = mylemmafr,
 	fonttitle = \bfseries\sffamily,
 	description font = \mdseries,
 	separator sign none,
-	segmentation style={solid, mylenmafr},
+	segmentation style={solid, mylemmafr},
 }
 {th}
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=chapter]{lenma}{Lenma}
+\newtcbtheorem[number within=chapter]{lemma}{Lemma}
 {%
 	enhanced,
 	breakable,
-	colback = mylenmabg,
+	colback = mylemmabg,
 	frame hidden,
 	boxrule = 0sp,
-	borderline west = {2pt}{0pt}{mylenmafr},
+	borderline west = {2pt}{0pt}{mylemmafr},
 	sharp corners,
 	detach title,
 	before upper = \tcbtitle\par\smallskip,
-	coltitle = mylenmafr,
+	coltitle = mylemmafr,
 	fonttitle = \bfseries\sffamily,
 	description font = \mdseries,
 	separator sign none,
-	segmentation style={solid, mylenmafr},
+	segmentation style={solid, mylemmafr},
 }
 {th}
 
@@ -656,7 +656,7 @@
 	,fonttitle = \bfseries
 	,description font = \mdseries
 	,separator sign none
-	,description delimiters % parenthesis
+	,description delimiters
 }
 {clarif}
 
@@ -666,28 +666,32 @@
 
 
 \newcommand{\thm}[2]{\begin{Theorem}{#1}{}#2\end{Theorem}}
-\newcommand{\mcthm}[2]{\begin{Theorem*}{#1}{}#2\end{Theorem*}}
 \newcommand{\cor}[2]{\begin{Corollary}{#1}{}#2\end{Corollary}}
-\newcommand{\mccorollar}[2]{\begin{Corollary*}{#1}{}#2\end{Corollary*}}
-\newcommand{\mlenma}[2]{\begin{Lenma}{#1}{}#2\end{Lenma}}
+\newcommand{\mlemma}[2]{\begin{Lemma}{#1}{}#2\end{Lemma}}
 \newcommand{\mprop}[2]{\begin{Prop}{#1}{}#2\end{Prop}}
-\newcommand{\mcprop}[2]{\begin{Prop*}{#1}{}#2\end{Prop*}}
 \newcommand{\clm}[3]{\begin{claim}{#1}{#2}#3\end{claim}}
-\newcommand{\mcclm}[3]{\begin{claim*}{#1}{#2}#3\end{claim*}}
 \newcommand{\wc}[2]{\begin{wconc}{#1}{}\setlength{\parindent}{1cm}#2\end{wconc}}
 \newcommand{\thmcon}[1]{\begin{Theoremcon}{#1}\end{Theoremcon}}
 \newcommand{\ex}[2]{\begin{Example}{#1}{}#2\end{Example}}
-\newcommand{\mcex}[2]{\begin{Example*}{#1}{}#2\end{Example*}}
 \newcommand{\dfn}[2]{\begin{Definition}[colbacktitle=red!75!black]{#1}{}#2\end{Definition}}
-\newcommand{\mcdfn}[2]{\begin{Definition*}[colbacktitle=red!75!black]{#1}{}#2\end{Definition*}}
 \newcommand{\dfnc}[2]{\begin{definition}[colbacktitle=red!75!black]{#1}{}#2\end{definition}}
-\newcommand{\mcdfnc}[2]{\begin{definition*}[colbacktitle=red!75!black]{#1}{}#2\end{definition*}}
 \newcommand{\qs}[2]{\begin{question}{#1}{}#2\end{question}}
 % \newcommand{\pf}[2]{\begin{mcproof}[#1]#2\end{mcproof}}
-\newcommand{\mcprf}[1]{\begin{mcproof}\[#1\]\end{mcproof}}
+
 \newcommand{\nt}[1]{\begin{note}#1\end{note}}
+
+\newcommand{\mcthm}[2]{\begin{Theorem*}{#1}{}#2\end{Theorem*}}
+\newcommand{\mccorollar}[2]{\begin{Corollary*}{#1}{}#2\end{Corollary*}}
+\newcommand{\mcprop}[2]{\begin{Prop*}{#1}{}#2\end{Prop*}}
+\newcommand{\mcdfn}[2]{\begin{Definition*}[colbacktitle=red!75!black]{#1}{}#2\end{Definition*}}
+\newcommand{\mcdfnc}[2]{\begin{definition*}[colbacktitle=red!75!black]{#1}{}#2\end{definition*}}
+\newcommand{\mcex}[2]{\begin{Example*}{#1}{}#2\end{Example*}}
+\newcommand{\mcprf}[1]{\begin{mcproof}\[#1\]\end{mcproof}}
+\newcommand{\mcproofpure}[1]{\begin{mcproof}#1\end{mcproof}}
+\newcommand{\mcclm}[3]{\begin{claim*}{#1}{#2}#3\end{claim*}}
 \newcommand{\mcclarf}[2]{\begin{clarification*}{#1}{}#2\end{clarification*}}
-\newcommand{\mclm}[2]{\begin{myclaim}[#1]#2\end{myclaim}}
+\newcommand{\mclemma}[2]{\begin{Lemma*}{#1}{}#2\end{Lemma*}}
+
 \newenvironment{myclaim}[1][\claimname]{\proof[\bfseries #1: ]}{}
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
