@@ -214,16 +214,16 @@
     \filldraw[black] (3.5,0) circle (1pt) node[anchor=south]{3};
     \filldraw[black] (4.5,0) circle (1pt) node[anchor=south]{4};
     \filldraw[black] (5.5,0) circle (1pt) node[anchor=south]{5};
-    \filldraw[green!40!black] (0.5,0.6) node[]{$x_{0}$};
-    \filldraw[green!40!black] (1.5,0.6) node[]{$x_{1}$};
-    \filldraw[green!40!black] (3.5,0.6) node[]{$x_{2}$};
-    \filldraw[green!40!black] (5.5,0.6) node[]{$x_{3}$};
-    \filldraw[red!40!black] (0.5,-0.5) node[]{$x'_{0}$};
-    \filldraw[red!40!black] (1.5,-0.5) node[]{$x'_{1}$};
-    \filldraw[red!40!black] (2.5,-0.5) node[]{$x'_{2}$};
-    \filldraw[red!40!black] (3.5,-0.5) node[]{$x'_{3}$};
-    \filldraw[red!40!black] (4.5,-0.5) node[]{$x'_{4}$};
-    \filldraw[red!40!black] (5.5,-0.5) node[]{$x'_{5}$};
+    \filldraw[blue!70!black] (0.5,0.6) node[]{$x_{0}$};
+    \filldraw[blue!70!black] (1.5,0.6) node[]{$x_{1}$};
+    \filldraw[blue!70!black] (3.5,0.6) node[]{$x_{2}$};
+    \filldraw[blue!70!black] (5.5,0.6) node[]{$x_{3}$};
+    \filldraw[red!80!black] (0.5,-0.5) node[]{$x'_{0}$};
+    \filldraw[red!80!black] (1.5,-0.5) node[]{$x'_{1}$};
+    \filldraw[red!80!black] (2.5,-0.5) node[]{$x'_{2}$};
+    \filldraw[red!80!black] (3.5,-0.5) node[]{$x'_{3}$};
+    \filldraw[red!80!black] (4.5,-0.5) node[]{$x'_{4}$};
+    \filldraw[red!80!black] (5.5,-0.5) node[]{$x'_{5}$};
 \end{tikzpicture}
 
     $ k = 5, \tau' = \{ [0; 1], [1; 2], [2; 3], [3; 4], [4; 5] \} $
@@ -586,7 +586,7 @@
     & \text{$f(x)$ непрерывна в точке $x_0$, тогда по определению непрерывности в точке по Гейне:} \\
     & f\left(x'_{n_k}\right) \underset{k \to +\infty}{\to} f(x_0) \\
     & f\left(x''_{n_k}\right) \underset{k \to +\infty}{\to} f(x_0) \\
-    & \text{По по предположению } \left| f\left(x'_n\right) - f\left(x''_n\right) \right| > \veps_0 \implies \Contradiction \\
+    & \text{Но по предположению } \left| f\left(x'_n\right) - f\left(x''_n\right) \right| > \veps_0 \implies \Contradiction \\
 \end{split}
 }
 }
