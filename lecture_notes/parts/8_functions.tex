@@ -284,6 +284,64 @@ $$
 \mcdfn{Первый замечательный предел}
 {
     \[ \lim_{x \to 0} \frac{\sin x}{x} = 1 \]
+
+\mcprf{
+\begin{split}
+    & \text{Докажем неравенство $ x < \sin x < \tan x $ при 
+        $ x \in \left(0; \frac{\pi}{2}\right) $} \\
+    & \text{Рассмотрим единичную окружность с центром в (0; 0):} \\
+    & \begin{tikzpicture}
+        \draw[black] (0, -0) circle (2);
+        \draw[->] (-3, 0) -- (3, 0);
+        \draw[->] (0, -3) -- (0, 3);
+        \coordinate (A_pnt) at (30:2.31);
+        \coordinate (B_pnt) at (30:2);
+        \coordinate (C_p_pnt) at (1.73, 0);
+        \coordinate (C_pnt) at (2, 0);
+        \draw (0, 0) -- (A_pnt);
+        \draw[densely dashed] (2, -2) -- (2, 2);
+        \draw[densely dashed] (0, 1) -- (B_pnt);
+        \filldraw[green!70!black] (A_pnt) circle(1pt) node[anchor=west]{$\tan x$};
+        \filldraw[red!70!black] (0, 1) circle(1pt) node[anchor=south west]{$\sin x$};
+        \draw[densely dashed] (B_pnt) -- (C_p_pnt);
+        \filldraw[black] (0, 0) circle(1pt) node[anchor = north east]{$O$};
+        \filldraw[black] (A_pnt) node[anchor = south west]{$A$};
+        \filldraw[black] (B_pnt) circle(1pt) node[anchor = south]{$B$};
+        \filldraw[black] (C_pnt) circle(1pt) node[anchor = north west]{$C$};
+        \filldraw[black] (C_p_pnt) circle(1pt) node[anchor = north east]{$C'$};
+        \draw[->] (0.5,0) arc (0:30:0.5) node[anchor=west]{$x$};
+    \end{tikzpicture} \\
+    & AC = \tan x, BC' = \sin x, \text{ дуга } \breve{BC} = x \cdot OC  \\
+    & \text{Пусть $S_{BOC}, S_{AOC}$ - 
+        площади соответствующих треугольников,
+        $S_{\breve{BOC}}$ - площаль сектора, тогда} \\
+    & S_{BOC} < S_{\breve{BOC}} < S_{AOC} \\
+    & \frac{BC' OC}{2} < \frac{x OC^2}{2} < \frac{AC OC}{2} \\
+    & \sin x < x < \tan x \\
+    & \frac{\sin x}{x} < 1 < \frac{\sin x}{x \cos x} \\
+    & \cos x < \frac{\sin x}{x} < 1 \\
+    & \text{При } x \in \left(-\frac{\pi}{2}; 0\right) \text{ воспользуемся нечётностью синуса и чётностью косинуса:}\\
+    & \frac{\sin x}{x} = \frac{\sin(-x)}{-x} \in (\cos(x); 1) \\
+    & \text{Тогда } \forall x \in \dot{U}_{\frac{\pi}{2}}(0): \cos x < \frac{\sin x}{x} < 1 \\
+    & \text{Распишем предел по определению сходимости по Коши:} 
+        \forall \veps > 0 \, 
+        \exists \delta(\veps) > 0 \, 
+        \forall x \in \dot{U}_{\delta(\veps)}(0): 
+        \left| \frac{\sin x}{x} - 1 \right| < \veps \\
+    & \text{Будем выбирать только значения $\delta(\veps) \le \frac{\pi}{2}$, тогда} \\
+    & \left| \frac{\sin x}{x} - 1 \right| < \veps
+        \impliedby 1 - \frac{\sin x}{x} < \veps
+        \impliedby 1 - \cos x < \veps
+        \impliedby 1 - \cos^2 x < \veps
+        \impliedby \sin^2 x < \veps \\
+    &   \impliedby \sin x < \veps
+        \impliedby x < \veps \\
+    & \text{Показали, что если } 
+        \forall \veps > 0: 
+        \delta(\veps) := \min\left(\veps; \frac{\pi}{2}\right) 
+        \text{, то определение предела по Коши выполняется}\\
+\end{split}
+}
 }
 
 \mcdfn{Второй замечательный предел}
