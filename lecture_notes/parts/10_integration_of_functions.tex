@@ -334,9 +334,9 @@
 }
 }
 
-\section{Суммы Дарбу}
+\subsection{Суммы Дарбу}
 
-\subsection{Нижняя сумма Дарбу}
+\subsubsection{Нижняя сумма Дарбу}
 
 \mcdfn{Нижняя сумма Дарбу}{
     Пусть $ f(x) $ ограничена на $ [a; b] $, дано разбиение $ \tau $, 
@@ -346,7 +346,7 @@
     где $ \forall i: m_i = \underset{x \in [x_{i - 1}; x_i]}{\inf f(x)} $
 }
 
-\subsection{Верхняя сумма Дарбу}
+\subsubsection{Верхняя сумма Дарбу}
 
 \mcdfn{Верхняя сумма Дарбу}{
     Пусть $ f(x) $ ограничена на $ [a; b] $, дано разбиение $ \tau $, 
@@ -356,7 +356,7 @@
     где $ \forall i: M_i = \underset{x \in [x_{i - 1}; x_i]}{\sup f(x)} $
 }
 
-\subsection{Свойства сумм Дарбу}
+\subsubsection{Свойства сумм Дарбу}
 
 \label{darboux_sums_props:4}
 
@@ -408,7 +408,7 @@
 }
 }
 
-\subsection{Интегралы Дарбу}
+\subsubsection{Интегралы Дарбу}
 
 \mcdfn{Верхний интеграл Дарбу}{
     Верхним интегралом Дарбу называется $ I^* = \underset{\tau}{\inf S_{\tau}} $ - инфинум верхних сумм Дарбу по всем разбиениям
@@ -511,12 +511,10 @@
     Аналогичная лемма верна и для случая нижних сумм: \[ I_* = \lim_{d \to 0} s_{\tau} \]
 }
 
-\subsection{Критерий Дарбу интегрируемости по Риману}
-
 \mcthm{Критерий Дарбу интегрируемости по Риману}{
     Ограниченная функция $ f(x) $ интегрируема на $ [a; b] \iff I^* = I_* $
 
-    Используя введённые обозначения, $f(x) \in R[a; b] \iff I^* = I_*  $
+    Используя введённые обозначения, $f(x) \in R[a; b] \iff f(x) \text{ ограничена и } I^* = I_*  $
 
 \mcprf{
 \begin{split}
@@ -638,8 +636,136 @@
 }
 }
 
-\subsection{Критерий Лебега интегрируемости по Риману}
+\subsection{Элементы теории меры}
 
-\mcthm{Критерий Лебега интегрируемости по Риману}{
-    Функция $f(x) \in R[a; b] \iff $ множество точек разрыва функции - множество меры ноль по Лебегу
+\subsubsection{Критерий Лебега интегрируемости по Риману}
+
+\mcthm{Критерий Лебега интегрируемости по Риману (без док-ва)}{
+    Функция $f(x) \in R[a; b] \iff $ функция $f(x)$ ограничена и множество точек разрыва функции - множество меры ноль по Лебегу
 }
+
+\subsubsection{Определение множества меры ноль по Лебегу}
+
+\mcdfn{Определение множества меры ноль по Лебегу}{
+    Множество $E \subseteq \Rset[] $ называется множеством нулевой меры Лебега, если
+
+    $ \forall \veps > 0 \, \exists \text{ не более чем счётный набор интервалов } \{ (a_i; b_i) \}_{i = 1}^{+\infty} $, такой что
+
+    1. $ E \subseteq \cup_{i = 1}^{+\infty} (a_i; b_i) $, т.е. объединение всех интервалов покрывает множество $E$
+
+    2. $ \sum_{i = 1}^{+\infty} b_i - a_i \le \veps $
+
+    Обозначение: $ \mu(E) = 0 $
+}
+
+\mcex{Пример множества меры ноль по Лебегу}{
+    Покажем, что $ \Qset[] \subseteq \Rset[] $ - множество нулевой меры Лебега
+\mcprf{
+\begin{split}
+    & \text{1. } \Qset[] \cong \Nset[] \implies \Qset[] = \{ q_i \}_{i = 1}^{+\infty} \\    
+    & \text{2. } \forall i \in \Nset[]: (a_i; b_i) = U_\frac{\veps}{2^{i+1}}(q_i) \implies \Qset[] \subseteq \cup_{i = 1}^{+\infty} (a_i; b_i) \\
+    & \text{3. При этом } \sum_{i = 1}^{+\infty} b_i - a_i = \sum_{i = 1}^{+\infty} 2 \cdot \frac{\veps}{2^{i+1}} = \veps \le \veps \\
+\end{split}
+}
+}
+
+\subsubsection{Свойства множеств меры ноль по Лебегу}
+
+\mcthm{Свойства множеств меры ноль по Лебегу}{
+\begin{tabular}{rl}
+    1. & Если $A \subseteq \Rset[]$ нулевой меры Лебега и 
+        $B \subseteq A$, то $B$ тоже множество нулевой меры Лебега \\
+       & (это свойство меры называется полнотой) \\
+    2. & Если множества $X, Y$ - нулевой меры Лебега, то $X \cup Y$ - нулевой меры Лебега \\
+\end{tabular}
+
+Докажем 1-е свойство:
+\mcprf{
+\begin{split}
+    & \text{$\forall \veps > 0$ по определению множества меры ноль по Лебегу построим покрытие} \\
+    & \text{ множества $A: \{ (a_i; b_i) \}_{i=1}^{+\infty} $, т.ч. $\sum_{i = 1}^{+\infty} b_i - a_i \le \veps$} \\
+    & \text{$B \subseteq A \implies B \subseteq \cup_{i = 1}^{+\infty} (a_i; b_i)$} \\
+\end{split}
+}
+
+Докажем 2-е свойство:
+\mcprf{
+\begin{split}
+    & \text{Пусть дано $\veps > 0$, тогда:} \\
+    & \text{Для $\frac{\veps}{2}$ по определению множества нулевой меры Лебега построим покрытия } \\
+    & \text{для множеств $X$ и $Y$: } \{(a_i; b_i)\}_{i = 1}^{+\infty} \text{ и } \{(c_i; d_i)\}_{i = 1}^{+\infty} \text{ соответственно} \\
+    & \text{Тогда для множества $X \cup Y$ построим покрытие } \{(e_i; f_i)\}_{i = 1}^{+\infty} \text{ такое что} \\
+    & e_i = \left\{ \begin{tabular}{l}
+        $ a_j, i = 2 j $ \\
+        $ c_j, i = 2 j + 1 $ \\
+    \end{tabular} \right. \\
+    & f_i = \left\{ \begin{tabular}{l}
+        $ b_j, i = 2 j $ \\
+        $ d_j, i = 2 j + 1 $ \\
+    \end{tabular} \right. \\
+    & \text{Тогда $ X \cup Y \subseteq \cup_{i=1}^{+\infty} (e_i; f_i) $ и: } \\
+    & \sum_{i=1}^{+\infty} \left| f_i - e_i \right|
+    = \sum_{j=1}^{+\infty} | b_j - a_j | + \sum_{j=1}^{+\infty} | d_j - c_j |
+    \le \frac{\veps}{2} + \frac{\veps}{2}
+    = \veps \\
+\end{split}
+}
+}
+
+\nt{
+    Из 1 и 2 свойств следует, что разность, пересечение и 
+    симметрическая разность множеств нулевой меры Лебега -
+    также множества нулевой меры Лебега
+}
+
+\subsection{Свойства определённого интеграла}
+
+\mcthm{Свойства определённого интеграла}{
+\begin{tabular}{rl}
+    1. & Линейность: \\
+       & Пусть $ f, g \in R[a; b] $, тогда \\
+       & $
+        \forall \alpha, \beta \in \Rset[]: \alpha f + \beta g \in R[a; b] 
+        \wedge \int_{a}^{b} \left( \alpha f(x) + \beta g(x) \right) dx 
+        = \alpha \int_{a}^{b} f(x) dx + \beta \int_{a}^{b} g(x) dx 
+       $\\
+    2. & Если $f, g \in R[a; b]$, то $ f, g \in R[a; b] \wedge | f | \in R[a; b] $ \\
+\end{tabular}
+
+Докажем 1-е свойство:
+\mcprf{
+\begin{split}
+    & \text{1. По критерию Лебега интегрируемости по Риману: $ f, g $ - ограниченные на $[a;b]$ функции и} \\
+    & X_f \text{ - множество точек разрыва функции $f$ и при этом $\mu(X_f) = 0$} \\
+    & X_g \text{ - множество точек разрыва функции $g$ и при этом $\mu(X_g) = 0$} \\
+    & \text{Пусть $ X_{\alpha f + \beta g} $ - множество точек разрыва непрерывной на $[a;b]$ функции $\alpha f + \beta g$} \\
+    & X_{\alpha f + \beta g} \subseteq X_f \cup X_g \implies \mu(X_{\alpha f + \beta g}) = 0 \\
+    & \text{Тогда по критерию Лебега интегрируемости по Риману $ \alpha f + \beta g \in R[a; b] $} \\
+    & \text{2. Рассмотрим последовательность разбиений $\tau_k$:} 
+        \forall \tau_k
+        \forall \{ \xi_i \}_{i=1}^{+\infty} 
+        \sigma_{\tau}(\alpha f + \beta g) 
+            = \alpha \sigma_{\tau}(f) + \beta \sigma_{\tau}(g) \text{, т.к.} \\
+    &   \sigma_{\tau}(\alpha f + \beta g)
+        = \sum_{i=1}^{n} \left( \alpha f(\xi_i) + \beta g(\xi_i) \right) \cdot \Delta x_i
+        = \sum_{i=1}^{n} \alpha f(\xi_i) \cdot \Delta x_i + \sum_{i=1}^{n} \beta g(\xi_i) \cdot \Delta x_i 
+        = \alpha \sigma_{\tau}(f) + \beta \sigma_{\tau}(g) \\
+    & \text{По определению Гейне интегрируемости по Риману:} \\
+    & \sigma_{\tau}(\alpha f + \beta g) \underset{k \to +\infty}{\to} 
+        \int_{a}^{b} \left(\alpha f(x) + \beta g(x)\right) dx \\
+    & \alpha \sigma_{\tau}(f) \underset{k \to +\infty}{\to} 
+        \alpha \int_{a}^{b} f(x) dx \\
+    & \beta \sigma_{\tau}(g) \underset{k \to +\infty}{\to} 
+        \beta \int_{a}^{b} g(x) dx \\
+    & \implies \int_{a}^{b} \left(\alpha f(x) + \beta g(x)\right) dx 
+        = \alpha \int_{a}^{b} f(x) dx + \beta \int_{a}^{b} g(x) dx \\
+\end{split}
+}
+
+2-е свойство доказывается аналогично 1-ому доказательству,
+т.к. множества точек разрыва функций $f \cdot g$ и $|f|$ меры ноль по Лебегу
+и эти функции непрерывны на $[a; b]$
+
+}
+
+% lecture 31:00
