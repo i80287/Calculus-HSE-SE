@@ -722,14 +722,24 @@
 
 \mcthm{Свойства определённого интеграла}{
 \begin{tabular}{rl}
-    1. & Линейность: \\
-       & Пусть $ f, g \in R[a; b] $, тогда \\
-       & $
+    1.  & Линейность: \\
+        & Пусть $ f, g \in R[a; b] $, тогда \\
+        & $
         \forall \alpha, \beta \in \Rset[]: \alpha f + \beta g \in R[a; b] 
         \wedge \int_{a}^{b} \left( \alpha f(x) + \beta g(x) \right) dx 
         = \alpha \int_{a}^{b} f(x) dx + \beta \int_{a}^{b} g(x) dx 
-       $\\
-    2. & Если $f, g \in R[a; b]$, то $ f, g \in R[a; b] \wedge | f | \in R[a; b] $ \\
+        $\\
+    2.  & Если $f, g \in R[a; b]$, то $ f, g \in R[a; b] \wedge | f | \in R[a; b] $ \\
+    3.  & Аддетивность: если $f \in R[a; c]$, и $b \in [a; c]$ 
+        то: \\
+        & $f \in R[a; b] \cup R[b; c] $ и 
+            $ \int_{a}^{c} f(x) dx 
+            = \int_{a}^{b} f(x) dx 
+            + \int_{b}^{c} f(x) dx $ \\
+    4.  & Интегрируемось неравенств: 
+            $f, g \in R[a; b]$ и 
+            $ \forall x \in [a; b]: f(x) \le g(x) $, то:\\
+        & $ \int_{a}^{b} f(x) dx \le \int_{a}^{b} g(x) dx $ \\ 
 \end{tabular}
 
 Докажем 1-е свойство:
@@ -766,6 +776,84 @@
 т.к. множества точек разрыва функций $f \cdot g$ и $|f|$ меры ноль по Лебегу
 и эти функции непрерывны на $[a; b]$
 
+Докажем 3-е свойство:
+\mcprf{
+\begin{split}
+    & \text{1. $f \in R[a; c] \implies$ и на отрезках $[a; b]$ и $[b; c]$ 
+        она непрерывна и её множества точек разрыва } \\
+    & \text{ на этих отрезках тоже множества меры ноль по Лебегу } 
+            \implies f \in R[a; b] \wedge f \in R[b; c] \\
+    & \text{2. По определению интегрируемости по Гейне: } \\
+    & \forall \tau_k \text{ разбиения отрезка $[a;c]$ т.ч. }
+        d(\tau_k) \underset{k \to +\infty}{\to} 0 \,
+        \forall \{ \xi_i^k \}_{i=1}^{n}:
+        \sigma_{\tau_k}(f) 
+        = \sum_{i=1}^{n} f(\xi_i^k)\Delta x^k 
+        \underset{k \to +\infty}{\to} 
+        \int_{a}^{c} f(x) dx \\
+    & \text{Будем рассматривать последовательность $ \tau_k^0 $,
+        такую что точка $b$ является точкой данного} \\
+    & \text{разбиения, т.е. является границей одного из отрезков } \\
+    & \text{(вообще говоря, если $a < b < c$, то 2-ых отрезков) } \\
+    & \text{Тогда } \tau_k^0 = \tau_k^1 \cup \tau_k^2 \text{, 
+    где $\tau_k^1$ - разбиение $[a; b]$, 
+        $\tau_k^2$ - разбиение $[b; c]$ } \\
+    & \text{Следовательно, } 
+        \sigma_{\tau_k^0}(f) 
+      = \sigma_{\tau_k^1}(f)
+      + \sigma_{\tau_k^2}(f) \\
+    & \text{По 1 пункту и интегрируемости по Гейне:} \\
+    & \sigma_{\tau_k^1}(f) \underset{k \to +\infty}{\to} \int_{a}^{b} f(x) dx \\
+    & \sigma_{\tau_k^2}(f) \underset{k \to +\infty}{\to} \int_{b}^{c} f(x) dx \\
+    & \text{Тогда }     
+        \int_{a}^{c} f(x) dx 
+        = \int_{a}^{b} f(x) dx 
+        + \int_{b}^{c} f(x) dx \\
+\end{split}
 }
 
-% lecture 31:00
+Докажем 4-е свойство:
+\mcprf{
+\begin{split}
+    & \text{Рассмотрим $ h(x) = g(x) - f(x) \in R[a; b] $. 
+        $\forall x \in [a; b]: h(x) \ge 0$ } \\
+    & \text{Тогда } 
+        \forall \tau: \sigma_{\tau}(f) \ge 0
+        \implies \int_{a}^{b} h(x) dx \ge 0
+        \implies \int_{a}^{b} g(x) dx - \int_{a}^{b} f(x) dx \ge 0 
+        \implies \int_{a}^{b} g(x) dx 
+            \ge \int_{a}^{b} f(x) dx \\
+\end{split}
+}
+}
+
+\subsection{Теорема о среднем}
+
+\mcthm{Теорема о среднем (для интегралов)}{
+    Если $f(x)$ непрерывна на $[a; b]$, то
+
+    $ \exists \xi \in [a; b]: 
+        f(\xi) = \frac{1}{b - a} \int_{a}^{b} f(x) dx $
+\mcprf{
+\begin{split}
+    & \text{1. т.к. $f$ непрерывна на $[a; b]$, то } 
+        \forall x \in [a; b]: m \le f(x) \le M 
+    \text{, где } 
+        m = \underset{x \in [a; b]}{\inf f(x)} \in \Rset[]
+    \text{ и }
+        M = \underset{x \in [a; b]}{\sup f(x)} \in \Rset[] \\
+    & \text{2. По 4-ому свойству определённых интегралов: } \\
+    & \int_{a}^{b} m \, dx
+        \le \int_{a}^{b} f(x) dx
+        \le \int_{a}^{b} M \, dx \\
+    & m (b - a)
+    \le \int_{a}^{b} f(x) dx
+    \le M (b - a) \\
+    & m \le \frac{1}{b - a} \int_{a}^{b} f(x) dx 
+        \le (b - a) \\
+    &  \\
+\end{split}
+}
+}
+
+% lecture 51:20
