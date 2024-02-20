@@ -740,6 +740,14 @@
             $f, g \in R[a; b]$ и 
             $ \forall x \in [a; b]: f(x) \le g(x) $, то:\\
         & $ \int_{a}^{b} f(x) dx \le \int_{a}^{b} g(x) dx $ \\ 
+    5.  & Теорема о среднем: \\
+        & Если $f(x)$ непрерывна на $[a; b]$, то
+            $ \exists \xi \in [a; b]: 
+            f(\xi) = \frac{1}{b - a} \int_{a}^{b} f(x) dx $ \\
+    6.  & Оценка интеграла: \\
+        & Если $f(x) \in R[a; b]$, то: \\
+        & $ \left| \int_{a}^{b} f(x) dx \right| 
+            \le \int_{a}^{b} \left| f(x) \right| dx $  \\
 \end{tabular}
 
 Докажем 1-е свойство:
@@ -772,9 +780,14 @@
 \end{split}
 }
 
-2-е свойство доказывается аналогично 1-ому доказательству,
-т.к. множества точек разрыва функций $f \cdot g$ и $|f|$ меры ноль по Лебегу
-и эти функции непрерывны на $[a; b]$
+2-е свойство:
+\begin{equation*}
+\begin{split}
+    & \text{2-е свойство доказывается аналогично 1-ому доказательству, т.к. множества точек разрыва } \\
+    & \text{функций $f \cdot g$ и $|f|$ - множества меры ноль по Лебегу и эти функции непрерывны на $[a; b]$ } \\
+    & \text{ } \\
+\end{split}
+\end{equation*}
 
 Докажем 3-е свойство:
 \mcprf{
@@ -825,15 +838,9 @@
             \ge \int_{a}^{b} f(x) dx \\
 \end{split}
 }
-}
 
-\subsection{Теорема о среднем}
+Докажем 5-е свойство (формально, теорему о среднем для интегралов)
 
-\mcthm{Теорема о среднем (для интегралов)}{
-    Если $f(x)$ непрерывна на $[a; b]$, то
-
-    $ \exists \xi \in [a; b]: 
-        f(\xi) = \frac{1}{b - a} \int_{a}^{b} f(x) dx $
 \mcprf{
 \begin{split}
     & \text{1. т.к. $f$ непрерывна на $[a; b]$, то } 
@@ -851,9 +858,132 @@
     \le M (b - a) \\
     & m \le \frac{1}{b - a} \int_{a}^{b} f(x) dx 
         \le (b - a) \\
-    &  \\
+    & \text{ $f$ - непрерывная функция на $[a; b]$ } 
+        \implies E_f = [m; M] 
+        \implies \exists \xi \in [a; b]: 
+        f(\xi) = \frac{1}{b - a} \int_{a}^{b} f(x) dx \\
+\end{split}
+}
+
+Докажем 6-е свойство:
+\mcprf{
+\begin{split}
+    & \text{1. } \forall x \in [a; b]: 
+        -\left|f(x)\right| \le f(x) \le \left|f(x)\right| \\
+    & f \in R[a; b] \implies 
+        \int_{a}^{b} -\left|f(x)\right| dx
+        \le \int_{a}^{b} f(x) dx 
+        \le \int_{a}^{b} \left|f(x)\right| dx 
+        \implies \\
+    & \implies 
+        - \int_{a}^{b} \left|f(x)\right| dx
+        \le \int_{a}^{b} f(x) dx 
+        \le \int_{a}^{b} \left|f(x)\right| dx 
+        \implies
+        \left| \int_{a}^{b} f(x) dx \right| 
+        \le \int_{a}^{b} \left|f(x)\right| \\
 \end{split}
 }
 }
 
-% lecture 51:20
+\section{Обобщённое понятие интеграла}
+
+\mcclm{Обобщённое понятие интеграла}{}{
+    $ \forall a, b \in \Rset[] $ (если $f \in R[\min(a; b); \max(a; b)]$) доопределим:
+
+    \[ \int_{a}^{a} f(x) dx = 0 \]
+
+    \[ \int_{b}^{a} f(x) dx = - \int_{a}^{b} f(x) dx \]
+}
+
+\nt{
+    $ \forall c_1, c_2, c_3 \in [a; b]: $
+    \[
+        \int_{c_1}^{c_3} f(x) dx
+        = \int_{c_1}^{c_2} f(x) dx
+        + \int_{c_2}^{c_3} f(x) dx
+    \]
+}
+
+\nt{
+    Уточним оценку интеграла (6-е свойство):
+
+    \[
+        \forall c_1, c_2 \in [a; b]:
+        \left| \int_{c_1}^{c_2} f(x) dx \right| 
+        \le \left| \int_{c_1}^{c_2} \left| f(x) \right| dx \right|
+    \]
+}
+
+\subsection{Интеграл с переменным верхним пределом}
+
+\mcdfn{Интеграл с переменным верхним пределом}{
+    Пусть $f \in R[\alpha; \beta] $ и $ a, x \in [\alpha; \beta] $, тогда введём функцию $F$, т.ч.:
+
+    \[ F(x) = \int_{a}^{x} f(t) dt \]
+
+    Заметим, что $F(a) = 0$
+}
+
+\subsection{Теорема 1 об интеграле с переменным верхним пределом}
+
+\mcthm{Теорема 1 об интеграле с переменным верхним пределом}{
+    $F(x)$ непрерывна на $[\alpha; \beta]$
+\mcprf{
+\begin{split}
+    & \text{1. Обозначим } M = \left| \underset{x \in [\alpha; \beta]}{\sup f(x)} \right| \in \Rset[] \\
+    & \text{Тогда } \forall x \in [\alpha; \beta]: f(x) \le | f(x) | \le M \\
+    & \text{2. } \left| F(x + \Delta x) - F(x) \right|
+        = \left| \int_{a}^{x + \Delta x} f(t) dt 
+          - \int_{a}^{x} f(t) dt  \right|
+        = \left| \int_{x}^{x + \Delta x} f(t) dt \right|
+        \le \left| \int_{x}^{x + \Delta x} \left|f(t)\right| dt \right| \le \\
+    &   \le \left| \int_{x}^{x + \Delta x} M dt \right|
+        = \left| M \Delta x \right| 
+        = M \left| \Delta x \right| \\
+    & \left( -M \Delta x \le F(x + \Delta x) - F(x) \le M \Delta x \right)
+        \wedge \left( M \Delta x \underset{\Delta x \to 0}{\to} 0 \right)
+        \implies  F(x + \Delta x) - F(x) \underset{\Delta x \to 0}{\to} 0 \\
+    & \text{Тогда } 
+        \lim_{\Delta x \to 0} \left(F(x + \Delta x) - F(x)\right) = 0 
+        \implies \lim_{\Delta x \to 0} F(x + \Delta x) = F(x) \\
+\end{split}
+}
+}
+
+\subsection{Теорема 2 об интеграле с переменным верхним пределом}
+
+\mcthm{Теорема 2 об интеграле с переменным верхним пределом}{
+    $f(x) \in R[a; b] $ и непрерывна на $[\alpha; \beta]$, то
+    $F(x)$ дифференцируема на $(\alpha; \beta)$ и $F'(x) = f(x)$
+\mcprf{
+\begin{split}
+    & \frac{F(x + \Delta x) - F(x)}{\Delta x} 
+        = \frac{1}{\Delta x} \int_{x}^{x + \Delta x} f(t) dt = \\
+    &   = \left|\text{по теореме о среднем $\exists \xi = \xi(\Delta x) \in [\min(x; x+\Delta x); \max(x; x+\Delta x)]$}\right|
+        = f(\xi) \underset{\Delta x \to 0}{\to} f(x) \\
+    & \text{То есть по определению производной } 
+        \forall x \in [\alpha; \beta]: F'(x) = f(x) \\
+\end{split}
+}
+}
+
+\subsection{Формула Ньютона-Лейбница}
+
+\mcclm{Формула Ньютона-Лейбница}{}{
+    Если $\Phi(x) $ - первообразная функции $f(x)$ на $(\alpha; \beta)$ и 
+    $f(x)$ непрерывна на $[\alpha; \beta]$, то $\forall a, b \in [\alpha; \beta]$:
+    \[ \int_{a}^{b} f(x) dx = \Phi(b) - \Phi(a) \]
+\mcprf{
+\begin{split}
+    & F(b) = \int_{a}^{b} f(x) dx = F(b) \\
+    & \text{$F(x)$ - первообразная функции $f(x)$ на $(\alpha; \beta) 
+        \implies 
+            \exists C \in \Rset[] \, 
+            \forall x \in (\alpha; \beta): 
+            F(x) = \Phi(x) + C $} \\
+    & F(a) = \Phi(a) + C \wedge F(a) = 0 \implies C = - \Phi(a) 
+        \implies F(b) = \Phi(b) + C = \Phi(b) - \Phi(a) \\
+\end{split}    
+}
+}
