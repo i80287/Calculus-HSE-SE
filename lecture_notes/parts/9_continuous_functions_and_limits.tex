@@ -907,12 +907,13 @@ $$
 
 \mcprf{
 \begin{split}
-    & \text{1. БОО рассмотрим случай, когда } A \in \Rset \text{. Иначе рассмотрим предел частного } \frac{f(x)}{g(x)} \\
+    & \text{1. БОО рассмотрим случай, когда } A \in \Rset \text{. Иначе рассмотрим предел частного } \frac{g(x)}{f(x)} \\
     & \text{2. Доопределим $f(x)$ и $g(x)$ в точке $a$: } f(a) = g(a) = 0 \text{, чтобы функции были непрерывны в точке } a. \\
     & \text{Это не влияет на искомый предел по определению предела функции при $ x \to a $ } \\
     & \text{Тогда } \forall x \in (a - \delta_1; a) \text{ на $[x; a]$ выполнено условие т. Коши} \\
     & \text{Тогда по т. Коши } \exists \xi \in (x; a): \frac{f(x) - f(a)}{g(x) - g(a)} = \frac{f'(\xi)}{g'(\xi)} \\
     & \xi \text{ зависит от $x$ по построению } \implies \xi(x) \underset{x \to a-}{\to}  a \\
+    & \text{Обозначим } F(x) = \frac{f'(x)}{g'(x)} \\
     & \text{Тогда } \frac{f'(\xi)}{g'(\xi)} = F(\xi(x)) \underset{x \to a-}{\to} A \text{ по теореме о пределе сложной функции $ F(\xi(x)) $} \\
 \end{split}
 }
@@ -923,7 +924,7 @@ $$
     \[ \lim_{x \to +\infty} \frac{f(x)}{g(x)} \]
 \mcprf{
 \begin{split}
-    & \text{1. БОО рассмотрим случай, когда } A \in \Rset \text{. Иначе рассмотрим предел частного } \frac{f(x)}{g(x)} \\
+    & \text{1. БОО рассмотрим случай, когда } A \in \Rset \text{. Иначе рассмотрим предел частного } \frac{g(x)}{f(x)} \\
     & \lim_{x \to +\infty} \frac{f'(x)}{g'(x)} 
         = \left| x = \frac{1}{t} \right| 
         = \lim_{t \to 0+} \frac{f'\left(\frac{1}{t}\right)}{g'\left(\frac{1}{t}\right)}
