@@ -910,11 +910,18 @@ $$
     & \text{1. БОО рассмотрим случай, когда } A \in \Rset \text{. Иначе рассмотрим предел частного } \frac{g(x)}{f(x)} \\
     & \text{2. Доопределим $f(x)$ и $g(x)$ в точке $a$: } f(a) = g(a) = 0 \text{, чтобы функции были непрерывны в точке } a. \\
     & \text{Это не влияет на искомый предел по определению предела функции при $ x \to a $ } \\
+    & \text{(т.к. в определении по Коши рассматриваются интервалы / проколотая окрестность точки $a$)} \\
     & \text{Тогда } \forall x \in (a - \delta_1; a) \text{ на $[x; a]$ выполнено условие т. Коши} \\
-    & \text{Тогда по т. Коши } \exists \xi \in (x; a): \frac{f(x) - f(a)}{g(x) - g(a)} = \frac{f'(\xi)}{g'(\xi)} \\
+    & \text{Тогда по т. Коши } \exists \xi \in (x; a): \frac{f(x) - f(a)}{g(x) - g(a)} = \frac{f'(\xi(x))}{g'(\xi(x))} \\
     & \xi \text{ зависит от $x$ по построению } \implies \xi(x) \underset{x \to a-}{\to}  a \\
-    & \text{Обозначим } F(x) = \frac{f'(x)}{g'(x)} \\
-    & \text{Тогда } \frac{f'(\xi)}{g'(\xi)} = F(\xi(x)) \underset{x \to a-}{\to} A \text{ по теореме о пределе сложной функции $ F(\xi(x)) $} \\
+    & \text{3. Обозначим } F(x) = \frac{f'(x)}{g'(x)} \\
+    & \text{Тогда } \frac{f'(\xi(x))}{g'(\xi(x))} = F(\xi(x)) \underset{x \to a-}{\to} A \text{ по теореме о пределе сложной функции $ F(\xi(x)) $} \\
+    & \text{Следовательно, }
+        \lim_{x \to a-} \frac{f'(\xi(x))}{g'(\xi(x))} = A 
+        \implies
+        \lim_{x \to a-} \frac{f(x) - f(a)}{g(x) - g(a)} = A 
+        \implies
+        \lim_{x \to a-} \frac{f(x)}{g(x)} = A \\
 \end{split}
 }
     Для случая $ x \to a, \, a \in \Rset $ и $ x \to a+, \, a \in \Rset $ доказательство аналогично
@@ -990,7 +997,9 @@ $$
     & \le (|A| + \veps_1) \frac{2 \veps_1}{1 - \veps_1 } + \veps_1 
         < \left(|A| + \frac{1}{2}\right) \frac{2 \veps_1}{1 - \frac{1}{2}} + \veps_1 = \veps_1 (3 + 4 |A|) \\
     & \text{4. Тогда: } \\
-    & \forall \veps > 0 \, \text{ построим } \veps_1 = \min \{ \frac{\veps}{3 + 4 |A| }, \frac{1}{2} \} \text{, по $\veps_1$ построим $ \delta_1, \delta_2, \delta_3, \delta_4 $} \\
+    & \forall \veps > 0 \, \text{ построим } 
+        \veps_1 = \min \left\{ \frac{\veps}{3 + 4 |A| }, \frac{1}{2} \right\} 
+        \text{, по $\veps_1$ построим $ \delta_1, \delta_2, \delta_3, \delta_4 $} \\
     & \text{Положим }
         \delta := \min \{ \delta_1; \delta_2; \delta_3; \delta_4 \}
             \text{, тогда }
@@ -1037,6 +1046,8 @@ $$
     При $x_0 = 0$ $T_n(x)$ называется рядом Маклорена
 }
 
+\subsection{Свойство многочлена Тейлора}
+
 \mcclm{Свойство многочлена Тейлора}{}{
     $ \forall k \in \mathbb{N}: (0 \le k \le n \implies T^{(k)}_n(x_0) = f^{(k)}(x_0) ) $
 
@@ -1046,16 +1057,17 @@ $$
         = \left( \sum_{k = 0}^{n} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} = \\
     & = \left( \sum_{k = 0}^{m - 1} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} 
         + \left( \frac{f^{(m)}(x_0)}{m!} (x - x_0)^m \right)^{(m)} 
-        + \left( \sum_{k = m + 1}^{n - 1} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} \\
+        + \left( \sum_{k = m + 1}^{n} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} \\
     & = \left( \sum_{k = 0}^{m - 1} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} 
         + \left( \frac{f^{(m)}(x_0)}{m!} m! (x - x_0)^0 \right) 
-        + \left( \sum_{k = m + 1}^{n - 1} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} \\
+        + \left( \sum_{k = m + 1}^{n} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} \\
     & = \left( \sum_{k = 0}^{m - 1} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} 
         + \left( f^{(m)}(x_0) \right) 
-        + \left( \sum_{k = m + 1}^{n - 1} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} \implies \\
-    & T_n^{(m)}(x_0) = \left( \sum_{k = 0}^{m - 1} \frac{f^{(k)}(x_0)}{k!} 0 \right) 
+        + \left( \sum_{k = m + 1}^{n} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k \right)^{(m)} \implies \\
+    & \implies
+        T_n^{(m)}(x_0) = \left( \sum_{k = 0}^{m - 1} \frac{f^{(k)}(x_0)}{k!} 0 \right) 
         + \left( f^{(m)}(x_0) \right) 
-        + \left( \sum_{k = m + 1}^{n - 1} \frac{f^{(k)}(x_0)}{k!} 0 \right) = f^{(m)}(x_0)  \\
+        + \left( \sum_{k = m + 1}^{n} \frac{f^{(k)}(x_0)}{k!} 0 \right) = f^{(m)}(x_0)  \\
 \end{split}
 }
 }
@@ -1083,15 +1095,20 @@ $$
     & \text{2. Для $f^{(n - 1)} - T_n^{(n - 1)}$ существует производная в точке $x_0$} \implies \\
     & f^{(n - 1)}(x) = f^{(n - 1)}(x_0) + f^{(n)}(x_0) (x - x_0) + \overline{o}(x - x_0) \\
     & T_n^{(n - 1)}(x) = T_n^{(n - 1)}(x_0) + T_n^{(n)}(x_0) (x - x_0) + \overline{o}(x - x_0) \\
-    & f^{(n - 1)}(x_0) = T_n^{(n - 1)}(x_0)
-        \wedge f^{(n)} = T_n^{(n)}(x_0) \implies \\
-    & \implies f^{(n - 1)}(x) - T_n^{(n - 1)}(x) 
+    & \text{3. По свойству многочлена Тейлора: } f^{(n - 1)}(x_0) = T_n^{(n - 1)}(x_0)
+        \wedge f^{(n)}(x_0) = T_n^{(n)}(x_0) \\
+    & \text{Тогда } f^{(n - 1)}(x) - T_n^{(n - 1)}(x) 
             = \overline{o}(x - x_0) - \overline{o}(x - x_0) 
             = \overline{o}(x - x_0) \implies \\
-    & \implies 
-        \lim_{x \to x_0} \frac{f(x) - T_n(x)}{(x - x_0)^n} 
+    & \implies
+        \lim_{x \to x_0} \frac{f^{(n - 1)}(x) - T_n^{(n - 1)}(x)}{n! (x - x_0)}
         = \lim_{x \to x_0} \frac{\overline{o}(x - x_0)}{n! (x - x_0)} 
-        = 0 \\
+        = \lim_{x \to x_0} \frac{\overline{o}(1)}{n!} 
+        = 0 \implies \\
+    & \implies 
+        \lim_{x \to x_0} \frac{f(x) - T_n(x)}{(x - x_0)^n} = 0 
+        \implies
+        f(x) - T_n(x) = \overline{o}((x - x_0)^n) \text{ при $ x \to x_0 $ (по определению o-малого) } \\
 \end{split}
 }
 }
