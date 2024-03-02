@@ -347,6 +347,48 @@ $$
 \mcdfn{Второй замечательный предел}
 {
     \[ \lim_{x \to +\infty} \left(1 + \frac{1}{x}\right)^x = e \]
+
+\mcprf{
+\begin{split}
+    & \text{1. По определению числа Эйлера: } \lim_{n \to +\infty} \left(1 + \frac{1}{n}\right)^{n} = e \\
+    & \text{По арифметике предела ч.п.: } \\
+    & \lim_{n \to +\infty} \left(1 + \frac{1}{n + 1}\right)^{n} = e \\
+    & \lim_{n \to +\infty} \left(1 + \frac{1}{n}\right)^{n + 1} = e \\
+    & \text{По определению предела ч.п. это означает:} \\
+    & \forall \veps > 0 \,
+        \exists N_1(\veps) \in \Nset[] \, 
+        \forall n > N_1(\veps): 
+        \left| \left(1 + \frac{1}{n + 1}\right)^{n} - e \right| < \veps \\
+    & \text{Последнее выражение равносильно: } e - \veps < \left(1 + \frac{1}{n + 1}\right)^{n} < e + \veps \\
+    & \text{Аналогично } \\
+    & \forall \veps > 0 \,
+        \exists N_2(\veps) \in \Nset[] \, 
+        \forall n > N_2(\veps): 
+        e - \veps < \left(1 + \frac{1}{n}\right)^{n + 1} < e + \veps \\
+    & \text{2. Хотим доказать: } \lim_{x \to +\infty} \left(1 + \frac{1}{x}\right)^x = e \\
+    & \text{Распишем определение предела функции по Коши при $x \to +\infty$:} \\
+    & \forall \veps > 0 \,
+        \exists \delta = \delta(\veps) > 0 \,
+        \forall x \in (\delta; +\infty):
+        \left| \left(1 + \frac{1}{x}\right)^{x} - e \right| < \veps \\
+    & \text{Будем рассматривать только $\delta \ge 1$, тогда:} \\
+    & \forall x \in (\delta; +\infty) \,
+        \exists n \in \Nset[]: n < x \le n + 1 \\
+    & \text{Тогда } \left(1 + \frac{1}{n + 1}\right)^{n} < \left(1 + \frac{1}{x}\right)^{x} < \left(1 + \frac{1}{n}\right)^{n + 1} \\
+    & \text{Положим } \delta(\veps) := \max\{N_1(\veps), N_2(\veps)\} + 1 \\
+    & \text{Тогда для каждого рассматриваемого x: } n \ge x - 1 > \delta - 1 \ge \max\{N_1(\veps), N_2(\veps)\} \\
+    & \text{То есть } n > N_1(\veps) \wedge n > N_2(\veps) \\
+    & \text{Тогда } 
+        e - \veps < \left(1 + \frac{1}{n + 1}\right)^{n} < \left(1 + \frac{1}{x}\right)^{x} < \left(1 + \frac{1}{n}\right)^{n + 1} < e + \veps
+        \implies \\
+    & \implies e - \veps < \left(1 + \frac{1}{x}\right)^{x} < e + \veps \\
+    & \text{Таким образом, показали, что верно определение предела функции по Коши: } \\
+    & \forall \veps > 0 \,
+        \exists \delta = \max\{N_1(\veps), N_2(\veps)\} + 1 > 0 \,
+        \forall x \in (\delta; +\infty):
+        e - \veps < \left(1 + \frac{1}{x}\right)^{x} < e + \veps \\
+\end{split}
+}
 }
 
 \section{Теорема о пределе сложной функции}
