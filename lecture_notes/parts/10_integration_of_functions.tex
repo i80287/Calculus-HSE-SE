@@ -289,7 +289,7 @@
 \mcex{}{
     Пример функции, не интегрируемой по Риману:
 
-    На отрезке $[0; 1]$ рассмотрим функция Дирихле: 
+    На отрезке $[0; 1]$ рассмотрим функцию Дирихле: 
     $ D(x) = \left\{ \begin{tabular}{l}
         $ 1, x \in \Qset $ \\
         $ 0, x \notin \Qset $ \\
@@ -343,7 +343,7 @@
     тогда нижней суммой Дарбу называется
 
     $ s_\tau = \sum_{i = 1}^{n} m_i \Delta x_i $, 
-    где $ \forall i: m_i = \underset{x \in [x_{i - 1}; x_i]}{\inf f(x)} $
+    где $ \forall i: m_i = \underset{x \in [x_{i - 1}; x_i]}{\inf} f(x) $
 }
 
 \subsubsection{Верхняя сумма Дарбу}
@@ -353,7 +353,7 @@
     тогда верхней суммой Дарбу называется
 
     $ S_\tau = \sum_{i = 1}^{n} M_i \Delta x_i $, 
-    где $ \forall i: M_i = \underset{x \in [x_{i - 1}; x_i]}{\sup f(x)} $
+    где $ \forall i: M_i = \underset{x \in [x_{i - 1}; x_i]}{\sup} f(x) $
 }
 
 \subsubsection{Свойства сумм Дарбу}
@@ -368,32 +368,55 @@
               & $ S_{\tau'} \le S_\tau $ \\
               & $ s_{\tau'} \ge s_\tau $ \\
     $\bullet$ & $ \forall \tau_1, \tau_2: s_{\tau_1} \le S_{\tau_2} $ \\
-    $\bullet$ & $ s_\tau = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf \sigma_{\tau}(f)} $ - инфинум по всем разметкам \\
-              & $ S_\tau = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\sup \sigma_{\tau}(f)} $ - супремум по всем разметкам \\
+    $\bullet$ & $ s_\tau = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf} \sigma_{\tau}(f) $ - инфинум по всем разметкам \\
+              & $ S_\tau = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\sup} \sigma_{\tau}(f) $ - супремум по всем разметкам \\
 \end{tabular}
 
     Докажем 2-е свойство для нижних сумм Дарбу:
 \mcprf{
 \begin{split}
+    & \text{Докажем для нижних сумм, для верхних сумм аналогично: } \\
     & s_\tau = \sum_{i = 1}^{n} m_i \Delta x_i \\
     & s_{\tau'} = \sum_{j = 1}^{k} m'_j \Delta x'_j \\
     & \forall i \, \exists n_{i - 1} < n_i: 
         \sum_{j = n_{i - 1} + 1}^{n_i} \Delta x'_j = \Delta x_i 
-        \text{ и } \forall j \in \{ n_{i - 1} + 1, ..., n_i \}: [x_{j - 1}; x_j] \subseteq [x_{i - 1}; x_i]  \\
+        \text{ и } 
+        \cup_{j = n_{i - 1} + 1}^{n_i} [x'_{j - 1}; x'_j] = [x_{i - 1}; x_i] \\
+    & \begin{tikzpicture}
+        \draw (0,0) -- (9,0);
+        \filldraw[black] (1,0) circle (1pt);
+        \filldraw[black] (2,0) circle (1pt);
+        \filldraw[black] (3,0) circle (1pt);
+        \filldraw[black] (4,0) circle (1pt);
+        \filldraw[black] (5,0) circle (1pt);
+        \filldraw[black] (6,0) circle (1pt);
+        \filldraw[black] (7,0) circle (1pt);
+        \filldraw[black] (8,0) circle (1pt);
+        \filldraw[green!60!black] (1,0) node[anchor=south]{$x_{i-1}$};
+        \filldraw[green!60!black] (8,0) node[anchor=south]{$x_{i}$};
+        \filldraw[red!80!black] (1,0) node[anchor=north]{$x'_{n_{i - 1}}$};
+        \filldraw[red!80!black] (3,0) node[anchor=north]{$x'_{n_{i - 1} + 1}$};
+        \filldraw[red!80!black] (6,0) node[anchor=north]{$x'_{n_{i - 1} + 2}$};
+        \filldraw[red!80!black] (8,0) node[anchor=north]{$x'_{n_i}$};
+    \end{tikzpicture} \\
     & \text{Т.к. $m_i$ - $\inf f(x)$ на всём отрезке $[x_{i-1}; x_i]$, то } \forall j \in \{ n_{i - 1} + 1, ..., n_i \}: m'_j \ge m_i \\
-    & m'_j \Delta x'_j \ge m_i \Delta x'_j \\
-    & s_\tau' = \sum_{j = n_{i - 1} + 1}^{n_i} m'_j \Delta x'_j 
+    & \text{Тогда } m'_j \Delta x'_j \ge m_i \Delta x'_j \\
+    & \text{Следовательно, } \sum_{j = n_{i - 1} + 1}^{n_i} m'_j \Delta x'_j 
         \ge \sum_{j = n_{i - 1} + 1}^{n_i} m_i \Delta x'_j 
-        = m_i \Delta x_i = s_\tau \\
+        = m_i \Delta x_i \\
+    & \text{Тогда } 
+        \sum_{j = 1}^{k} m'_j \Delta x'_j \ge \sum_{i = 1}^{n} m_i \Delta x_i 
+        \implies
+        s_\tau' \ge s_\tau \\
 \end{split}
 }
 
     Докажем 3-е свойство:
 \mcprf{
 \begin{split}
-    & \text{Рассмотрим $ \tau $, состоящую из точек $ \tau_1 $ и $ \tau_2 $, тогда }
+    & \text{Рассмотрим разбиение $ \tau $, состоящее из точек $ \tau_1 $ и $ \tau_2 $, тогда }
         \tau \succ \tau_1, \tau_2 \\
-    & s_{\tau_1} \le s_{\tau} \le S_\tau \le S_{\tau_2} \\
+    & \text{Следовательно, по 2-му свойству сумм Дарбу: } s_{\tau_1} \le s_{\tau} \le S_\tau \le S_{\tau_2} \\
 \end{split}
 }
 
@@ -402,8 +425,8 @@
 \begin{split}
     & s_\tau
         = \sum_{i = 1}^{n} \underset{\xi_i \in [x_{i - 1}; x_i]}{\inf f(\xi_i)} \Delta x_i 
-        = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf \sum_{i = 1}^{n} f(\xi_i) \Delta x_i}
-        = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf \sigma_{\tau}(f) } \\
+        = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf} \sum_{i = 1}^{n} f(\xi_i) \Delta x_i
+        = \underset{ \{ \xi_i \}_{i = 1}^{n} }{\inf} \sigma_{\tau}(f) \\
 \end{split}
 }
 }
@@ -411,11 +434,11 @@
 \subsubsection{Интегралы Дарбу}
 
 \mcdfn{Верхний интеграл Дарбу}{
-    Верхним интегралом Дарбу называется $ I^* = \underset{\tau}{\inf S_{\tau}} $ - инфинум верхних сумм Дарбу по всем разбиениям
+    Верхним интегралом Дарбу называется $ I^* = \underset{\tau}{\inf} S_{\tau} $ - инфинум верхних сумм Дарбу по всем разбиениям
 }
 
 \mcdfn{Нижний интеграл Дарбу}{
-    Нижним интегралом Дарбу называется $ I_* = \underset{\tau}{\sup s_{\tau}} $ - супремум нижних сумм Дарбу по всем разбиениям
+    Нижним интегралом Дарбу называется $ I_* = \underset{\tau}{\sup} s_{\tau} $ - супремум нижних сумм Дарбу по всем разбиениям
 }
 
 \mcclarf{Уточнение}{
@@ -429,8 +452,8 @@
 
     Тогда $ 0 \le S_{\tau} - S_{\tau'} \le (M - m) \cdot p \cdot \delta $, 
         где $ \delta > d(\tau) $, 
-            $ m = \underset{x \in [a; b]}{\inf f(x)} \in \Rset[] $,
-            $ M = \underset{x \in [a; b]}{\sup f(x)} \in \Rset[] $
+            $ m = \underset{x \in [a; b]}{\inf} f(x) \in \Rset[] $,
+            $ M = \underset{x \in [a; b]}{\sup} f(x) \in \Rset[] $
 \mcproofpure{
 \[
 \begin{split}
@@ -846,9 +869,9 @@
     & \text{1. т.к. $f$ непрерывна на $[a; b]$, то } 
         \forall x \in [a; b]: m \le f(x) \le M 
     \text{, где } 
-        m = \underset{x \in [a; b]}{\inf f(x)} \in \Rset[]
+        m = \underset{x \in [a; b]}{\inf} f(x) \in \Rset[]
     \text{ и }
-        M = \underset{x \in [a; b]}{\sup f(x)} \in \Rset[] \\
+        M = \underset{x \in [a; b]}{\sup} f(x) \in \Rset[] \\
     & \text{2. По 4-ому свойству определённых интегралов: } \\
     & \int_{a}^{b} m \, dx
         \le \int_{a}^{b} f(x) dx
