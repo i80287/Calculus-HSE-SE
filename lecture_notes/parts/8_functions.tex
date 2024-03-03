@@ -94,6 +94,8 @@
     (x_n \ne x_0 \wedge \lim_{n \to +\infty} x_n = x_0 \implies \lim_{n \to +\infty} f(x_n) = A)\]
 }
 
+\pagebreak
+
 \subsection{Теорема об эквивалентности определений по Коши и по Гейне}
 
 \mcthm{Теорема об эквивалентности определений по Коши и по Гейне}{
@@ -107,9 +109,9 @@
     & \text{Пусть дана ч.п., удовлетворяющая условиям посылки импликации, т.е. } \\
     & \NumSeq{x_n}: x_n \underset{n \to +\infty}{\to} x_0 \wedge \forall n \in \Nset: x_n \ne x_0 \\
     & \text{По определению это означает, что } \\
-    & \forall \lambda > 0 \, \exists N(\lambda) \in \Nset[] \, \forall n > N(\lambda): 0 < | x_n - x_0 | < \lambda \,\,\, (2) \\ 
+    & \forall \lambda > 0 \, \exists N(\lambda) \in \Nset \, \forall n > N(\lambda): 0 < | x_n - x_0 | < \lambda \,\,\, (2) \\ 
     & \text{Хотим доказать: } \\
-    & \forall \veps > 0 \, \exists N_1(\veps) \in \Nset[] \, \forall n > N_1(\veps): | f(x_n) - A | < \veps \\
+    & \forall \veps > 0 \, \exists N_1(\veps) \in \Nset \, \forall n > N_1(\veps): | f(x_n) - A | < \veps \\
     & \text{Пусть дано $\veps > 0$, тогда по (2):} \\ 
     & \forall n > N(\delta(\veps)): 0 < | x_n - x_0 | < \delta(\veps) \\
     & \text{Это равносильно тому, что } \forall n > N(\delta(\veps)): x_n \in \dot{U}_{\delta(\veps)}(x_0) \\
@@ -120,14 +122,14 @@
     & \forall \NumSeq{x_n}: x_n \underset{n \to +\infty}{\to} x_0 \wedge \forall n \in \Nset: x_n \ne x_0 \implies f(x_n) \underset{n \to +\infty}{\to} A \,\,\, (3) \\
     & \exists \veps_0 > 0 \, \forall \delta > 0 \, \exists x \in \dot{U}_\delta(x_0): | f(x) - A | \ge \veps_0 \,\,\, (4) \\
     & \text{Для любого $n \in \Nset$ рассмотрим $\delta_n = \frac{1}{n}$ и $x \in \dot{U}_{\delta_n}(x_0)$ из (4) обозначим как $x_n$}  \\
-    & \text{Тогда по (4): } \forall n \in \Nset[]: | f(x_n) - A | \ge \veps_0 \\
-    & \forall n \in \Nset[]: 
+    & \text{Тогда по (4): } \forall n \in \Nset: | f(x_n) - A | \ge \veps_0 \\
+    & \forall n \in \Nset: 
         x_0 - \frac{1}{n} < x_n < x_0 + \frac{1}{n} 
         \implies x_n \underset{n \to +\infty}{\to} x_0 
         \text{ по теореме о пределе зажатой последовательности} \\
     & \text{Получили ч.п., такую что } 
         x_n \underset{n \to +\infty}{\to} x_0 
-        \wedge \forall n \in \Nset[]: x_n \ne x_0 \\
+        \wedge \forall n \in \Nset: x_n \ne x_0 \\
     & \text{Тогда по определению сходимости по Гейне (3): } f(x_n) \underset{n \to +\infty}{\to} A \implies \\
     & \implies \exists N(\veps_0) \, \forall n > N(\veps_0): | f(x_n) - A | < \veps_0 \implies \Contradiction \\
 \end{split}
@@ -260,7 +262,47 @@
 \end{tabular}
 }
 
-\section{Теорема о зажатой функции}
+\subsection{Арифметика предела функции}
+
+\mcclm{}{}{
+    Если $ 
+        f(x) \underset{x \to x_0}{\to} a \in \Rset, 
+        g(x) \underset{x \to x_0}{\to} b \in \Rset,
+        x_0 \in \ExtRset $, то
+
+\begin{tabular}{rl}
+    \\
+    & $\bullet$ $ f(x) \pm g(x) \underset{x \to x_0}{\to} a \pm b $ \\
+    \\
+    & $\bullet$ $ f(x) \cdot g(x) \underset{x \to x_0}{\to} a \cdot b $ \\
+    \\
+    & $\bullet$ $ \left(
+            \exists \delta > 0 \,
+            \forall x \in \dot{U}_{\delta}(x_0): g(x) \ne 0
+        \right)
+        \implies
+        \frac{f(x)}{g(x)} \underset{x \to x_0}{\to} \frac{a}{b} $ \\
+\end{tabular}
+}
+
+\subsection{Предельный переход в неравенствах}
+
+\mcthm{Предельный переход в неравенствах}
+{
+$$
+\left. \begin{tabular}{l}
+    $ f(x): \Rset \to \Rset, g(x): \Rset \to \Rset $ \\
+    $ \lim_{x \to x_0} f(x) = A $ \\
+    $ \lim_{x \to x_0} g(x) = B $ \\
+    $ \exists \delta > 0 \, \forall x \in \dot{U}_\delta(x_0): f(x) < g(x) $
+\end{tabular} \right\}
+\begin{tabular}{l}
+    $ \implies A \le B $
+\end{tabular}
+$$
+}
+
+\subsection{Теорема о зажатой функции}
 
 \mcthm{Теорема о зажатой функции}
 {
@@ -277,9 +319,34 @@ $$
 \end{tabular}
 $$
 \end{minipage}
+\mcprf{
+\begin{split}
+    & \text{1. По определению предела функции по Коши:} \\
+    & \forall \veps > 0 \,
+      \exists \delta_1 = \delta_1(\veps) > 0 \,
+      \forall x \in \dot{U}_{\delta_1}(x_0):
+      | f(x) - A | < \veps \\
+    & \forall \veps > 0 \,
+      \exists \delta_2 = \delta_2(\veps) > 0 \,
+      \forall x \in \dot{U}_{\delta_2}(x_0):
+      | h(x) - A | < \veps \\
+    & \text{2. Докажем, что $\lim_{x \to x_0} g(x) = A$, 
+        расписав определение по Коши:} \\
+    & \text{Пусть дано $\veps > 0$, тогда положим }
+        \delta_3(\veps) = \min\{\delta_1(\veps), \delta_2(\veps), \delta\} \\
+    & \text{Тогда } 
+        \forall x \in \dot{U}_{\delta_3}(x_0): 
+        A - \veps < f(x) \le g(x) \le h(x) < A + \veps \\
+    & \text{То есть показали верность определения предела по Коши:} \\
+    & \forall \veps > 0 \,
+      \exists \delta_3 > 0 \,
+      \forall x \in \dot{U}_{\delta_3}(x_0):
+      | g(x) - A | < \veps \\
+\end{split}
+}
 }
 
-\section{Первый и второй замечательные пределы}
+\subsection{Первый и второй замечательные пределы}
 
 \mcdfn{Первый замечательный предел}
 {
@@ -356,13 +423,13 @@ $$
     & \lim_{n \to +\infty} \left(1 + \frac{1}{n}\right)^{n + 1} = e \\
     & \text{По определению предела ч.п. это означает:} \\
     & \forall \veps > 0 \,
-        \exists N_1(\veps) \in \Nset[] \, 
+        \exists N_1(\veps) \in \Nset \, 
         \forall n > N_1(\veps): 
         \left| \left(1 + \frac{1}{n + 1}\right)^{n} - e \right| < \veps \\
     & \text{Последнее выражение равносильно: } e - \veps < \left(1 + \frac{1}{n + 1}\right)^{n} < e + \veps \\
     & \text{Аналогично } \\
     & \forall \veps > 0 \,
-        \exists N_2(\veps) \in \Nset[] \, 
+        \exists N_2(\veps) \in \Nset \, 
         \forall n > N_2(\veps): 
         e - \veps < \left(1 + \frac{1}{n}\right)^{n + 1} < e + \veps \\
     & \text{2. Хотим доказать: } \lim_{x \to +\infty} \left(1 + \frac{1}{x}\right)^x = e \\
@@ -373,7 +440,7 @@ $$
         \left| \left(1 + \frac{1}{x}\right)^{x} - e \right| < \veps \\
     & \text{Будем рассматривать только $\delta \ge 1$, тогда:} \\
     & \forall x \in (\delta; +\infty) \,
-        \exists n \in \Nset[]: n < x \le n + 1 \\
+        \exists n \in \Nset: n < x \le n + 1 \\
     & \text{Тогда } \left(1 + \frac{1}{n + 1}\right)^{n} < \left(1 + \frac{1}{x}\right)^{x} < \left(1 + \frac{1}{n}\right)^{n + 1} \\
     & \text{Положим } \delta(\veps) := \max\{N_1(\veps), N_2(\veps)\} + 1 \\
     & \text{Тогда для каждого рассматриваемого x: } n \ge x - 1 > \delta - 1 \ge \max\{N_1(\veps), N_2(\veps)\} \\
@@ -391,7 +458,7 @@ $$
 }
 }
 
-\section{Теорема о пределе сложной функции}
+\subsection{Теорема о пределе сложной функции}
 
 \mcthm{Теорема о пределе сложной функции}
 {

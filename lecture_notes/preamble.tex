@@ -153,7 +153,7 @@
 \newtcbtheorem[number within=chapter]{theorem}{Theorem}
 {%
 	enhanced,
-	breakable,
+	% breakable,
 	colback = mytheorembg,
 	frame hidden,
 	boxrule = 0sp,
@@ -209,20 +209,20 @@
 \tcbuselibrary{theorems,skins,hooks}
 \newtcbtheorem[number within=chapter]{corollary}{Corollary}
 {%
-	enhanced
-	,breakable
-	,colback = myp!10
-	,frame hidden
-	,boxrule = 0sp
-	,borderline west = {2pt}{0pt}{myp!85!black}
-	,sharp corners
-	,detach title
-	,before upper = \tcbtitle\par\smallskip
-	,coltitle = myp!85!black
-	,fonttitle = \bfseries\sffamily
-	,description font = \mdseries
-	,separator sign none
-	,segmentation style={solid, myp!85!black}
+	enhanced,
+	% breakable,
+	colback = myp!10,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{myp!85!black},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = myp!85!black,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, myp!85!black}
 }
 {th}
 
@@ -255,7 +255,7 @@
 \newtcbtheorem[number within=chapter]{lemma}{Lemma}
 {%
 	enhanced,
-	breakable,
+	% breakable,
 	colback = mylemmabg,
 	frame hidden,
 	boxrule = 0sp,
@@ -300,7 +300,7 @@
 \newtcbtheorem[number within=chapter]{prop}{Proposition}
 {%
 	enhanced,
-	breakable,
+	% breakable,
 	colback = mypropbg,
 	frame hidden,
 	boxrule = 0sp,
@@ -322,25 +322,44 @@
 %================================
 
 \tcbuselibrary{theorems,skins,hooks}
-\newtcbtheorem[number within=section]{claim}{Claim}
+\newtcbtheorem[number within=section]{Claim}{Claim}
 {%
-	enhanced
-	,breakable
-	,colback = myg!10
-	,frame hidden
-	,boxrule = 0sp
-	,borderline west = {2pt}{0pt}{myg}
-	,sharp corners
-	,detach title
-	,before upper = \tcbtitle\par\smallskip
-	,coltitle = myg!85!black
-	,fonttitle = \bfseries\sffamily
-	,description font = \mdseries
-	,separator sign none
-	,segmentation style={solid, myg!85!black}
+	enhanced,
+	breakable,
+	colback = myg!10,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{myg},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = myg!85!black,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, myg!85!black}
 }
 {th}
 
+\tcbuselibrary{theorems,skins,hooks}
+\newtcbtheorem[number within=section]{claim}{Claim}
+{%
+	enhanced,
+	% breakable,
+	colback = myg!10,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{myg},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = myg!85!black,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, myg!85!black}
+}
+{th}
 
 
 %================================
@@ -371,7 +390,7 @@
 \newtcbtheorem[number within=chapter]{exercise}{Exercise}
 {%
 	enhanced,
-	breakable,
+	% breakable,
 	colback = myexercisebg,
 	frame hidden,
 	boxrule = 0sp,
@@ -393,35 +412,35 @@
 
 \newtcbtheorem[number within=section]{Example}{Example}
 {%
-	colback = myexamplebg
-	,breakable
-	,colframe = myexamplefr
-	,coltitle = myexampleti
-	,boxrule = 1pt
-	,sharp corners
-	,detach title
-	,before upper=\tcbtitle\par\smallskip
-	,fonttitle = \bfseries
-	,description font = \mdseries
-	,separator sign none
-	,description delimiters parenthesis
+	colback = myexamplebg,
+	breakable,
+	colframe = myexamplefr,
+	coltitle = myexampleti,
+	boxrule = 1pt,
+	sharp corners,
+	detach title,
+	before upper=\tcbtitle\par\smallskip,
+	fonttitle = \bfseries,
+	description font = \mdseries,
+	separator sign none,
+	description delimiters parenthesis
 }
 {ex}
 
 \newtcbtheorem[number within=chapter]{example}{Example}
 {%
-	colback = myexamplebg
-	,breakable
-	,colframe = myexamplefr
-	,coltitle = myexampleti
-	,boxrule = 1pt
-	,sharp corners
-	,detach title
-	,before upper=\tcbtitle\par\smallskip
-	,fonttitle = \bfseries
-	,description font = \mdseries
-	,separator sign none
-	,description delimiters parenthesis
+	colback = myexamplebg,
+	% breakable,
+	colframe = myexamplefr,
+	coltitle = myexampleti,
+	boxrule = 1pt,
+	sharp corners,
+	detach title,
+	before upper=\tcbtitle\par\smallskip,
+	fonttitle = \bfseries,
+	description font = \mdseries,
+	separator sign none,
+	description delimiters parenthesis
 }
 {ex}
 
@@ -477,36 +496,6 @@
 %================================
 
 \makeatletter
-\newtcbtheorem{question}{Question}{enhanced,
-	breakable,
-	colback=white,
-	colframe=myb!80!black,
-	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
-	fonttitle=\bfseries,
-	title={#2},
-	boxed title size=title,
-	boxed title style={%
-			sharp corners,
-			rounded corners=northwest,
-			colback=tcbcolframe,
-			boxrule=0pt,
-		},
-	underlay boxed title={%
-			\path[fill=tcbcolframe] (title.south west)--(title.south east)
-			to[out=0, in=180] ([xshift=5mm]title.east)--
-			(title.center-|frame.east)
-			[rounded corners=\kvtcb@arc] |-
-			(frame.north) -| cycle;
-		},
-	#1
-}{def}
-\makeatother
-
-%================================
-% SOLUTION BOX
-%================================
-
-\makeatletter
 \newtcolorbox{solution}{enhanced,
 	breakable,
 	colback=white,
@@ -535,8 +524,34 @@
 %================================
 
 \makeatletter
-\newtcbtheorem{qstion}{Question}{enhanced,
+\newtcbtheorem{Question}{Question}{enhanced,
 	breakable,
+	colback=white,
+	colframe=mygr,
+	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+	fonttitle=\bfseries,
+	title={#2},
+	boxed title size=title,
+	boxed title style={%
+			sharp corners,
+			rounded corners=northwest,
+			colback=tcbcolframe,
+			boxrule=0pt,
+		},
+	underlay boxed title={%
+			\path[fill=tcbcolframe] (title.south west)--(title.south east)
+			to[out=0, in=180] ([xshift=5mm]title.east)--
+			(title.center-|frame.east)
+			[rounded corners=\kvtcb@arc] |-
+			(frame.north) -| cycle;
+		},
+	#1
+}{def}
+\makeatother
+
+\makeatletter
+\newtcbtheorem{question}{Question}{enhanced,
+	% breakable,
 	colback=white,
 	colframe=mygr,
 	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
@@ -628,35 +643,35 @@
 
 \newtcbtheorem[number within=section]{Clarification}{Clarification}
 {%
-	colback = myclarificationbg
-	,breakable
-	,colframe = myclarificationfr
-	,coltitle = myexampleti
-	,boxrule = 1pt
-	,sharp corners
-	,detach title
-	,before upper=\tcbtitle\par\smallskip
-	,fonttitle = \bfseries
-	,description font = \mdseries
-	,separator sign none
-	,description delimiters parenthesis
+	colback = myclarificationbg,
+	breakable,
+	colframe = myclarificationfr,
+	coltitle = myexampleti,
+	boxrule = 1pt,
+	sharp corners,
+	detach title,
+	before upper=\tcbtitle\par\smallskip,
+	fonttitle = \bfseries,
+	description font = \mdseries,
+	separator sign none,
+	description delimiters parenthesis
 }
 {clarif}
 
 \newtcbtheorem[number within=chapter]{clarification}{Clarification}
 {%
-	colback = myclarificationbg
-	,breakable
-	,colframe = myclarificationfr
-	,coltitle = myexampleti
-	,boxrule = 1pt
-	,sharp corners
-	,detach title
-	,before upper=\tcbtitle\par\smallskip
-	,fonttitle = \bfseries
-	,description font = \mdseries
-	,separator sign none
-	,description delimiters
+	colback = myclarificationbg,
+	% breakable,
+	colframe = myclarificationfr,
+	coltitle = myexampleti,
+	boxrule = 1pt,
+	sharp corners,
+	detach title,
+	before upper=\tcbtitle\par\smallskip,
+	fonttitle = \bfseries,
+	description font = \mdseries,
+	separator sign none,
+	description delimiters
 }
 {clarif}
 
@@ -664,33 +679,26 @@
 % SELF MADE COMMANDS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\newcommand{\thm}[2]{\begin{Theorem}{#1}{}#2\end{Theorem}}
-\newcommand{\cor}[2]{\begin{Corollary}{#1}{}#2\end{Corollary}}
-\newcommand{\mlemma}[2]{\begin{Lemma}{#1}{}#2\end{Lemma}}
-\newcommand{\mprop}[2]{\begin{Prop}{#1}{}#2\end{Prop}}
-\newcommand{\clm}[3]{\begin{claim}{#1}{#2}#3\end{claim}}
-\newcommand{\wc}[2]{\begin{wconc}{#1}{}\setlength{\parindent}{1cm}#2\end{wconc}}
-\newcommand{\thmcon}[1]{\begin{Theoremcon}{#1}\end{Theoremcon}}
-\newcommand{\ex}[2]{\begin{Example}{#1}{}#2\end{Example}}
-\newcommand{\dfn}[2]{\begin{Definition}[colbacktitle=red!75!black]{#1}{}#2\end{Definition}}
-\newcommand{\dfnc}[2]{\begin{definition}[colbacktitle=red!75!black]{#1}{}#2\end{definition}}
-\newcommand{\qs}[2]{\begin{question}{#1}{}#2\end{question}}
-% \newcommand{\pf}[2]{\begin{mcproof}[#1]#2\end{mcproof}}
-
 \newcommand{\nt}[1]{\begin{note}#1\end{note}}
 
-\newcommand{\mcthm}[2]{\begin{Theorem*}{#1}{}#2\end{Theorem*}}
-\newcommand{\mccorollar}[2]{\begin{Corollary*}{#1}{}#2\end{Corollary*}}
-\newcommand{\mcprop}[2]{\begin{Prop*}{#1}{}#2\end{Prop*}}
-\newcommand{\mcdfn}[2]{\begin{Definition*}[colbacktitle=red!75!black]{#1}{}#2\end{Definition*}}
-\newcommand{\mcdfnc}[2]{\begin{definition*}[colbacktitle=red!75!black]{#1}{}#2\end{definition*}}
-\newcommand{\mcex}[2]{\begin{Example*}{#1}{}#2\end{Example*}}
+\newcommand{\mcthmBreakable}[2]{\begin{Theorem*}{#1}{}#2\end{Theorem*}}
+\newcommand{\mcthm}[2]{\begin{theorem*}{#1}{}#2\end{theorem*}}
+\newcommand{\mccorollarBreakable}[2]{\begin{Corollary*}{#1}{}#2\end{Corollary*}}
+\newcommand{\mccorollar}[2]{\begin{corollary*}{#1}{}#2\end{corollary*}}
+\newcommand{\mcpropBreakable}[2]{\begin{Prop*}{#1}{}#2\end{Prop*}}
+\newcommand{\mcprop}[2]{\begin{prop*}{#1}{}#2\end{prop*}}
+\newcommand{\mcdfnBreakable}[2]{\begin{Definition*}[colbacktitle=red!75!black]{#1}{}#2\end{Definition*}}
+\newcommand{\mcdfn}[2]{\begin{definition*}[colbacktitle=red!75!black]{#1}{}#2\end{definition*}}
+\newcommand{\mcexBreakable}[2]{\begin{Example*}{#1}{}#2\end{Example*}}
+\newcommand{\mcex}[2]{\begin{example*}{#1}{}#2\end{example*}}
 \newcommand{\mcprf}[1]{\begin{mcproof}\[#1\]\end{mcproof}}
 \newcommand{\mcproofpure}[1]{\begin{mcproof}#1\end{mcproof}}
+\newcommand{\mcclmBreakable}[3]{\begin{Claim*}{#1}{#2}#3\end{Claim*}}
 \newcommand{\mcclm}[3]{\begin{claim*}{#1}{#2}#3\end{claim*}}
+\newcommand{\mcclarfBreakable}[2]{\begin{Clarification*}{#1}{}#2\end{Clarification*}}
 \newcommand{\mcclarf}[2]{\begin{clarification*}{#1}{}#2\end{clarification*}}
-\newcommand{\mclemma}[2]{\begin{Lemma*}{#1}{}#2\end{Lemma*}}
+\newcommand{\mclemmaBreakable}[2]{\begin{Lemma*}{#1}{}#2\end{Lemma*}}
+\newcommand{\mclemma}[2]{\begin{lemma*}{#1}{}#2\end{lemma*}}
 
 \newenvironment{myclaim}[1][\claimname]{\proof[\bfseries #1: ]}{}
 

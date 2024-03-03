@@ -511,7 +511,7 @@
     & \text{2. Иначе, если $m \ne M$, то $m < M$} \\
     & \text{Пусть дано $\veps > 0$, тогда} \\
     & I^* = \underset{\tau}{\inf S_\tau} \implies \exists \tau^*: \left| S_{\tau^*} - I^* \right| < \frac{\veps}{2} \\
-    & S_{\tau^*} \ge I^* \implies S_{\tau^*} - I^* < \frac{\veps}{2} \\
+    & \text{$I^*$ - инфинум всех верхних сумм } \implies S_{\tau^*} \ge I^* \implies S_{\tau^*} - I^* < \frac{\veps}{2} \\
     & \text{Пусть в $\tau^*$ p точек (границ отрезков внутри $(a; b)$), т.е. $\tau^*$ состоит из $p+1$ отрезка } \\
     & \text{Положим } \delta = \frac{\veps}{2 (M - n) p} \\
     & \text{Построено $\delta$, тогда пусть дано разбиение $\tau$ т.ч. $d(\tau) < \delta$} \\
@@ -520,7 +520,7 @@
     & 0 \le S_\tau - S_{\tau'} \le (M - m) \cdot p \cdot \delta = \frac{\veps}{2} \\
     & \text{(если в $\tau'$ меньше, чем на p больше точек, чем в $\tau$, то неравенство также выполняется)} \\
     & \text{$\tau'$ - измельчение $\tau^*$ по построению } \implies S_{\tau'} \le S_{\tau^*} \\
-    & S_{\tau'} \ge I^* \implies I^* \le S_{\tau'} \le S_{\tau^*} \\
+    & \text{$I^*$ - инфинум всех верхних сумм } \implies S_{\tau'} \ge I^* \implies I^* \le S_{\tau'} \le S_{\tau^*} \\
     & S_{\tau^*} - I^* < \frac{\veps}{2} \implies S_{\tau'} - I^* < \frac{\veps}{2} \\
     & \left. \begin{tabular}{l}
         $ 0 \le S_\tau - S_{\tau'} < \frac{\veps}{2} $ \\
@@ -562,7 +562,13 @@
     & \text{По определению сумм Дарбу } s_\tau \le \sigma_\tau(f) \le S_\tau \\
     & \text{По лемме Дарбу $ \exists \delta_1 > d(\tau):  S_\tau < I^* + \veps $} \\
     & \text{аналогично $ \exists \delta_2 > d(\tau): s_\tau > I_* - \veps $} \\
-    & \text{Положим $\delta = \min(\delta_1, \delta_2)$, тогда } I_* - \veps < \sigma_\tau(f) < I^* + \veps \implies I - \veps < \sigma_\tau(f) < I^* + \veps = I + \veps \\
+    & \text{Положим $\delta = \min(\delta_1, \delta_2)$, тогда: } 
+        I_* - \veps 
+        < \sigma_\tau(f) 
+        < I^* + \veps \implies I - \veps 
+        < \sigma_\tau(f) 
+        < I^* + \veps 
+        = I + \veps \\
 \end{split}
 }
 }
@@ -743,7 +749,7 @@
 
 \subsection{Свойства определённого интеграла}
 
-\mcthm{Свойства определённого интеграла}{
+\mcthmBreakable{Свойства определённого интеграла}{
 \begin{tabular}{rl}
     1.  & Линейность: \\
         & Пусть $ f, g \in R[a; b] $, тогда \\
