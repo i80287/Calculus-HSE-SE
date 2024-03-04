@@ -636,7 +636,7 @@
         \le S_\tau - s_\tau 
         = \sum_{i = 1}^{n} \left(M_i - m_i\right) \Delta x_i
         = \sum_{i = 1}^{n} \left(f(\xi_i) - f(\eta_i)\right) \Delta x_i \text{, т.к. $f$ непрерывна на $[a; b]$} \\
-    & \forall i: | \xi_i - \eta_i | \le d(\tau) < \delta \implies |f(\xi_i) - f(\eta_i)| < \veps \implies 0 \ge f(\xi_i) - f(\eta_i) < \veps \\
+    & \forall i: | \xi_i - \eta_i | \le d(\tau) < \delta \implies |f(\xi_i) - f(\eta_i)| < \veps \implies 0 \le f(\xi_i) - f(\eta_i) < \veps \\
     & \text{Тогда } 
         \sum_{i = 1}^{n} \left(f(\xi_i) - f(\eta_i)\right) \Delta x_i  \le \sum_{i = 1}^{n} \veps \Delta x_i = \veps \cdot (b - a) \\
     & \text{$I^* - I_*$ - неотрицательное число, и при этом } \forall \veps > 0: I^* - I_* < \veps (b - a) \implies I^* - I_* = 0 \\
