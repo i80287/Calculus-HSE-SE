@@ -919,7 +919,7 @@
 \section{Обобщённое понятие интеграла}
 
 \mcclm{Обобщённое понятие интеграла}{}{
-    $ \forall a, b \in \Rset[] $ (если $f \in R[\min(a; b); \max(a; b)]$) доопределим:
+    $ \forall a, b \in \Rset $ (если $f \in R[\min(a; b); \max(a; b)]$) доопределим:
 
     \[ \int_{a}^{a} f(x) dx = 0 \]
 
@@ -1014,6 +1014,265 @@
             F(x) = \Phi(x) + C $} \\
     & F(a) = \Phi(a) + C \wedge F(a) = 0 \implies C = - \Phi(a) 
         \implies F(b) = \Phi(b) + C = \Phi(b) - \Phi(a) \\
-\end{split}    
+\end{split}
 }
+}
+
+\subsection{Формула интегрирования по частям}
+
+\mcclm{Обозначение}{}{
+    Введём обозначение:
+
+    $ f(x) \vert_{a}^{b} := f(b) - f(a) $
+}
+
+\mcthm{Формула интегрирования по частям}{
+    Пусть $f(x)$ и $g(x)$ - непрерывно дифференцируемые на $[a;b]$ функции
+    (это означает, что и их производные также непрерывны на $[a; b]$), тогда:
+
+    \[ \int_{a}^{b} f(x) d(g(x)) = f(x) g(x) \vert_{a}^{b} - \int_{a}^{b} g(x) d(f(x)) \]
+
+\mcprf{
+\begin{split}
+    & \text{1.} \forall x \in [a; b]: \, (f(x) g(x))' = f'(x) g(x) + f(x) g'(x) \\
+    & \text{Тогда: } \int_{a}^{b} (f(x) g(x))' dx = \int_{a}^{b} f'(x) g(x) + f(x) g'(x) dx \\
+    & \text{По линейности интеграла: } \int_{a}^{b} (f(x) g(x))' dx = \int_{a}^{b} f'(x) g(x) dx + \int_{a}^{b} f(x) g'(x) dx \\
+    & \text{По формуле Ньютона-Лейбница: } (f(x) g(x)) \vert_{a}^{b} = \int_{a}^{b} f'(x) g(x) dx + \int_{a}^{b} f(x) g'(x) dx \\
+\end{split}
+}
+}
+
+\subsection{Формула замены переменной}
+
+\mcthm{Формула замены переменной}{
+    Пусть $u(x)$ - непрерывно дифференцируемая на $[p;q]$ функция
+
+    $ \left. \begin{tabular}{l}
+        $ \forall t \in [p; q]: u(t) \in [\alpha; \beta] $ \\
+        $ f(x) \text{ непрерывна на } [\alpha; \beta] $ \\
+        $ u(p) = a $ \\
+        $ u(q) = b $ \\
+        $ [a; b] \subseteq [\alpha; \beta] $ \\
+    \end{tabular} \right\} 
+    \implies \int_{a}^{b} f(x) dx = \int_{p}^{q} u'(t) f(u(t)) dt $
+\mcprf{
+\begin{split}
+    & \text{1. пусть $F(x)$ - первообразная $f(x)$ на $(\alpha; \beta)$ ($\exists$, т.к. $f(x)$ непрерывна на $[\alpha; \beta]$) }\\
+    & \text{Тогда по формуле производной сложной функции и определению первообразной:} \\
+    & F(u(t)) = u'(t) f(u(t)) \\
+    & \text{По формуле Ньютона-Лейбница:} \\
+    & \int_{a}^{b} f(x) dx = F(b) - F(a) \\
+    & \int_{p}^{q} f(u(t)) u'(t) dt = F(u(q)) - F(u(p)) = F(b) - F(a) \\
+\end{split}
+}
+}
+
+\subsection{Формула Тейлора с остаточным членом в интегральной форме}
+
+\mcthm{Формула Тейлора с остаточным членом в интегральной форме}{
+    Пусть $f(x)$ определена на $[\alpha; \beta]$ и $f^{(n+1)}(x)$ непрерывна на $(\alpha; \beta)$, тогда $\forall a, x \in (\alpha; \beta): $
+
+    Если $ a \ne x $ и $T_n(x)$ - многочлен Тейлора функции $f$ в точке $a$, то:
+
+    \[ f(x) = T_n(x) + \frac{1}{n!} \int_{a}^{x} (x - t)^n \cdot f^{(n + 1)}(t) dt \]
+
+\mcprf{
+\begin{split}
+    & \text{По формуле Ньютона-Лейбница:} \int_{a}^{x} f'(t) dt = f(x) - f(x) \\
+    & f(x) 
+      = f(a) + \int_{a}^{x} f'(t) dt
+      = f(a) - \int_{a}^{x} f'(t) d(x - t)
+      = f(a) - f'(t) (x - t) \vert_{a}^{x} + \int_{a}^{x} (x - t) d(f'(t))
+      = \\
+    & = f(a) + f'(a) (x - a) + \int_{a}^{x} (x - t) f''(t) dt 
+      = f(a) + f'(a) (x - a) - \frac{1}{2} \int_{a}^{x} f''(t) d((x - t)^2) \\
+    & = f(a) + f'(x) (x - a) - \frac{1}{2} \left( 
+        \left(f''(t) (x - t)^2\right) \vert_{a}^{x} - \int_{a}^{x} (x - t)^2 f'''(t) dt
+     \right)
+      = \\
+    & = f(a) + f'(x) (x - a) + \frac{f''(a) (x - a)^2}{2} + \frac{1}{2} \int_{a}^{x} (x - t)^2 f'''(t) dt 
+      = \\
+    & = f(a) + f'(x) (x - a) + \frac{f''(a) (x - a)^2}{2} - \frac{1}{2 \cdot 3} \int_{a}^{x} f'''(t) d((x - t)^3) 
+      = \dots \\
+    & \dots = \sum_{k = 0}^{n} \frac{f^{(k)}(a)}{k!} (x - a)^k + \frac{1}{n!} \int_{a}^{x} (x - t)^n f^{(n + 1)}(t) dt \\
+\end{split}
+}
+}
+
+\section{Несобственный интеграл}
+
+\mcdfn{Определение несобственного интеграл}{
+    Пусть дан полуинтервал $[a; b), b \in \ExtRset $ и $ \forall p \in [a; b): f(x) \in R[a; p] $, тогда, если существует предел
+
+    $ \lim_{p \to b-} \int_{a}^{p} f(x) dx $, то этот lim называется несобственным интегралом $f(x)$ на $[a; b)$ и обозначается
+
+    $ \int_{a}^{b} f(x) dx $
+
+    Если такой предел существует, то говорят, что интеграл сходится
+
+    Если несобственность (в определении выше несобственность в правом конце) в левом конце полуинтервала, то рассматривается правосторонний пределом
+
+    Если несобственность в обоих концах, т.е. дан интервал, то рассматриваются 2 предела
+}
+
+\mcex{Пример несобственности в 2 концах}{
+    $ f(x) = \frac{1}{x^{\alpha}}, (a; b) = (0; +\infty) $ 
+    \[
+        \int_{0}^{+\infty} f(x) dx = \int_{0}^{1} f(x) dx + \int_{1}^{+\infty} f(x) dx
+    \]
+    \[
+        \int_{0}^{1} f(x) dx = \lim_{p \to 0+} \int_{p}^{1} f(x) dx
+    \]
+    \[
+        \int_{p}^{1} f(x) dx 
+        = \left[ \begin{tabular}{l}
+            $ \frac{x^{-\alpha + 1}}{-\alpha + 1} \vert_{p}^{1}, \alpha \ne 1 $ \\
+            $ \ln(x) \vert_{p}^{1}, \alpha = 1 $ \\
+        \end{tabular} \right. 
+        = \left[ \begin{tabular}{l}
+            $ \frac{1}{1 - \alpha} - \frac{1}{1 - \alpha} \cdot p^{-\alpha + 1}, \alpha \ne 1 $ \\
+            $ -\ln(p), \alpha = 1 $ \\
+        \end{tabular} \right. 
+    \]
+
+    \[ \lim_{p \to 0+} -\ln(p) = +\infty \]
+
+    \[ \lim_{p \to 0+} \frac{x^{-\alpha + 1}}{-\alpha + 1} \vert_{p}^{1} = A \in \Rset \iff -\alpha + 1 > 0 \]
+
+    Т.е. первый интеграл сходится $\iff \alpha < 1 $
+
+    \[
+        \int_{1}^{+\infty} f(x) dx
+        = \lim_{p \to +\infty} \int_{1}^{p} f(x) dx 
+        = \left[ \begin{tabular}{l}
+            $ \frac{x^{-\alpha + 1}}{-\alpha + 1} \vert_{1}^{p}, \alpha \ne 1 $ \\
+            $ \ln(x) \vert_{1}^{p}, \alpha = 1 $ \\
+        \end{tabular} \right. 
+        = \left[ \begin{tabular}{l}
+            $ \frac{1}{1 - \alpha} \cdot p^{-\alpha + 1} - \frac{1}{1 - \alpha}, \alpha \ne 1 $ \\
+            $ \ln(p), \alpha = 1 $ \\
+        \end{tabular} \right.
+    \]
+
+    Аналогично, второй интеграл сходится $ \iff -\alpha + 1 < 0 \iff \alpha > 1 $
+
+    Получили, что данный интеграл (от 0 до $+\infty$) расходится $\forall \alpha$
+}
+
+\subsection{Свойства несобственного интеграла}
+
+\mcthm{Свойства несобственного интеграла}{
+\begin{tabular}{rl}
+    1.  & Линейность: \\
+        & Пусть дан полуинтервал $[a; b), b \in \ExtRset $ и $ \forall p \in [a; b): f(x), g(x) \in R[a; p] $, тогда \\
+        & $ \forall \alpha, \beta \in \Rset[]: $ \\
+        & $ \alpha f(x) + \beta g(x) \in R[a; b] $ несобственно интегрируемы на $[a; b) $ \\
+        & $ \int_{a}^{b} \left( \alpha f(x) + \beta g(x) \right) dx 
+            = \alpha \int_{a}^{b} f(x) dx + \beta \int_{a}^{b} g(x) dx $ \\
+    2.  & Выполнимость формулы Лейбница: \\
+        & Если $f(x)$ непрерывна на $[a; b)$, то \\
+        & $ \int_{a}^{b} f(x) dx = F(b-) - F(a) = \lim_{p \to b-} F(p) - F(a) $ \\
+    3.  & Формула замены переменной \\
+    4.  & Аддетивность \\
+\end{tabular}
+}
+
+\mcex{Пример применения формулы замены переменной}{
+    \begin{equation*}
+    \begin{split}
+        & \int_{0}^{+\infty} \frac{1}{(1 + x^2)^{\frac{3}{2}}} dx
+            = \left| x = tg(t), dx = \frac{dt}{\cos^2(t)} \right|
+            = \int_{0}^{\frac{\pi}{2}} \frac{1}{(1 + \tan^2(t))^{\frac{3}{2}}} \frac{dt}{\cos^2(t)}
+            = \\
+        & = \int_{0}^{\frac{\pi}{2}} \cos^3(t) \frac{dt}{\cos^2(t)}
+          = \int_{0}^{\frac{\pi}{2}} \cos(t) dt = 1 \\
+    \end{split}
+    \end{equation*}
+}
+
+\mcdfn{Эквивалентность функций}{
+    Функции $f(x)$ и $g(x)$ называются эквивалентными при $x \to b-$, если
+
+    \[ \lim_{x \to b-} \frac{f(x)}{g(x)} = 1 \]
+}
+
+\mcex{}{
+    $\sin x \sim x $ при $ x \to 0 $
+
+    $\ln(1 + x) \sim x $ при $ x \to 0 $
+
+    \[ \lim_{x \to 0} \frac{f(x)}{\ln(1 + e^{\frac{-1}{x^2}})} = \lim_{x \to 0} \frac{f(x)}{e^{\frac{-1}{x^2}}} \]
+}
+
+\subsection{Признаки сходимости несобственных интегралов}
+
+\mcthmBreakable{Признаки сходимости несобственных интегралов}{
+\begin{tabular}{rl}
+    1.  & Cходимость интеграла от неотрицательных функций: \\
+        & Пусть дан полуинтервал $[a; b), b \in \ExtRset $ и $ \forall x \in [a; b): f(x) \ge 0 \wedge g(x) \ge 0 $ \\
+        & 1.1 Признак сравнения \\
+        & $ \int_{a}^{b} f(x) dx = L_1, \int_{a}^{b} g(x) dx = L_2, \forall x \in [a; b): f(x) \le g(x) $ \\
+        & $ L_2 $ сходится $ \implies L_1 $ сходится \\
+        & $ L_1 $ расходится $ \implies L_2 $ расходится \\
+        & 1.2 Признак сравнения в предельной форме \\
+        & $\forall x \in [a; b): f(x) > 0 \wedge g(x) > 0$ и $f(x) \sim g(x)$ при $x \to b-$, то: \\
+        & $ \int_{a}^{b} f(x) dx \text{ сходится } \iff \text{ сходится } \int_{a}^{b} g(x) dx $ \\
+    2.  & Знакомпеременные функции \\
+        & Абсолютная сходимость \\
+        & Интеграл $\int_{a}^{b} f(x) dx $ называется сходящимся абсолютно, если сходится $\int_{a}^{b} |f(x)| dx $ \\
+        & Если интеграл сходится абсолютно, то он сходится \\
+\end{tabular}
+
+Докажем свойство 1.1:
+\mcprf{
+\begin{split}
+    & F(p) = \int_{a}^{p} f(x) dx, G(p) = \int_{a}^{p} g(x) dx \text{ - монотонные функции по p} \\
+    & \text{(идея доказательства: представить $F(p + \Delta p) = F(p) + I$ по линейности и показать, что $I \ge 0$)} \\
+    & \text{Функции монотонны $\implies$ предел при $p \to b-$ существуют $\iff$ функции ограничены } \\
+    & \text{$L_2$ сходится $\implies L_2 $ ограничивает сверху $F(p) \implies L_1 $ сходится} \\
+    & \text{$L_1$ расходится $\implies L_1 = +\infty$, т.к. функция монотонна $ \implies $ и $L_2$ расходится} \\
+\end{split}
+}
+
+Докажем свойство 1.2:
+\mcprf{
+\begin{split}
+    & \text{В определении предела по Коши положим: } \veps := \frac{1}{2} > 0 \implies \\
+    & \implies \exists \delta_0 > 0 \, \forall x \in (b - \delta_0; b): \left| \frac{f(x)}{g(x)} - 1 \right| < \frac{1}{2} \\
+    & \forall x \in (b - \delta_0; b): \left| \frac{f(x)}{g(x)} - 1 \right| < \frac{1}{2} \iff 0 < \frac{1}{2} g(x) < f(x) < \frac{3}{2} g(x) \\
+    & \int_{a}^{b} f(x) dx = \int_{a}^{b - \delta_0} f(x) dx + \int_{b - \delta_0}^{b} f(x) dx \\
+    & \int_{a}^{b} g(x) dx = \int_{a}^{b - \delta_0} g(x) dx + \int_{b - \delta_0}^{b} g(x) dx \\
+    & \text{Если } \int_{b - \delta_0}^{b} f(x) dx \text{ расходится, то и } \int_{b - \delta_0}^{b} \frac{3}{2} g(x) dx \text{ расходится } \\
+    & \text{Если } \int_{b - \delta_0}^{b} g(x) dx \text{ сходится, то и } \int_{b - \delta_0}^{b} \frac{1}{2} f(x) dx \text{ сходится } \\
+\end{split}
+}
+
+Докажем свойство 2:
+\mcprf{
+\begin{split}
+    & f(x) = f^+(x) - f^-(x) \\
+    & f^+(x) = \left\{ \begin{tabular}{l}
+        $ f(x), f(x) \ge 0 $ \\
+        $ 0, f(x) < 0 $ \\
+    \end{tabular} \right. \\
+    & f^-(x) = \left\{ \begin{tabular}{l}
+        $ -f(x), f(x) < 0 $ \\
+        $ 0, f(x) \ge 0 $ \\
+    \end{tabular} \right. \\
+    & \left. \begin{tabular}{l}
+        $ |f(x)| = f^+(x) + f^-(x) $ \\
+        $ f^+(x) \le |f(x)| $ \\
+        $ f^-(x) \le |f(x)| $ \\
+    \end{tabular} \right\} \text{интегралы функций $f^+(x)$ и $f^-(x)$ } \\
+\end{split}
+}
+
+}
+
+\mcex{Пример применения признака сравнения в предельной форме}{
+    \[ \int_{0}^{1} \frac{\ln(1 + x)}{x^{\frac{3}{2}}} dx \]
+
+    \[ \frac{\ln(1 + x)}{x^{\frac{3}{2}}} \sim \frac{x}{x^{\frac{3}{2}}} = \frac{1}{x^{\frac{1}{2}}} \]
+
+    \[ \int_{0}^{1} \frac{1}{x^{\frac{1}{2}}} dx \text{ сходится } \implies \int_{0}^{1} \frac{\ln(1 + x)}{x^{\frac{3}{2}}} dx \text{ сходится} \]
 }
